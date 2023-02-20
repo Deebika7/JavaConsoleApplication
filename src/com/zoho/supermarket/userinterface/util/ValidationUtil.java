@@ -104,12 +104,23 @@ public class ValidationUtil {
             System.out.println("Invalid input Try again!");
         }
     }
+
     public static String getValidUserName(){
         String input;
         while (true){
             input=sc.nextLine();
-            if(!input.matches("([a-zA-Z',.-]+( [a-zA-Z',.-]+)*){2,30}")){
-                return input=sc.nextLine();
+            if(input.matches("([a-zA-Z',.-]+( [a-zA-Z',.-]+)*){2,30}")){
+                return input;
+            }
+            System.out.println("Invalid input Try again!");
+        }
+    }
+    public static String getValidEmail(){
+        String input;
+        while (true){
+            input=sc.nextLine();
+            if(input.matches("([-!#-'*+/-9=?A-Z^-~]+(\\.[-!#-'*+/-9=?A-Z^-~]+)*|\"([]!#-[^-~ \\t]|(\\\\[\\t -~]))+\")@([-!#-'*+/-9=?A-Z^-~]+(\\.[-!#-'*+/-9=?A-Z^-~]+)*|\\[[\\t -Z^-~]*]))")){
+                return input;
             }
             System.out.println("Invalid input Try again!");
         }

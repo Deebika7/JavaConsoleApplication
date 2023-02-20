@@ -1,8 +1,10 @@
 package com.zoho.supermarket.userinterface.menu;
 
+import com.zoho.supermarket.database.repository.UserDataManager;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 public class LoginMenu {
+    private UserDataManager userDataManager=new UserDataManager();
     public void start(){
         System.out.println("Enter the Choice:\n1. Register\n2.Login\n3.Quit");
         int choice=ValidationUtil.getValidEnumInput(2);
@@ -14,7 +16,7 @@ public class LoginMenu {
     }
     public void login(){
         System.out.println("Enter email:");
-        String email;
+        String email=ValidationUtil.getValidEmail();
         System.out.println("Enter Password:");
         String password=ValidationUtil.getValidPassword();
     }
@@ -22,7 +24,7 @@ public class LoginMenu {
         System.out.println("Enter User Name:");
         String userName=ValidationUtil.getValidUserName();
         System.out.println("Enter email:");
-        String email;
+        String email=ValidationUtil.getValidEmail();
         System.out.println("Enter Password:");
         String password=ValidationUtil.getValidPassword();
         System.out.println("Enter Confirm Password");

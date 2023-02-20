@@ -19,6 +19,5 @@ public class CustomerMenu {
             case PLACE_ORDER -> {}
             case QUIT -> {}
         }
-
     }
 }
