@@ -3,8 +3,6 @@ package com.zoho.supermarket.database.model;
 import com.zoho.supermarket.core.model.product.Discount;
 import com.zoho.supermarket.core.model.product.Product;
 
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
