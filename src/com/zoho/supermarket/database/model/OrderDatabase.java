@@ -1,4 +1,14 @@
 package com.zoho.supermarket.database.model;
 
-public class OrderDatabase {
+import com.zoho.supermarket.core.model.product.Order;
+import com.zoho.supermarket.core.model.user.Customer;
+
+import java.util.List;
+import java.util.Map;
+
+public interface OrderDatabase {
+    Map<Customer,List<Order>> getOrders();
+    void setOrders();
+
+
 }

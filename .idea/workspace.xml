@@ -4,28 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b7ac51c-cbb6-4686-8aab-87c605ac31b5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SuperMarketManagementSystem.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Cart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Discount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/ProductCategory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/UserRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/order/AdminOrderManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/order/UserOrderManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/product/AdminProductManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/product/UserProductManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/OrderDatabase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/ProductDatabase.java" afterDir="false" />
+    <list default="true" id="3b7ac51c-cbb6-4686-8aab-87c605ac31b5" name="Changes" comment="adding files">
+      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/UserDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/OrderDatabaseImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/ProductDatabaseImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/UserDatabaseImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/OrderDataManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/ProductDataManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/UserDataManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/OrderDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/OrderDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/ProductDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/ProductDatabase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,17 +38,21 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2LzO72JvcDRnh7cQXW4suIKvkpU" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -68,6 +62,32 @@
       <option name="presentableId" value="Default" />
       <updated>1676870275986</updated>
     </task>
+    <task id="LOCAL-00001" summary="adding files">
+      <created>1676874132903</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676874132903</updated>
+    </task>
+    <task id="LOCAL-00002" summary="adding files">
+      <created>1676874156710</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1676874156710</updated>
+    </task>
+    <task id="LOCAL-00003" summary="adding files">
+      <created>1676874307102</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1676874307102</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="adding files" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding files" />
   </component>
 </project>
