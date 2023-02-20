@@ -20,4 +20,5 @@ public class CustomerMenu {
             case QUIT -> {}
         }
 
+    }
 }

@@ -104,12 +104,33 @@ public class ValidationUtil {
             System.out.println("Invalid input Try again!");
         }
     }
+    public static String getValidUserName(){
+        String input;
+        while (true){
+            input=sc.nextLine();
+            if(!input.matches("([a-zA-Z',.-]+( [a-zA-Z',.-]+)*){2,30}")){
+                return input=sc.nextLine();
+            }
+            System.out.println("Invalid input Try again!");
+        }
+    }
+
+    public static String getValidPassword() {
+        String input = sc.nextLine();
+        while (!input.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$")) {
+            System.out.println("Invalid Password Try again!");
+            System.out.println("Note: The password should contain a lower case character, upper case character," +
+                    " atleast one digit, a total of 8 - 20 character length, and special characters like ['@#$%^&-+=()']");
+            System.out.println("Enter your password correctly: ");
+            input = new Scanner(System.in).nextLine();
+        }
+        return input;
+    }
     public static boolean isInstanceValid(Object instance) {return instance != null;}
 
     public static boolean isListValid(List list) {
         return (list == null || list.isEmpty());
     }
-
 
 }
 

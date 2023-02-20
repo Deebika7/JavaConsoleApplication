@@ -1,6 +1,6 @@
 package com.zoho.supermarket.core.respository.product;
 
-public interface UserProductManager {
+public interface CustomerProductManager {
     void viewProduct();
     void viewDiscount();
 

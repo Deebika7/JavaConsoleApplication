@@ -13,7 +13,7 @@ public class AdminMenu {
             int choice = ValidationUtil.getValidEnumInput(AdminOptions.values().length);
             AdminOptions option = AdminOptions.values()[choice - 1];
             switch (option) {
-                case ADD_PRODCUCT -> {}
+                case ADD_PRODUCT -> {}
                 case REMOVE_PRODUCT -> {}
                 case VIEW_PRODUCT -> {}
                 case ADD_DISCOUNT -> {}
