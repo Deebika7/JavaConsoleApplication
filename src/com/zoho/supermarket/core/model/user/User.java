@@ -1,6 +1,6 @@
 package com.zoho.supermarket.core.model.user;
 
-public abstract class User {
+public  class User {
 
     private final String userName,email,password;
     private UserRole userRole;

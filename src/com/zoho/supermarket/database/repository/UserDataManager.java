@@ -48,17 +48,17 @@ public class UserDataManager implements AdminDataManager, CustomerDataManager {
         }
         return Message.REGISTER_FAILED+"\n"+Message.USER_EXIST;
     }
-    public String validateUser(String email,String password,UserRole userRole){
+    public boolean validateUser(String email,String password,UserRole userRole){
         Map<String,User> users=getUsers();
         if(userRole.equals(UserRole.CUSTOMER)&&users.containsKey(email)&&users.get(email).getPassword().equals(password)
                 &&users.get(email) instanceof Customer){
-            return Message.LOGIN_SUCCESS;
+            return true;
         }
         else if(userRole.equals(UserRole.ADMIN)&&users.containsKey(email)&&users.get(email).getPassword().equals(password)
                 &&users.get(email) instanceof Admin){
-            return Message.LOGIN_SUCCESS;
+            return true;
         }
-        return Message.NO_USER_EXIST;
+        return false;
     }
 
 
