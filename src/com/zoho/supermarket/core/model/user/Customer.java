@@ -9,6 +9,7 @@ public class Customer extends User {
     private CustomerOrderManager customerOrderManager;
     private CustomerDataManager customerDataManager;
 
+
     public Customer(String userName, String email, String password, UserRole customer,
                     CustomerProductManager customerProductManager, CustomerOrderManager customerOrderManager,
                     CustomerDataManager customerDataManager) {
@@ -17,5 +18,4 @@ public class Customer extends User {
         this.customerOrderManager = customerOrderManager;
         this.customerDataManager = customerDataManager;
     }
-
 }

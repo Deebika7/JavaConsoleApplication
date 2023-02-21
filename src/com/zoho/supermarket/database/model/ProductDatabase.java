@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Map;
 
 public interface ProductDatabase {
-    List<Product> getProducts();
-    Map<Product, Discount> getProductDiscounts();
-    void addDiscount();
-    void removeDiscount();
-    void addProduct();
-    void updateProductQuantity();
-    void removeProduct();
+//    List<Product> getProducts();
+//    Map<Product, Discount> getProductDiscounts();
+//    void addDiscount();
+//    void removeDiscount();
+//    void addProduct();
+//    void updateProductQuantity();
+//    void removeProduct();
 }

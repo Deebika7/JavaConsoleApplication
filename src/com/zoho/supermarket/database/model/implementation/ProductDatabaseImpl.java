@@ -2,13 +2,14 @@ package com.zoho.supermarket.database.model.implementation;
 
 import com.zoho.supermarket.core.model.product.Discount;
 import com.zoho.supermarket.core.model.product.Product;
+import com.zoho.supermarket.database.model.ProductDatabase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ProductDatabaseImpl {
+public class ProductDatabaseImpl implements ProductDatabase {
     private List<Product> products=new ArrayList<>();
     private Map<Product, Discount> productDiscounts=new HashMap<>();
     private static ProductDatabaseImpl Instance;

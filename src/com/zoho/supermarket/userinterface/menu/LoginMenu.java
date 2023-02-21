@@ -44,8 +44,7 @@ public class LoginMenu {
         String password = ValidationUtil.getValidPassword();
         System.out.println("Enter Confirm Password");
         String confirmPassword = ValidationUtil.getValidConfirmPassword(password);
-        System.out.println(userDataManager.addUser(new Random().nextInt(1000, 9999),
-                userName, email, password, UserRole.CUSTOMER));
+        System.out.println(userDataManager.addUser(userName, email, password, UserRole.CUSTOMER));
     }
 
     private void signIn(UserRole userRole) {

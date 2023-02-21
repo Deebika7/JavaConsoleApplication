@@ -1,17 +1,26 @@
 package com.zoho.supermarket.database.repository;
 
 import com.zoho.supermarket.constants.Message;
+import com.zoho.supermarket.core.model.user.Admin;
+import com.zoho.supermarket.core.model.user.Customer;
 import com.zoho.supermarket.core.model.user.User;
 import com.zoho.supermarket.core.model.user.UserRole;
+import com.zoho.supermarket.core.respository.user.AdminDataManager;
+import com.zoho.supermarket.core.respository.user.CustomerDataManager;
 import com.zoho.supermarket.database.model.UserDatabase;
 import com.zoho.supermarket.database.model.implementation.UserDatabaseImpl;
+import com.zoho.supermarket.userinterface.util.ManagerFactory;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 import java.util.Map;
 
-public class UserDataManager {
+public class UserDataManager implements AdminDataManager, CustomerDataManager {
     UserDatabase userDatabase=new UserDatabaseImpl();
-    private Map<String,User> getUsers(){
+
+    public UserDataManager() {
+    }
+
+    public Map<String,User> getUsers(){
         if(ValidationUtil.isInstanceValid(userDatabase.getUsers())){
             return userDatabase.getUsers();
         }
@@ -27,13 +36,20 @@ public class UserDataManager {
         return false;
     }
 
-    public String addUser(int userID, String userName, String email, String password, UserRole userRole){
+    public String addUser(String userName, String email, String password, UserRole userRole){
         if(!isUserExist(email,userRole)){
-            userDatabase.addUser(userID,userName,email,password,userRole);
+            if(userRole.equals(UserRole.ADMIN)){
+                userDatabase.addUser(email,new Admin(userName,email,password,userRole, ManagerFactory.getUserDataManager(),ManagerFactory.getOrderDataManager(),ManagerFactory.getProductDataManager()));
+            }
+            else {
+                userDatabase.addUser(email,new Customer(userName,email,password,userRole,ManagerFactory.getProductDataManager(),ManagerFactory.getOrderDataManager(),ManagerFactory.getUserDataManager()));
+            }
+
             return Message.REGISTER_SUCCESS;
         }
         return Message.REGISTER_FAILED+"\n"+Message.USER_EXIST;
     }
+
 
 
 }

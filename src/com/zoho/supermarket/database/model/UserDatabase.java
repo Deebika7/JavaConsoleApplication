@@ -6,7 +6,7 @@ import com.zoho.supermarket.core.model.user.UserRole;
 import java.util.Map;
 
 public interface UserDatabase {
-    void addUser(int userID, String userName, String email, String password, UserRole userRole);
+    void addUser(String email,User data);
     Map<String, User> getUsers();
 
 }

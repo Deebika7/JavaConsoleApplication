@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface OrderDatabase {
-    Map<Customer,List<Order>> getOrders();
-    void setOrders();
+//    Map<Customer,List<Order>> getOrders();
+//    void setOrders();
 
 
 }
