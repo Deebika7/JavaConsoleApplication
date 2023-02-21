@@ -11,7 +11,7 @@ public class ProductDatabaseImpl implements ProductDatabase {
     private final List<Product> products=new ArrayList<>();
     private final Map<Product, Discount> productDiscounts=new HashMap<>();
     private static ProductDatabaseImpl Instance;
-    public ProductDatabaseImpl(){
+    private ProductDatabaseImpl(){
 
     }
     public static ProductDatabaseImpl getInstance(){

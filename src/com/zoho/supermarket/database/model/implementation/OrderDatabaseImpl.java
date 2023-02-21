@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class OrderDatabaseImpl implements OrderDatabase {
     private Map<Customer,List<Order>> orders=new HashMap<>();
-    private static OrderDatabaseImpl Instance;
+    private static OrderDatabaseImpl Instance=null;
     private OrderDatabaseImpl(){}
     public static OrderDatabaseImpl getInstance(){
         if(Instance ==null){
