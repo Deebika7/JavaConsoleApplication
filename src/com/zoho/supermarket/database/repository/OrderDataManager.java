@@ -9,6 +9,7 @@ import com.zoho.supermarket.database.model.OrderDatabase;
 import com.zoho.supermarket.database.model.ProductDatabase;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -55,6 +56,17 @@ public class OrderDataManager implements AdminOrderManager, CustomerOrderManager
         }
         return null;
     }
+    public List<String> getCartProducts(){
+        List<String> cartProducts=new ArrayList<>();
+        List<Order> cart=getCart();
+        if(ValidationUtil.isListValid(cart)){
+            cartProducts.add("Product Name\t\tProduct Quantity");
+            cart.stream().forEach(cartProduct -> cartProducts.add(cartProduct.getProduct().getProductName()+"\t\t"+cartProduct.getQty()));
+            return cartProducts;
+        }
+        return null;
+    }
+
 
     public List<Order> getCart(){
 

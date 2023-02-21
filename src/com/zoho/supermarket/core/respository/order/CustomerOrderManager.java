@@ -7,6 +7,7 @@ import java.util.List;
 public interface CustomerOrderManager {
     String addToCart(String productName, int quantity);
     List<Order> getCart();
+    List<String> getCartProducts();
 //        String addToCart();
 //    String placeOrder();
 //    void getBill();

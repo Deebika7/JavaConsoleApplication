@@ -21,6 +21,7 @@ public class Message {
     public static final String USER_EXIST="User already exist Please login!";
     public static final String NO_USER_EXIST="No such user exist!";
     public static final String USER_ADDED_SUCCESS="User added successfully";
+    public static final String EMPTY_CART="Cart is empty";
 
 
 }

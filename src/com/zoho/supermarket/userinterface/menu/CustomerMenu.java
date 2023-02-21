@@ -1,14 +1,13 @@
 package com.zoho.supermarket.userinterface.menu;
 
 
+import com.zoho.supermarket.constants.Message;
 import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.model.product.ProductCategory;
-import com.zoho.supermarket.core.model.user.Customer;
 import com.zoho.supermarket.core.respository.order.CustomerOrderManager;
 import com.zoho.supermarket.core.respository.product.CustomerProductManager;
-import com.zoho.supermarket.userinterface.menu.enums.UserOptions;
+import com.zoho.supermarket.userinterface.menu.enums.CustomerOptions;
 
-import com.zoho.supermarket.userinterface.util.ManagerFactory;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 import java.util.List;
@@ -21,23 +20,39 @@ public class CustomerMenu {
         this.customerOrderManager = customerOrderManager;
         this.customerProductManager = customerProductManager;
     }
-    private final CustomerMenu customerMenu=new CustomerMenu(ManagerFactory.getOrderDataManager(),ManagerFactory.getProductDataManager());
     public void start() {
-        System.out.println("Enter your choice: ");
-        for (UserOptions option : UserOptions.values()) {
-            System.out.println(option.ordinal() + 1 + ". " + option.name());
-        }
-        int choice = ValidationUtil.getValidEnumInput(UserOptions.values().length);
-        UserOptions option = UserOptions.values()[choice - 1];
-        switch (option) {
-            case VIEW_PRODUCTS -> viewProducts();
-            case ADD_PRODUCT_TO_CART -> addToCart();
-            case CHECK_DISCOUNT -> {}
-            case GENERATE_BILL -> {}
-            case PLACE_ORDER -> {}
-            case QUIT -> {}
+        while (true) {
+            System.out.println("Enter your choice: ");
+            for (CustomerOptions option : CustomerOptions.values()) {
+                System.out.println(option.ordinal() + 1 + ". " + option.name());
+            }
+            int choice = ValidationUtil.getValidEnumInput(CustomerOptions.values().length);
+            CustomerOptions option = CustomerOptions.values()[choice - 1];
+            switch (option) {
+                case VIEW_PRODUCTS -> viewProducts();
+                case ADD_PRODUCT_TO_CART -> addToCart();
+                case VIEW_CART -> viewCart();
+                case CHECK_DISCOUNT -> {
+                }
+                case GENERATE_BILL -> {
+                }
+                case PLACE_ORDER -> {
+                }
+                case QUIT -> {return;}
+            }
         }
     }
+
+    private void viewCart() {
+        List<String> cart=customerOrderManager.getCartProducts();
+        if(ValidationUtil.isListValid(cart)){
+            cart.stream().forEach(product->System.out.println(product));
+        }
+        else {
+            System.out.println(Message.EMPTY_CART);
+        }
+    }
+
     private void printProductCategory() {
         for (ProductCategory productCategory:ProductCategory.values()){
             System.out.println(productCategory.ordinal() + 1 + ". " + productCategory.name());
@@ -63,8 +78,10 @@ public class CustomerMenu {
         String productName=ValidationUtil.getValidStringInput();
         System.out.println("Enter Quantity: ");
         int quantity=ValidationUtil.getValidProductQtyInput();
-        customerOrderManager.addToCart(productName,quantity);
+        System.out.println(customerOrderManager.addToCart(productName,quantity));
     }
+
+
 
 
 
