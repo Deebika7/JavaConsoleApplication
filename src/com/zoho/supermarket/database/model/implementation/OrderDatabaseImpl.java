@@ -14,7 +14,7 @@ public class OrderDatabaseImpl implements OrderDatabase {
     private OrderDatabaseImpl(){}
     public static OrderDatabaseImpl getInstance(){
         if(Instance ==null){
-            new OrderDatabaseImpl();
+            return new OrderDatabaseImpl();
         }
         return Instance;
     }

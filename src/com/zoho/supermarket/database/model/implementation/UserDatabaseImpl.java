@@ -15,7 +15,8 @@ public class UserDatabaseImpl implements UserDatabase {
     }
     public static UserDatabaseImpl getInstance(){
         if(Instance==null){
-            new UserDatabaseImpl();
+            return new UserDatabaseImpl();
+
         }
         return Instance;
     }

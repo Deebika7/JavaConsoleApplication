@@ -9,11 +9,11 @@ import com.zoho.supermarket.database.repository.OrderDataManager;
 import com.zoho.supermarket.database.repository.ProductDataManager;
 import com.zoho.supermarket.database.repository.UserDataManager;
 
-import static com.zoho.supermarket.database.model.implementation.UserDatabaseImpl.getInstance;
+
 
 public class ManagerFactory {
     public static UserDataManager getUserDataManager(){
-        return new UserDataManager(getInstance());
+        return new UserDataManager(UserDatabaseImpl.getInstance());
     }
     public static ProductDataManager getProductDataManager(){
         return new ProductDataManager(OrderDatabaseImpl.getInstance(), ProductDatabaseImpl.getInstance());
