@@ -143,5 +143,16 @@ public class ValidationUtil {
         return (list == null || list.isEmpty());
     }
 
+    public static String getValidConfirmPassword(String password) {
+        String input;
+        while (true) {
+            input=sc.nextLine();
+            if (password.equals(input)) {
+                return input;
+            } else {
+                System.out.println("password mismatched Try again!!");
+            }
+        }
+    }
 }
 

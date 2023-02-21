@@ -17,17 +17,18 @@ public class UserDataManager {
         }
         return null;
     }
-    private boolean isUserExist(String email){
+    private boolean isUserExist(String email,UserRole userRole){
         Map<String,User> users=getUsers();
-        boolean isPresent=false;
         if (users!=null){
-            return users.containsKey(email);
+            if(users.get(email).getUserRole().equals(userRole)){
+                return true;
+            }
         }
         return false;
     }
 
     public String addUser(int userID, String userName, String email, String password, UserRole userRole){
-        if(!isUserExist(email)){
+        if(!isUserExist(email,userRole)){
             userDatabase.addUser(userID,userName,email,password,userRole);
             return Message.REGISTER_SUCCESS;
         }
