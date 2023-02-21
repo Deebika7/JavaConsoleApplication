@@ -29,7 +29,7 @@ public class UserDataManager implements AdminDataManager, CustomerDataManager {
     private boolean isUserExist(String email,UserRole userRole){
         Map<String,User> users=getUsers();
         if (users!=null){
-            if(users.get(email).getUserRole().equals(userRole)){
+            if(users.containsKey(email)&&users.get(email).getUserRole().equals(userRole)){
                 return true;
             }
         }
@@ -44,11 +44,23 @@ public class UserDataManager implements AdminDataManager, CustomerDataManager {
             else {
                 userDatabase.addUser(email,new Customer(userName,email,password,userRole,ManagerFactory.getProductDataManager(),ManagerFactory.getOrderDataManager(),ManagerFactory.getUserDataManager()));
             }
-
             return Message.REGISTER_SUCCESS;
         }
         return Message.REGISTER_FAILED+"\n"+Message.USER_EXIST;
     }
+    public String validateUser(String email,String password,UserRole userRole){
+        Map<String,User> users=getUsers();
+        if(userRole.equals(UserRole.CUSTOMER)&&users.containsKey(email)&&users.get(email).getPassword().equals(password)
+                &&users.get(email) instanceof Customer){
+            return Message.LOGIN_SUCCESS;
+        }
+        else if(userRole.equals(UserRole.ADMIN)&&users.containsKey(email)&&users.get(email).getPassword().equals(password)
+                &&users.get(email) instanceof Admin){
+            return Message.LOGIN_SUCCESS;
+        }
+        return Message.NO_USER_EXIST;
+    }
+
 
 
 
