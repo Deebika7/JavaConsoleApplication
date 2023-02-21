@@ -140,7 +140,7 @@ public class ValidationUtil {
     public static boolean isInstanceValid(Object instance) {return instance != null;}
 
     public static boolean isListValid(List list) {
-        return (list == null || list.isEmpty());
+        return !(list == null || list.isEmpty());
     }
 
     public static String getValidConfirmPassword(String password) {

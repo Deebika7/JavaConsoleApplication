@@ -1,9 +1,12 @@
 package com.zoho.supermarket.core.respository.product;
 
-public interface CustomerProductManager {
-//    void viewProduct();
-//    void viewDiscount();
+import com.zoho.supermarket.core.model.product.Product;
 
+import java.util.List;
+
+public interface CustomerProductManager {
+    List<Product> getProducts();
+    List<String> getDiscounts();
 
 
 }

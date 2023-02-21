@@ -10,12 +10,12 @@ import java.util.Map;
 public interface ProductDatabase {
      List<Product> getProducts();
      void add(Product product);
-    void remove(Product productToRemove);
-//    List<Product> getProducts();
-//    Map<Product, Discount> getProductDiscounts();
-//    void addDiscount();
-//    void removeDiscount();
-//    void addProduct();
+     void remove(Product productToRemove);
+     void addDiscount(Product product,Discount discount);
+     boolean removeDiscount(int discountID);
+     Map<Product, Discount> getDiscounts();
+
+
 //    void updateProductQuantity();
-//    void removeProduct();
+
 }

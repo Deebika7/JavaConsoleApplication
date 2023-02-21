@@ -54,15 +54,15 @@ public class LoginMenu {
     }
 
     private void signIn(UserRole userRole) {
-        System.out.println("Enter email:");
-        String email = ValidationUtil.getValidEmail();
+        System.out.println("Enter User Name:");
+        String userName = ValidationUtil.getValidUserName();
         System.out.println("Enter Password:");
         String password = ValidationUtil.getValidPassword();
-        if (userRole.equals(UserRole.ADMIN) && userDataManager.validateUser(email, password, UserRole.ADMIN)) {
+        if (userRole.equals(UserRole.ADMIN) && userDataManager.validateUser(userName, password, UserRole.ADMIN)) {
             System.out.println(Message.LOGIN_SUCCESS);
             new AdminMenu(ManagerFactory.getOrderDataManager(),ManagerFactory.getProductDataManager()).start();
 
-        } else if (userRole.equals(UserRole.CUSTOMER) && userDataManager.validateUser(email, password, UserRole.CUSTOMER)) {
+        } else if (userRole.equals(UserRole.CUSTOMER) && userDataManager.validateUser(userName, password, UserRole.CUSTOMER)) {
             System.out.println(Message.LOGIN_SUCCESS);
             new CustomerMenu(ManagerFactory.getOrderDataManager(),ManagerFactory.getProductDataManager()).start();
 
