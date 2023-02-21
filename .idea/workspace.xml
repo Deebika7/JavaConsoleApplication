@@ -5,22 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b7ac51c-cbb6-4686-8aab-87c605ac31b5" name="Changes" comment="adding files">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/order/AdminOrderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/order/AdminOrderManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/order/CustomerOrderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/order/CustomerOrderManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/product/AdminProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/product/AdminProductManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/product/CustomerProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/product/CustomerProductManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/ProductDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/ProductDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/ProductDatabaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/ProductDatabaseImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/OrderDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/OrderDataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/ProductDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/ProductDataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/AdminMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/CustomerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/LoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/LoginMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/OrderDatabaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/OrderDatabaseImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/UserDatabaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/UserDatabaseImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/UserDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/UserDataManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/util/ManagerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/util/ManagerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/util/ValidationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/util/ValidationUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,15 +38,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/Users/deebika-pt6680/IdeaProjects/SuperMarketManagementSystem/src/com/zoho/supermarket/userinterface/menu/enums"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/deebika-pt6680/IdeaProjects/SuperMarketManagementSystem/src/com/zoho/supermarket/userinterface/menu/enums&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/enums" />

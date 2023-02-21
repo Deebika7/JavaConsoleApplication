@@ -15,10 +15,12 @@ import com.zoho.supermarket.userinterface.util.ValidationUtil;
 import java.util.Map;
 
 public class UserDataManager implements AdminDataManager, CustomerDataManager {
-    UserDatabase userDatabase=new UserDatabaseImpl();
+    private final UserDatabase userDatabase;
 
-    public UserDataManager() {
+    public UserDataManager(UserDatabase userDatabase) {
+        this.userDatabase = userDatabase;
     }
+
     @Override
     public Map<String,User> getUsers(){
         if(ValidationUtil.isInstanceValid(userDatabase.getUsers())){
