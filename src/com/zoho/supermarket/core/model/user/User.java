@@ -5,7 +5,8 @@ public class User {
     private final String userName,email,password;
     private UserRole userRole;
 
-    public User(String userName, String email, String password, UserRole userRole) {
+    public User(int userID,String userName, String email, String password, UserRole userRole) {
+        this.userID=userID;
         this.userName = userName;
         this.email = email;
         this.password = password;

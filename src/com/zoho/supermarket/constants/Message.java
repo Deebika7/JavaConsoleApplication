@@ -18,6 +18,7 @@ public class Message {
     public static final String LOGIN_SUCCESS="Login successful";
     public static final String REGISTER_SUCCESS="Registration successful";
     public static final String REGISTER_FAILED="Regisration failed";
+    public static final String USER_EXIST="User already exist Please login!";
 
 
 }
