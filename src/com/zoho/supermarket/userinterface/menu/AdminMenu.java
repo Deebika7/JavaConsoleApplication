@@ -6,13 +6,12 @@ import com.zoho.supermarket.core.model.product.ProductCategory;
 import com.zoho.supermarket.core.respository.order.AdminOrderManager;
 import com.zoho.supermarket.core.respository.product.AdminProductManager;
 import com.zoho.supermarket.userinterface.menu.enums.AdminOptions;
-import com.zoho.supermarket.userinterface.util.ManagerFactory;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 import java.util.List;
 import java.util.Random;
 
-public class AdminMenu {
+public class AdminMenu implements Menu{
     private final AdminOrderManager adminOrderManager;
     private final AdminProductManager adminProductManager;
 
@@ -20,7 +19,8 @@ public class AdminMenu {
         this.adminOrderManager = adminOrderManager;
         this.adminProductManager = adminProductManager;
     }
-     public void start(){
+
+    public void start(){
         while (true) {
             System.out.println("Enter your choice: ");
             for (AdminOptions option : AdminOptions.values()) {
@@ -36,7 +36,7 @@ public class AdminMenu {
                 case REMOVE_DISCOUNT ->removeDiscount();
                 case VIEW_DISCOUNTS ->viewDiscounts();
                 case LIST_ORDERS -> {}
-                case QUIT -> {}
+                case QUIT -> {return;}
             }
         }
     }

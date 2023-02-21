@@ -12,10 +12,9 @@ import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 import java.util.List;
 
-public class CustomerMenu {
+public class CustomerMenu implements Menu{
     private final CustomerOrderManager customerOrderManager;
     private final CustomerProductManager customerProductManager;
-
     public CustomerMenu(CustomerOrderManager customerOrderManager, CustomerProductManager customerProductManager) {
         this.customerOrderManager = customerOrderManager;
         this.customerProductManager = customerProductManager;
@@ -65,11 +64,11 @@ public class CustomerMenu {
     public void viewProducts() {
         printProductCategory();
         System.out.println("Select Category to display items:");
-        ProductCategory itemCategory = getProductCategory();
+        ProductCategory productCategory = getProductCategory();
         List<Product> products = customerProductManager.getProducts();
-        System.out.println("======================="+itemCategory.name()+"====================================");
+        System.out.println("======================="+productCategory.name()+"====================================");
         System.out.println("Item ID\t\tProduct Name\t\tunit price\t\tAvailable quantity");
-        products.stream().filter(product -> product.getCategory().equals(itemCategory)).
+        products.stream().filter(product -> product.getCategory().equals(productCategory)).
                 forEach(product -> System.out.println(product.getProductID() + "\t\t" + product.getProductName()
                         +"\t\t\t\t" + product.getUnitPrice() + "\t\t\t" + product.getQuantity()));
     }

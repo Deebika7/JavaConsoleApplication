@@ -115,16 +115,6 @@ public class ValidationUtil {
             System.out.println("Invalid input Try again!");
         }
     }
-    public static String getValidEmail(){
-        String input;
-        while (true){
-            input=sc.nextLine();
-            if(input.matches("([-!#-'*+/-9=?A-Z^-~]+(\\.[-!#-'*+/-9=?A-Z^-~]+)*|\"([]!#-[^-~ \\t]|(\\\\[\\t -~]))+\")@([-!#-'*+/-9=?A-Z^-~]+(\\.[-!#-'*+/-9=?A-Z^-~]+)*|\\[[\\t -Z^-~]*]))")){
-                return input;
-            }
-            System.out.println("Invalid input Try again!");
-        }
-    }
 
     public static String getValidPassword() {
         String input = sc.nextLine();

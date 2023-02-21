@@ -8,15 +8,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserDatabaseImpl implements UserDatabase {
-    private Map<String, User> users=new HashMap<>();
+    private final Map<String, User> users=new HashMap<>();
     private static UserDatabaseImpl Instance=null;
     private UserDatabaseImpl(){
-
     }
     public static UserDatabaseImpl getInstance(){
         if(Instance==null){
             return new UserDatabaseImpl();
-
         }
         return Instance;
     }

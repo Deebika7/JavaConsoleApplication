@@ -10,7 +10,7 @@ import java.util.*;
 public class ProductDatabaseImpl implements ProductDatabase {
     private final List<Product> products=new ArrayList<>();
     private final Map<Product, Discount> productDiscounts=new HashMap<>();
-    private static ProductDatabaseImpl Instance;
+    private static ProductDatabaseImpl Instance=null;
     private ProductDatabaseImpl(){
 
     }
