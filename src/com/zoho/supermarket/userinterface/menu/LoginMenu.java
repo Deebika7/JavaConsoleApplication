@@ -2,6 +2,7 @@ package com.zoho.supermarket.userinterface.menu;
 
 
 import com.zoho.supermarket.constants.Message;
+import com.zoho.supermarket.core.model.user.Customer;
 import com.zoho.supermarket.core.model.user.UserRole;
 import com.zoho.supermarket.database.repository.UserDataManager;
 import com.zoho.supermarket.userinterface.menu.enums.LoginOptions;
@@ -11,7 +12,11 @@ import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 
 public class LoginMenu {
-    private final UserDataManager userDataManager = ManagerFactory.getUserDataManager();
+    private final UserDataManager userDataManager;
+
+    public LoginMenu(UserDataManager userDataManager) {
+        this.userDataManager = userDataManager;
+    }
 
     public void start() {
         while (true) {
@@ -34,20 +39,17 @@ public class LoginMenu {
             }
         }
     }
-
     private void signUp(UserRole userRole) {
         System.out.println("Enter User Name:");
         String userName = ValidationUtil.getValidUserName();
-        System.out.println("Enter email:");
-        String email = ValidationUtil.getValidEmail();
         System.out.println("Enter Password:");
         String password = ValidationUtil.getValidPassword();
         System.out.println("Enter Confirm Password");
         String confirmPassword = ValidationUtil.getValidConfirmPassword(password);
         if (userRole.equals(UserRole.CUSTOMER)) {
-            System.out.println(userDataManager.addUser(userName, email, password, UserRole.CUSTOMER));
+            System.out.println(userDataManager.addUser(userName, password, UserRole.CUSTOMER));
         } else {
-            System.out.println(userDataManager.addUser(userName, email, password, UserRole.ADMIN));
+            System.out.println(userDataManager.addUser(userName, password, UserRole.ADMIN));
         }
     }
 
@@ -58,8 +60,12 @@ public class LoginMenu {
         String password = ValidationUtil.getValidPassword();
         if (userRole.equals(UserRole.ADMIN) && userDataManager.validateUser(email, password, UserRole.ADMIN)) {
             System.out.println(Message.LOGIN_SUCCESS);
+            new AdminMenu(ManagerFactory.getOrderDataManager(),ManagerFactory.getProductDataManager()).start();
+
         } else if (userRole.equals(UserRole.CUSTOMER) && userDataManager.validateUser(email, password, UserRole.CUSTOMER)) {
             System.out.println(Message.LOGIN_SUCCESS);
+            new CustomerMenu(ManagerFactory.getOrderDataManager(),ManagerFactory.getProductDataManager()).start();
+
         } else {
             System.out.println(Message.NO_USER_EXIST);
         }

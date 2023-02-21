@@ -2,12 +2,12 @@ package com.zoho.supermarket.core.model.user;
 
 public  class User {
 
-    private final String userName,email,password;
+    private final String userName,password;
     private UserRole userRole;
 
-    public User(String userName, String email, String password, UserRole userRole) {
+    public User(String userName, String password, UserRole userRole) {
         this.userName = userName;
-        this.email = email;
+
         this.password = password;
         this.userRole = userRole;
     }
@@ -16,9 +16,7 @@ public  class User {
         return userName;
     }
 
-    public String getEmail() {
-        return email;
-    }
+
 
     public String getPassword() {
         return password;

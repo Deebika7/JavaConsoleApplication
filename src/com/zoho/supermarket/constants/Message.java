@@ -20,6 +20,7 @@ public class Message {
     public static final String REGISTER_FAILED="Regisration failed";
     public static final String USER_EXIST="User already exist Please login!";
     public static final String NO_USER_EXIST="No such user exist!";
+    public static final String USER_ADDED_SUCCESS="User added successfully";
 
 
 }

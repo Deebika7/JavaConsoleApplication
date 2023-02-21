@@ -2,6 +2,7 @@ package com.zoho.supermarket.database.model.implementation;
 
 import com.zoho.supermarket.core.model.product.Discount;
 import com.zoho.supermarket.core.model.product.Product;
+import com.zoho.supermarket.core.model.product.ProductCategory;
 import com.zoho.supermarket.database.model.ProductDatabase;
 
 import java.util.ArrayList;
@@ -10,10 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 public class ProductDatabaseImpl implements ProductDatabase {
-    private List<Product> products=new ArrayList<>();
-    private Map<Product, Discount> productDiscounts=new HashMap<>();
+    private final List<Product> products=new ArrayList<>();
+    private final Map<Product, Discount> productDiscounts=new HashMap<>();
     private static ProductDatabaseImpl Instance;
-    private ProductDatabaseImpl(){
+    public ProductDatabaseImpl(){
 
     }
     public static ProductDatabaseImpl getInstance(){
@@ -23,6 +24,19 @@ public class ProductDatabaseImpl implements ProductDatabase {
         return Instance;
     }
 
+    public List<Product> getProducts(){
+        return new ArrayList<>(products);
+    }
+
+    public void add(Product product){
+        products.add(product);
+    }
+
+    @Override
+    public void remove(Product productToRemove) {
+        products.stream().filter(product -> product.getProductName().equalsIgnoreCase(productToRemove.getProductName())).
+                forEach(product -> products.remove(product));
+    }
 
 
 }

@@ -1,8 +1,7 @@
 package com.zoho.supermarket.database.model.implementation;
 
-import com.zoho.supermarket.core.model.user.Admin;
+import com.zoho.supermarket.constants.Message;
 import com.zoho.supermarket.core.model.user.User;
-import com.zoho.supermarket.core.model.user.UserRole;
 import com.zoho.supermarket.database.model.UserDatabase;
 
 import java.util.HashMap;
@@ -17,14 +16,11 @@ public class UserDatabaseImpl implements UserDatabase {
         }
         return Instance;
     }
-    public void addUser(String string,User user){
-        users.put(string,user);
-
+    public void add(String userName, User user){
+        users.put(userName,user);
     }
     public  Map<String,User> getUsers(){
         return new HashMap<>(users);
     }
-
-
 
 }

@@ -19,7 +19,7 @@ public class UserDataManager implements AdminDataManager, CustomerDataManager {
 
     public UserDataManager() {
     }
-
+    @Override
     public Map<String,User> getUsers(){
         if(ValidationUtil.isInstanceValid(userDatabase.getUsers())){
             return userDatabase.getUsers();
@@ -36,18 +36,24 @@ public class UserDataManager implements AdminDataManager, CustomerDataManager {
         return false;
     }
 
-    public String addUser(String userName, String email, String password, UserRole userRole){
-        if(!isUserExist(email,userRole)){
+    public String addUser(String userName,  String password, UserRole userRole){
+        if(!isUserExist(userName,userRole)){
             if(userRole.equals(UserRole.ADMIN)){
-                userDatabase.addUser(email,new Admin(userName,email,password,userRole, ManagerFactory.getUserDataManager(),ManagerFactory.getOrderDataManager(),ManagerFactory.getProductDataManager()));
+                add(userName,new Admin(userName,password,userRole,
+                        ManagerFactory.getUserDataManager(),ManagerFactory.getOrderDataManager(),
+                        ManagerFactory.getProductDataManager()));
             }
             else {
-                userDatabase.addUser(email,new Customer(userName,email,password,userRole,ManagerFactory.getProductDataManager(),ManagerFactory.getOrderDataManager(),ManagerFactory.getUserDataManager()));
+                add(userName,new Customer(userName,password,userRole,
+                        ManagerFactory.getProductDataManager(),ManagerFactory.getOrderDataManager(),
+                        ManagerFactory.getUserDataManager()));
             }
             return Message.REGISTER_SUCCESS;
         }
         return Message.REGISTER_FAILED+"\n"+Message.USER_EXIST;
     }
+
+
     public boolean validateUser(String email,String password,UserRole userRole){
         Map<String,User> users=getUsers();
         if(userRole.equals(UserRole.CUSTOMER)&&users.containsKey(email)&&users.get(email).getPassword().equals(password)
@@ -61,7 +67,8 @@ public class UserDataManager implements AdminDataManager, CustomerDataManager {
         return false;
     }
 
-
-
-
+    @Override
+    public void add(String userName, User data) {
+        userDatabase.add(userName,data);
+    }
 }

@@ -13,9 +13,9 @@ public class Admin extends User{
     private AdminProductManager adminProductManager;
 
 
-    public Admin(String userName, String email, String password, UserRole admin,
+    public Admin(String userName,  String password, UserRole admin,
                  AdminDataManager adminDataManager, AdminOrderManager adminOrderManager, AdminProductManager adminProductManager) {
-        super(userName, email, password, admin);
+        super(userName, password, admin);
         this.adminDataManager = adminDataManager;
         this.adminOrderManager = adminOrderManager;
         this.adminProductManager = adminProductManager;
