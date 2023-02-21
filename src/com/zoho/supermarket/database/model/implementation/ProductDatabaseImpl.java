@@ -12,7 +12,6 @@ public class ProductDatabaseImpl implements ProductDatabase {
     private final Map<Product, Discount> productDiscounts=new HashMap<>();
     private static ProductDatabaseImpl Instance=null;
     private ProductDatabaseImpl(){
-
     }
     public static ProductDatabaseImpl getInstance(){
         if(Instance ==null){
@@ -59,7 +58,6 @@ public class ProductDatabaseImpl implements ProductDatabase {
         }
         return false;
     }
-
     @Override
     public Map<Product, Discount> getDiscounts() {
         return new HashMap<>(productDiscounts);

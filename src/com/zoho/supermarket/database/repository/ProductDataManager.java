@@ -16,8 +16,8 @@ import java.util.Map;
 import java.util.Random;
 
 public class ProductDataManager implements AdminProductManager, CustomerProductManager {
-    private OrderDatabase orderDatabase;
-    private ProductDatabase productDatabase;
+    private final OrderDatabase orderDatabase;
+    private final ProductDatabase productDatabase;
 
     public ProductDataManager(OrderDatabase orderDatabase, ProductDatabase productDatabase) {
         this.orderDatabase = orderDatabase;

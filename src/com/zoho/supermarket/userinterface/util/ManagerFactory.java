@@ -18,6 +18,6 @@ public class ManagerFactory {
         return new ProductDataManager(OrderDatabaseImpl.getInstance(), ProductDatabaseImpl.getInstance());
     }
     public static OrderDataManager getOrderDataManager(){
-        return new OrderDataManager(OrderDatabaseImpl.getInstance(), ProductDatabaseImpl.getInstance());
+        return new OrderDataManager(getUserDataManager(),OrderDatabaseImpl.getInstance(), ProductDatabaseImpl.getInstance());
     }
 }

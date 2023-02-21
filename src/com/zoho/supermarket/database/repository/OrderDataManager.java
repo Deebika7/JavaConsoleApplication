@@ -14,14 +14,17 @@ import java.util.List;
 
 
 public class OrderDataManager implements AdminOrderManager, CustomerOrderManager {
-    private OrderDatabase orderDatabase;
-    private ProductDatabase productDatabase;
+    private final UserDataManager dataManager;
+    private final OrderDatabase orderDatabase;
+    private final ProductDatabase productDatabase;
     private Order order=new Order();
 
-    public OrderDataManager(OrderDatabase orderDatabase, ProductDatabase productDatabase) {
+    public OrderDataManager(UserDataManager dataManager, OrderDatabase orderDatabase, ProductDatabase productDatabase) {
+        this.dataManager = dataManager;
         this.orderDatabase = orderDatabase;
         this.productDatabase = productDatabase;
     }
+
     @Override
     public String addToCart(String productName, int quantity) {
         List<Product> products=productDatabase.getProducts();

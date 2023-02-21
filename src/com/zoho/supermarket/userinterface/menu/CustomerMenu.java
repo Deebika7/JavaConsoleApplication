@@ -31,17 +31,22 @@ public class CustomerMenu implements Menu{
                 case VIEW_PRODUCTS -> viewProducts();
                 case ADD_PRODUCT_TO_CART -> addToCart();
                 case VIEW_CART -> viewCart();
-                case CHECK_DISCOUNT -> {
-                }
-                case GENERATE_BILL -> {
-                }
-                case PLACE_ORDER -> {
-                }
+                case CHECK_DISCOUNT ->  viewDiscounts();
+                case GENERATE_BILL -> {}
+                case PLACE_ORDER -> {}
                 case QUIT -> {return;}
             }
         }
     }
-
+    private void viewDiscounts() {
+        if(!customerProductManager.getDiscounts().isEmpty()){
+            List<String> discounts=customerProductManager.getDiscounts();
+            discounts.stream().forEach(discount -> System.out.println(discount));
+        }
+        else {
+            System.out.println(Message.NO_DISCOUNT_EXIST);
+        }
+    }
     private void viewCart() {
         List<String> cart=customerOrderManager.getCartProducts();
         if(ValidationUtil.isListValid(cart)){
