@@ -2,7 +2,9 @@ package com.zoho.supermarket.userinterface.menu;
 
 
 import com.zoho.supermarket.constants.Message;
+import com.zoho.supermarket.core.model.user.Admin;
 import com.zoho.supermarket.core.model.user.Customer;
+import com.zoho.supermarket.core.model.user.User;
 import com.zoho.supermarket.core.model.user.UserRole;
 import com.zoho.supermarket.database.repository.UserDataManager;
 import com.zoho.supermarket.userinterface.menu.enums.LoginOptions;
@@ -11,7 +13,7 @@ import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 
 
-public class LoginMenu implements Menu{
+public class LoginMenu {
     private final UserDataManager userDataManager;
 
     public LoginMenu(UserDataManager userDataManager) {
@@ -28,19 +30,15 @@ public class LoginMenu implements Menu{
                 LoginOptions option = LoginOptions.values()[choice - 1];
                 switch (option) {
                     case SIGNIN_AS_ADMIN -> signIn(UserRole.ADMIN);
-
                     case SIGNIN_AS_CUSTOMER -> signIn(UserRole.CUSTOMER);
-
                     case SIGNUP_AS_ADMIN -> signUp(UserRole.ADMIN);
-
                     case SIGNUP_AS_CUSTOMER -> signUp(UserRole.CUSTOMER);
-
-                    case QUIT -> {
-                    }
+                    case QUIT -> {return;}
                 }
             }
 
     }
+
     private void signUp(UserRole userRole) {
         System.out.println("Enter User Name:");
         String userName = ValidationUtil.getValidUserName();
@@ -48,29 +46,26 @@ public class LoginMenu implements Menu{
         String password = ValidationUtil.getValidPassword();
         System.out.println("Enter Confirm Password");
         String confirmPassword = ValidationUtil.getValidConfirmPassword(password);
-        if (userRole.equals(UserRole.CUSTOMER)) {
-            System.out.println(userDataManager.addUser(userName, password, UserRole.CUSTOMER));
-        } else {
-            System.out.println(userDataManager.addUser(userName, password, UserRole.ADMIN));
-        }
-
+        System.out.println(userDataManager.addUser(userName,password,userRole));
     }
     private void signIn(UserRole userRole) {
         System.out.println("Enter User Name:");
         String userName = ValidationUtil.getValidUserName();
         System.out.println("Enter Password:");
         String password = ValidationUtil.getValidPassword();
-        if (userRole.equals(UserRole.ADMIN) && userDataManager.validateUser(userName, password, UserRole.ADMIN)) {
-            System.out.println(Message.LOGIN_SUCCESS);
-            Menu menu=new AdminMenu(ManagerFactory.getOrderDataManager(),ManagerFactory.getProductDataManager());
-            menu.start();
-
-        } else if (userRole.equals(UserRole.CUSTOMER) && userDataManager.validateUser(userName, password, UserRole.CUSTOMER)) {
-            System.out.println(Message.LOGIN_SUCCESS);
-            Menu menu=new CustomerMenu(ManagerFactory.getOrderDataManager(),ManagerFactory.getProductDataManager());
-            menu.start();
-        } else {
-            System.out.println(Message.NO_USER_EXIST);
+        String signInStatus=userDataManager.isValidUser(userName,password,userRole);
+        System.out.println(signInStatus);
+        if(signInStatus.equals(Message.LOGIN_SUCCESS)){
+           User user= userDataManager.getUser(userRole,userName);
+           if(user instanceof Customer){
+                CustomerMenu customerMenu=new CustomerMenu((Customer) user);
+                customerMenu.printCustomerMenu();
+           }
+           else if(user instanceof Admin){
+                AdminMenu adminMenu=new AdminMenu((Admin) user);
+                adminMenu.start();
+           }
         }
     }
+
 }

@@ -8,8 +8,6 @@ import com.zoho.supermarket.database.repository.OrderDataManager;
 import com.zoho.supermarket.database.repository.ProductDataManager;
 import com.zoho.supermarket.database.repository.UserDataManager;
 
-
-
 public class ManagerFactory {
     public static UserDataManager getUserDataManager(){
         return new UserDataManager(UserDatabaseImpl.getInstance());

@@ -3,23 +3,19 @@ package com.zoho.supermarket.userinterface.menu;
 import com.zoho.supermarket.constants.Message;
 import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.model.product.ProductCategory;
-import com.zoho.supermarket.core.respository.order.AdminOrderManager;
-import com.zoho.supermarket.core.respository.product.AdminProductManager;
+import com.zoho.supermarket.core.model.user.Admin;
 import com.zoho.supermarket.userinterface.menu.enums.AdminOptions;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 import java.util.List;
 import java.util.Random;
 
-public class AdminMenu implements Menu{
-    private final AdminOrderManager adminOrderManager;
-    private final AdminProductManager adminProductManager;
+public class AdminMenu {
+    private final Admin admin;
 
-    public AdminMenu(AdminOrderManager adminOrderManager, AdminProductManager adminProductManager) {
-        this.adminOrderManager = adminOrderManager;
-        this.adminProductManager = adminProductManager;
+    public AdminMenu(Admin admin) {
+        this.admin = admin;
     }
-
     public void start(){
         while (true) {
             System.out.println("Enter your choice: ");
@@ -50,7 +46,7 @@ public class AdminMenu implements Menu{
         int quantity=ValidationUtil.getValidProductQtyInput();
         System.out.println("Enter Unit Price: ");
         double unitPrice=ValidationUtil.getValidPriceInput();
-        System.out.println(adminProductManager.add(new Random().nextInt(1000,9999),  productName, quantity,  unitPrice,  itemCategory));
+        System.out.println(admin.getAdminProductManager().add(new Random().nextInt(1000,9999),  productName, quantity,  unitPrice,  itemCategory));
     }
 
     private void printProductCategory() {
@@ -66,7 +62,7 @@ public class AdminMenu implements Menu{
         printProductCategory();
         System.out.println("Select Category to display items:");
         ProductCategory itemCategory = getProductCategory();
-        List<Product> products = adminProductManager.getProducts();
+        List<Product> products = admin.getAdminProductManager().getProducts();
         System.out.println("======================="+itemCategory.name()+"====================================");
         System.out.println("Item ID\t\tProduct Name\t\tunit price\t\tAvailable quantity");
         products.stream().filter(product -> product.getCategory().equals(itemCategory)).
@@ -76,12 +72,13 @@ public class AdminMenu implements Menu{
     private void removeProduct(){
         System.out.println("Enter Product Name to remove: ");
         String productName=ValidationUtil.getValidStringInput();
-        System.out.println(adminProductManager.remove(productName));
+        System.out.println(admin.getAdminProductManager().remove(productName));
     }
+
     private void viewDiscounts() {
-        if(!adminProductManager.getDiscounts().isEmpty()){
-            List<String> discounts=adminProductManager.getDiscounts();
-            discounts.stream().forEach(discount -> System.out.println(discount));
+        if(!admin.getAdminProductManager().getDiscounts().isEmpty()){
+            List<String> discounts=admin.getAdminProductManager().getDiscounts();
+            discounts.forEach(System.out::println);
         }
         else {
             System.out.println(Message.NO_DISCOUNT_EXIST);
@@ -91,7 +88,7 @@ public class AdminMenu implements Menu{
     private void removeDiscount() {
         System.out.println("Enter Discount ID : ");
         int discountID=ValidationUtil.getValidIntegerInput();
-        System.out.println(adminProductManager.removeDiscount(discountID));
+        System.out.println(admin.getAdminProductManager().removeDiscount(discountID));
     }
 
     private void addDiscount(){
@@ -99,8 +96,6 @@ public class AdminMenu implements Menu{
         String productName=ValidationUtil.getValidStringInput();
         System.out.println("Enter Discount Percentage: ");
         double discountPercentage=ValidationUtil.getValidDiscountInput();
-        System.out.println(adminProductManager.addDiscount(productName,discountPercentage));
+        System.out.println(admin.getAdminProductManager().addDiscount(productName,discountPercentage));
     }
-
-
 }

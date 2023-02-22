@@ -1,9 +1,10 @@
 package com.zoho.supermarket.core.respository.user;
 
 import com.zoho.supermarket.core.model.user.User;
+import com.zoho.supermarket.core.model.user.UserRole;
 
 import java.util.Map;
 
 public interface AdminDataManager {
-    Map<String, User> getUsers();
+    User getUser(UserRole userRole, String userName);
 }

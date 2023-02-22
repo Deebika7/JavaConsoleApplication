@@ -13,7 +13,8 @@ public interface ProductDatabase {
      void remove(Product productToRemove);
      void addDiscount(Product product,Discount discount);
      boolean removeDiscount(int discountID);
-     Map<Product, Discount> getDiscounts();
+     List<String> getDiscounts();
+     Product getProduct(String productName);
 
 
 //    void updateProductQuantity();

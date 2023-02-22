@@ -1,11 +1,11 @@
 package com.zoho.supermarket.core.respository.product;
 
-import com.zoho.supermarket.core.model.product.Discount;
+
 import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.model.product.ProductCategory;
 
 import java.util.List;
-import java.util.Map;
+
 
 public interface AdminProductManager {
     String add(int productID, String productName, int quantity, double unitPrice, ProductCategory productCategory);

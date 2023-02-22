@@ -2,15 +2,17 @@ package com.zoho.supermarket.database.model.implementation;
 
 import com.zoho.supermarket.core.model.product.Discount;
 import com.zoho.supermarket.core.model.product.Product;
+
 import com.zoho.supermarket.core.model.product.ProductCategory;
 import com.zoho.supermarket.database.model.ProductDatabase;
+import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 import java.util.*;
 
 public class ProductDatabaseImpl implements ProductDatabase {
     private final List<Product> products=new ArrayList<>();
     private final Map<Product, Discount> productDiscounts=new HashMap<>();
-    private static ProductDatabaseImpl Instance=null;
+    private static  ProductDatabaseImpl Instance=null;
     private ProductDatabaseImpl(){
     }
     public static ProductDatabaseImpl getInstance(){
@@ -23,6 +25,15 @@ public class ProductDatabaseImpl implements ProductDatabase {
     public List<Product> getProducts(){
         return new ArrayList<>(products);
     }
+
+        {
+            products.add(new Product(1111,"milk",12,12, ProductCategory.DAIRY));
+            products.add(new Product(1234,"cheese",12,12, ProductCategory.DAIRY));
+            products.add(new Product(1113,"butter",12,12, ProductCategory.DAIRY));
+            products.add(new Product(1231,"tomato",12,12, ProductCategory.SAUCE));
+        }
+
+
     @Override
     public void add(Product product){
         products.add(product);
@@ -30,12 +41,7 @@ public class ProductDatabaseImpl implements ProductDatabase {
 
     @Override
     public void remove(Product productToRemove) {
-        ListIterator<Product> listIterator=products.listIterator();
-        while (listIterator.hasNext()){
-            if (listIterator.next().getProductName().equalsIgnoreCase(productToRemove.getProductName())){
-                listIterator.remove();
-            }
-        }
+        products.removeIf(product -> product.getProductName().equalsIgnoreCase(productToRemove.getProductName()));
     }
     Product getInstance(Product product){
         for(Product instance:products){
@@ -50,17 +56,33 @@ public class ProductDatabaseImpl implements ProductDatabase {
         productDiscounts.put(getInstance(product),discount);
     }
     public boolean removeDiscount(int discountID) {
-        for (Map.Entry<Product, Discount> itemDiscountEntry : productDiscounts.entrySet()) {
-            if (itemDiscountEntry.getValue().getDiscountID() == discountID) {
-                productDiscounts.remove(itemDiscountEntry.getKey(), itemDiscountEntry.getValue());
+        for (Map.Entry<Product, Discount> productDiscountEntry : productDiscounts.entrySet()) {
+            if (productDiscountEntry.getValue().getDiscountID() == discountID) {
+                productDiscounts.remove(productDiscountEntry.getKey(), productDiscountEntry.getValue());
                 return true;
             }
         }
         return false;
     }
     @Override
-    public Map<Product, Discount> getDiscounts() {
-        return new HashMap<>(productDiscounts);
+    public List<String> getDiscounts() {
+        List<String> discounts = new ArrayList<>();
+            discounts.add("Discount ID\t\tProduct Name\t\tDiscount Percentage");
+            for (Map.Entry<Product, Discount> discountEntryKey : productDiscounts.entrySet()) {
+                discounts.add(discountEntryKey.getValue().getDiscountID() + "\t\t\t" +
+                        discountEntryKey.getKey().getProductName() + "\t\t\t" + discountEntryKey.getValue().getDiscountPercentage());
+            }
+        return discounts;
+    }
+    public Product getProduct(String productName){
+        if(ValidationUtil.isListValid(products)){
+            for (Product product:products){
+                if(product.getProductName().equalsIgnoreCase(productName)){
+                    return product;
+                }
+            }
+        }
+        return null;
     }
 
 

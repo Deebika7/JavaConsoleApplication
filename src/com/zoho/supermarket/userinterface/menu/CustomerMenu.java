@@ -4,22 +4,23 @@ package com.zoho.supermarket.userinterface.menu;
 import com.zoho.supermarket.constants.Message;
 import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.model.product.ProductCategory;
-import com.zoho.supermarket.core.respository.order.CustomerOrderManager;
-import com.zoho.supermarket.core.respository.product.CustomerProductManager;
+import com.zoho.supermarket.core.model.user.Customer;
 import com.zoho.supermarket.userinterface.menu.enums.CustomerOptions;
 
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 import java.util.List;
 
-public class CustomerMenu implements Menu{
-    private final CustomerOrderManager customerOrderManager;
-    private final CustomerProductManager customerProductManager;
-    public CustomerMenu(CustomerOrderManager customerOrderManager, CustomerProductManager customerProductManager) {
-        this.customerOrderManager = customerOrderManager;
-        this.customerProductManager = customerProductManager;
+public class CustomerMenu {
+    private final Customer customer;
+
+
+    public CustomerMenu(Customer customer) {
+        this.customer = customer;
     }
-    public void start() {
+
+    public void printCustomerMenu() {
+
         while (true) {
             System.out.println("Enter your choice: ");
             for (CustomerOptions option : CustomerOptions.values()) {
@@ -29,34 +30,36 @@ public class CustomerMenu implements Menu{
             CustomerOptions option = CustomerOptions.values()[choice - 1];
             switch (option) {
                 case VIEW_PRODUCTS -> viewProducts();
-                case ADD_PRODUCT_TO_CART -> addToCart();
-                case VIEW_CART -> viewCart();
+                case ADD_PRODUCT_TO_CART ->{} //addToCart();
+                case VIEW_CART -> {}//viewCart();
                 case CHECK_DISCOUNT ->  viewDiscounts();
-                case GENERATE_BILL -> {}
-                case PLACE_ORDER -> {}
+                case GENERATE_BILL, PLACE_ORDER -> {}
                 case QUIT -> {return;}
             }
         }
     }
+
+
     private void viewDiscounts() {
-        if(!customerProductManager.getDiscounts().isEmpty()){
-            List<String> discounts=customerProductManager.getDiscounts();
-            discounts.stream().forEach(discount -> System.out.println(discount));
+        if(!customer.getCustomerProductManager().getDiscounts().isEmpty()){
+            List<String> discounts=customer.getCustomerProductManager().getDiscounts();
+            discounts.forEach(System.out::println);
         }
         else {
             System.out.println(Message.NO_DISCOUNT_EXIST);
         }
     }
-    private void viewCart() {
-        List<String> cart=customerOrderManager.getCartProducts();
-        if(ValidationUtil.isListValid(cart)){
-            cart.stream().forEach(product->System.out.println(product));
-        }
-        else {
-            System.out.println(Message.EMPTY_CART);
-        }
-    }
-
+//
+//    private void viewCart() {
+//        List<String> cart=customer.getCustomerOrderManager().getCartProducts();
+//        if(ValidationUtil.isListValid(cart)){
+//            cart.forEach(System.out::println);
+//        }
+//        else {
+//            System.out.println(Message.EMPTY_CART);
+//        }
+//    }
+//
     private void printProductCategory() {
         for (ProductCategory productCategory:ProductCategory.values()){
             System.out.println(productCategory.ordinal() + 1 + ". " + productCategory.name());
@@ -70,7 +73,7 @@ public class CustomerMenu implements Menu{
         printProductCategory();
         System.out.println("Select Category to display items:");
         ProductCategory productCategory = getProductCategory();
-        List<Product> products = customerProductManager.getProducts();
+        List<Product> products = customer.getCustomerProductManager().getProducts();
         System.out.println("======================="+productCategory.name()+"====================================");
         System.out.println("Item ID\t\tProduct Name\t\tunit price\t\tAvailable quantity");
         products.stream().filter(product -> product.getCategory().equals(productCategory)).
@@ -82,7 +85,7 @@ public class CustomerMenu implements Menu{
         String productName=ValidationUtil.getValidStringInput();
         System.out.println("Enter Quantity: ");
         int quantity=ValidationUtil.getValidProductQtyInput();
-        System.out.println(customerOrderManager.addToCart(productName,quantity));
+        System.out.println(customer.addToCart(productName,quantity));
     }
 
 

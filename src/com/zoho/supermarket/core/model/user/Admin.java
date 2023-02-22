@@ -20,4 +20,16 @@ public class Admin extends User{
         this.adminOrderManager = adminOrderManager;
         this.adminProductManager = adminProductManager;
     }
+
+    public AdminDataManager getAdminDataManager() {
+        return adminDataManager;
+    }
+
+    public AdminOrderManager getAdminOrderManager() {
+        return adminOrderManager;
+    }
+
+    public AdminProductManager getAdminProductManager() {
+        return adminProductManager;
+    }
 }

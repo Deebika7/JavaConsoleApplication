@@ -9,10 +9,7 @@ import com.zoho.supermarket.core.respository.product.CustomerProductManager;
 import com.zoho.supermarket.database.model.OrderDatabase;
 import com.zoho.supermarket.database.model.ProductDatabase;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 public class ProductDataManager implements AdminProductManager, CustomerProductManager {
@@ -26,7 +23,7 @@ public class ProductDataManager implements AdminProductManager, CustomerProductM
 
     @Override
     public String add(int productID, String productName, int quantity, double unitPrice, ProductCategory productCategory) {
-        if(!ValidationUtil.isInstanceValid(getProduct(productName))){
+        if(!ValidationUtil.isInstanceValid(productDatabase.getProduct(productName))){
             productDatabase.add(new Product(productID,productName,quantity,unitPrice,productCategory));
             return Message.PRODUCT_ADDED;
         }
@@ -34,7 +31,7 @@ public class ProductDataManager implements AdminProductManager, CustomerProductM
     }
     @Override
     public String remove(String productName){
-        Product instance= getProduct(productName);
+        Product instance= productDatabase.getProduct(productName);
         if(ValidationUtil.isInstanceValid(instance)){
             productDatabase.remove(instance);
             return Message.PRODUCT_REMOVED;
@@ -49,7 +46,7 @@ public class ProductDataManager implements AdminProductManager, CustomerProductM
 
     @Override
     public String addDiscount(String productName, double discountPercentage) {
-        Product product=getProduct(productName);
+        Product product=productDatabase.getProduct(productName);
         if (ValidationUtil.isInstanceValid(product)){
             productDatabase.addDiscount(product,new Discount(new Random().nextInt(1000,9999),discountPercentage));
             return Message.DISCOUNT_ADDED;
@@ -63,29 +60,10 @@ public class ProductDataManager implements AdminProductManager, CustomerProductM
         return Message.NO_PRODUCT_EXIST;
     }
     public List<String> getDiscounts() {
-        List<String> discounts = new ArrayList<>();
-        Map<Product, Discount> itemDiscount =productDatabase.getDiscounts();
-        if(!itemDiscount.isEmpty()) {
-            discounts.add("Discount ID\t\tProduct Name\t\tDiscount Percentage");
-            for (Map.Entry<Product, Discount> itemDiscountEntry : itemDiscount.entrySet()) {
-                discounts.add(itemDiscountEntry.getValue().getDiscountID() + "\t\t\t" +
-                        itemDiscountEntry.getKey().getProductName() + "\t\t\t" + itemDiscountEntry.getValue().getDiscountPercentage());
-            }
-        }
-        return discounts;
+        return productDatabase.getDiscounts();
     }
 
-    private Product getProduct(String productName){
-        List<Product> products=getProducts();
-        if(ValidationUtil.isListValid(products)){
-            for (Product product:products){
-                if(product.getProductName().equalsIgnoreCase(productName)){
-                    return product;
-                }
-            }
-        }
-        return null;
-    }
+
 
 
 }
