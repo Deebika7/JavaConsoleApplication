@@ -1,7 +1,7 @@
 package com.zoho.supermarket.database.model.implementation;
 
 import com.zoho.supermarket.core.model.product.Discount;
-import com.zoho.supermarket.core.model.product.Order;
+import com.zoho.supermarket.core.model.product.Cart;
 import com.zoho.supermarket.core.model.product.Product;
 
 import com.zoho.supermarket.core.model.product.ProductCategory;
@@ -88,8 +88,8 @@ public class ProductDatabaseImpl implements ProductDatabase {
     }
 
     @Override
-    public void updateProduct(List<Order> order) {
-        for (Order cartProduct: order){
+    public void updateProduct(List<Cart> cart) {
+        for (Cart cartProduct: cart){
             Product product=getProduct(cartProduct.getProduct().getProductName());
             product.setQuantity(product.getQuantity()-cartProduct.getQty());
         }

@@ -4,6 +4,7 @@ import com.zoho.supermarket.constants.Message;
 import com.zoho.supermarket.core.model.product.Discount;
 import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.model.product.ProductCategory;
+import com.zoho.supermarket.core.model.user.Customer;
 import com.zoho.supermarket.core.respository.product.AdminProductManager;
 import com.zoho.supermarket.core.respository.product.CustomerProductManager;
 import com.zoho.supermarket.database.model.OrderDatabase;
@@ -60,8 +61,9 @@ public class ProductDataManager implements AdminProductManager, CustomerProductM
         }
         return Message.NO_PRODUCT_EXIST;
     }
-    public String updateProduct(){
+    public String updateOrder(Customer customer){
         if(ValidationUtil.isListValid(orderDatabase.getCart())){
+            orderDatabase.addToOrder(customer);
             productDatabase.updateProduct(orderDatabase.getCart());
             return Message.ORDER_PLACED;
         }

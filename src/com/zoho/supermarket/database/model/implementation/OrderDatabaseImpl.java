@@ -1,30 +1,34 @@
 package com.zoho.supermarket.database.model.implementation;
 
 import com.zoho.supermarket.constants.Message;
+import com.zoho.supermarket.core.model.product.Cart;
 import com.zoho.supermarket.core.model.product.Order;
 import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.model.user.Customer;
 import com.zoho.supermarket.database.model.OrderDatabase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 public class OrderDatabaseImpl implements OrderDatabase {
-    private final Map<Customer,List<Order>> orders=new HashMap<>();
-    private final List<Order> cart = new ArrayList<>();
+    private final List<Order> orders =new ArrayList<>();
+    private final List<Cart> cart = new ArrayList<>();
     private static OrderDatabaseImpl Instance=null;
     private OrderDatabaseImpl(){}
+
     public static OrderDatabaseImpl getInstance(){
         if(Instance ==null){
             return new OrderDatabaseImpl();
         }
         return Instance;
     }
+    public List<Order> getAllOrders(){
+        return orders;
+    }
 
     public String addToCart(String productName, int quantity,Product product) {
-        Order productFromCart = getProductFromCart(productName);
+        Cart productFromCart = getProductFromCart(productName);
         if (product != null) {
             if (productFromCart != null) {
                 if (product.getQuantity() >= productFromCart.getQty() + quantity) {
@@ -36,7 +40,7 @@ public class OrderDatabaseImpl implements OrderDatabase {
                 }
             }
             if (product.getQuantity() >= quantity) {
-                cart.add(new Order(quantity, product));
+                cart.add(new Cart(quantity, product));
                 return Message.PRODUCT_ADDED;
             }
             else {
@@ -45,19 +49,20 @@ public class OrderDatabaseImpl implements OrderDatabase {
         }
         return Message.NO_PRODUCT_EXIST;
     }
+    public void addToOrder(Customer customer){
+        orders.add(new Order(customer,cart));
+        cart.clear();
+    }
 
-
-
-
-    private Order getProductFromCart(String productName) {
-        for (Order productFromCart : cart) {
+    private Cart getProductFromCart(String productName) {
+        for (Cart productFromCart : cart) {
             if (productFromCart.getProduct().getProductName().equalsIgnoreCase(productName)) {
                 return productFromCart;
             }
         }
         return null;
     }
-    public List<Order> getCart(){
+    public List<Cart> getCart(){
         return cart;
     }
 }

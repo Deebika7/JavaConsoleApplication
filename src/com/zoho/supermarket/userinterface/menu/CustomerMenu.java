@@ -35,14 +35,14 @@ public class CustomerMenu {
                 case VIEW_CART -> viewCart();
                 case CHECK_DISCOUNT ->  viewDiscounts();
                 case GENERATE_BILL -> generateBill();
-                case PLACE_ORDER -> placeOrder();
+                case PLACE_ORDER -> placeOrder(customer);
                 case QUIT -> {return;}
             }
         }
     }
 
-    private void placeOrder() {
-        System.out.println(customer.getCustomerProductManager().updateProduct());
+    private void placeOrder(Customer customer) {
+        System.out.println(customer.getCustomerProductManager().updateOrder(customer));
     }
 
     private void generateBill() {

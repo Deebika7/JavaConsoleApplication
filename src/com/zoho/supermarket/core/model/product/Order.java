@@ -1,24 +1,23 @@
 package com.zoho.supermarket.core.model.product;
 
+import com.zoho.supermarket.core.model.user.Customer;
 
+import java.util.List;
 
 public class Order {
-    private int qty;
-    private final Product product;
-    public Order(int qty, Product product) {
-        this.qty = qty;
-        this.product = product;
+    private final Customer customer;
+    private final List<Cart> cart;
+
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public Product getProduct() {
-        return product;
+    public List<Cart> getCart() {
+        return cart;
     }
 
-    public int getQty() {
-        return qty;
-    }
-
-    public void setQty(int qty) {
-        this.qty = qty;
+    public Order(Customer customer, List<Cart> cart) {
+        this.customer = customer;
+        this.cart = cart;
     }
 }

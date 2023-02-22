@@ -1,7 +1,7 @@
 package com.zoho.supermarket.database.model;
 
 import com.zoho.supermarket.core.model.product.Discount;
-import com.zoho.supermarket.core.model.product.Order;
+import com.zoho.supermarket.core.model.product.Cart;
 import com.zoho.supermarket.core.model.product.Product;
 
 
@@ -17,7 +17,7 @@ public interface ProductDatabase {
      List<String> getDiscounts();
      Product getProduct(String productName);
 
-     void updateProduct(List<Order> order);
+     void updateProduct(List<Cart> cart);
 
 
 }

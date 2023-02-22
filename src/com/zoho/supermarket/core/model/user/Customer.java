@@ -1,14 +1,8 @@
 package com.zoho.supermarket.core.model.user;
 
-import com.zoho.supermarket.constants.Message;
-import com.zoho.supermarket.core.model.product.Order;
-import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.respository.order.CustomerOrderManager;
 import com.zoho.supermarket.core.respository.product.CustomerProductManager;
 import com.zoho.supermarket.core.respository.user.CustomerDataManager;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Customer extends User {
     private final CustomerProductManager customerProductManager;

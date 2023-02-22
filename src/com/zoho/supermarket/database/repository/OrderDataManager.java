@@ -1,5 +1,6 @@
 package com.zoho.supermarket.database.repository;
 
+import com.zoho.supermarket.core.model.product.Cart;
 import com.zoho.supermarket.core.model.product.Order;
 import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.respository.order.AdminOrderManager;
@@ -28,16 +29,16 @@ public class OrderDataManager implements AdminOrderManager, CustomerOrderManager
         return orderDatabase.addToCart(productName, qty, product);
     }
 
-    public List<Order> getCart() {
+    public List<Cart> getCart() {
         return orderDatabase.getCart();
     }
 
     public List<String> getBill(){
         double totalAmount=0;
-        List<Order> cart=getCart();
+        List<Cart> cart=getCart();
         List<String> bill=new ArrayList<>();
         bill.add("Product Name\t\tQuantity\t\tPrice\t\tTotal Amount");
-        for(Order product:cart){
+        for(Cart product:cart){
             bill.add(product.getProduct().getProductName()+"\t\t\t\t"+product.getQty()+
                     "\t\t\t"+product.getProduct().getUnitPrice()+"\t\t\t"+product.getQty()*product.getProduct().getUnitPrice());
             totalAmount+=product.getQty()*product.getProduct().getUnitPrice();
@@ -47,7 +48,7 @@ public class OrderDataManager implements AdminOrderManager, CustomerOrderManager
     }
 
     public List<String> getCartProducts() {
-        List<Order> cart=getCart();
+        List<Cart> cart=getCart();
         List<String> cartProducts=new ArrayList<>();
         cartProducts.add("Product Name\t\tQuantity\t\tPrice");
         cart.forEach(cartProduct->cartProducts.add(cartProduct.getProduct().getProductName()
@@ -56,4 +57,9 @@ public class OrderDataManager implements AdminOrderManager, CustomerOrderManager
     }
 
 
+    @Override
+    public List<Order> getAllOrders() {
+        List<Order> orders=orderDatabase.getAllOrders();
+        orders.stream().forEach(order -> order.getCustomer().getUserName());
+    }
 }

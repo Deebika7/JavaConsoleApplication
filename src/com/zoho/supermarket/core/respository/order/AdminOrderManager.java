@@ -1,6 +1,10 @@
 package com.zoho.supermarket.core.respository.order;
 
-public interface AdminOrderManager {
+import com.zoho.supermarket.core.model.product.Order;
 
+import java.util.List;
+
+public interface AdminOrderManager {
+    List<Order> getAllOrders();
 
 }
