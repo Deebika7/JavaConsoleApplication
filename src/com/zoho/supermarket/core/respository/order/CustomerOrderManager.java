@@ -1,8 +1,9 @@
 package com.zoho.supermarket.core.respository.order;
 
 
+import com.zoho.supermarket.core.model.product.Product;
 
 public interface CustomerOrderManager {
 
-    String addToCart(String productName, int quantity);
+    Product addToCart(String productName);
 }
