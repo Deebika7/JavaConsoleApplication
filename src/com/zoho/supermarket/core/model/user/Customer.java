@@ -41,10 +41,11 @@ public class Customer extends User {
     public List<String> getCart() {
         List<String> cartProducts=new ArrayList<>();
         cartProducts.add("Product Name\t\tQuantity\t\tPrice");
-        cart.stream().forEach(cartProduct->cartProducts.add(cartProduct.getProduct().getProductName()
+        cart.forEach(cartProduct->cartProducts.add(cartProduct.getProduct().getProductName()
                 +"\t\t\t\t"+cartProduct.getQty()+"\t\t"+cartProduct.getProduct().getUnitPrice()));
         return cartProducts;
     }
+
 
     public String addToCart(String productName, int quantity) {
         Product product = customerOrderManager.addToCart(productName);
@@ -78,6 +79,5 @@ public class Customer extends User {
         }
         return null;
     }
-
 
 }
