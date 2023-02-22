@@ -13,7 +13,7 @@ import java.util.*;
 public class ProductDatabaseImpl implements ProductDatabase {
     private final List<Product> products=new ArrayList<>();
     private final Map<Product, Discount> productDiscounts=new HashMap<>();
-    private static  ProductDatabaseImpl Instance=null;
+    private static  final ProductDatabaseImpl Instance=null;
 
     private ProductDatabaseImpl(){
     }
@@ -23,16 +23,17 @@ public class ProductDatabaseImpl implements ProductDatabase {
         }
         return Instance;
     }
+    {
+        products.add(new Product(1111,"milk",12,12, ProductCategory.DAIRY));
+        products.add(new Product(1234,"cheese",12,12, ProductCategory.DAIRY));
+        products.add(new Product(1113,"butter",12,12, ProductCategory.DAIRY));
+        products.add(new Product(1231,"tomato",12,12, ProductCategory.SAUCE));
+    }
+
     public List<Product> getProducts(){
         return new ArrayList<>(products);
     }
 
-        {
-            products.add(new Product(1111,"milk",12,12, ProductCategory.DAIRY));
-            products.add(new Product(1234,"cheese",12,12, ProductCategory.DAIRY));
-            products.add(new Product(1113,"butter",12,12, ProductCategory.DAIRY));
-            products.add(new Product(1231,"tomato",12,12, ProductCategory.SAUCE));
-        }
 
 
     @Override
