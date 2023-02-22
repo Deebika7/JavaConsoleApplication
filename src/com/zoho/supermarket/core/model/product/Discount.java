@@ -1,8 +1,8 @@
 package com.zoho.supermarket.core.model.product;
 
 public class Discount {
-    private int discountID;
-    private double discountPercentage;
+    private final int  discountID;
+    private final double discountPercentage;
 
     public Discount(int discountID, double discountPercentage) {
         this.discountID = discountID;
@@ -15,4 +15,5 @@ public class Discount {
     public double getDiscountPercentage() {
         return discountPercentage;
     }
+
 }

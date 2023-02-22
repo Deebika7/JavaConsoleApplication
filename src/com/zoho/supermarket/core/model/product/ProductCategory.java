@@ -9,5 +9,5 @@ public enum ProductCategory {
     SNACKS,
     BAKERY,
     BEVERAGE,
-    SPICE;
+    SPICE
 }

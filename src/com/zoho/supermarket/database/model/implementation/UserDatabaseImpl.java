@@ -24,12 +24,7 @@ public class UserDatabaseImpl implements UserDatabase {
         return Instance;
     }
 
-    {
-        users.add(new Admin("test","Test@123",UserRole.ADMIN,ManagerFactory.getUserDataManager(),
-                ManagerFactory.getOrderDataManager(),ManagerFactory.getProductDataManager()));
-        users.add(new Customer("test","Test@123",UserRole.CUSTOMER,ManagerFactory.getProductDataManager(),
-                ManagerFactory.getOrderDataManager(),ManagerFactory.getUserDataManager()));
-    }
+
 
     public void addUser(String userName, String password, UserRole userRole){
         if(userRole.equals(UserRole.ADMIN)){

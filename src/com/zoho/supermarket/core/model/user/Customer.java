@@ -38,6 +38,14 @@ public class Customer extends User {
         return customerDataManager;
     }
 
+    public List<String> getCart() {
+        List<String> cartProducts=new ArrayList<>();
+        cartProducts.add("Product Name\t\tQuantity\t\tPrice");
+        cart.stream().forEach(cartProduct->cartProducts.add(cartProduct.getProduct().getProductName()
+                +"\t\t\t\t"+cartProduct.getQty()+"\t\t"+cartProduct.getProduct().getUnitPrice()));
+        return cartProducts;
+    }
+
     public String addToCart(String productName, int quantity) {
         Product product = customerOrderManager.addToCart(productName);
         Order productFromCart = getProductFromCart(productName);
@@ -47,17 +55,22 @@ public class Customer extends User {
                     productFromCart.setQty(quantity + productFromCart.getQty());
                     return Message.PRODUCT_ADDED;
                 }
-            } else if (product.getQuantity() >= quantity) {
+                else {
+                    return Message.OUT_OF_STOCK;
+                }
+            }
+            if (product.getQuantity() >= quantity) {
                 cart.add(new Order(quantity, product));
                 return Message.PRODUCT_ADDED;
-            } else {
+            }
+            else {
                 return Message.OUT_OF_STOCK;
             }
         }
         return Message.NO_PRODUCT_EXIST;
     }
 
-    Order getProductFromCart(String productName) {
+    private Order getProductFromCart(String productName) {
         for (Order productFromCart : cart) {
             if (productFromCart.getProduct().getProductName().equalsIgnoreCase(productName)) {
                 return productFromCart;

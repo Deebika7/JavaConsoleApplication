@@ -3,7 +3,7 @@ package com.zoho.supermarket.core.model.user;
 public  class User {
 
     private final String userName,password;
-    private UserRole userRole;
+    private final UserRole userRole;
 
     public User(String userName, String password, UserRole userRole) {
         this.userName = userName;

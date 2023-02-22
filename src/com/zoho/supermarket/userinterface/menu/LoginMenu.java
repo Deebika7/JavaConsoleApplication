@@ -8,7 +8,6 @@ import com.zoho.supermarket.core.model.user.User;
 import com.zoho.supermarket.core.model.user.UserRole;
 import com.zoho.supermarket.database.repository.UserDataManager;
 import com.zoho.supermarket.userinterface.menu.enums.LoginOptions;
-import com.zoho.supermarket.userinterface.util.ManagerFactory;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 

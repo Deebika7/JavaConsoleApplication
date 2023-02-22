@@ -1,17 +1,14 @@
 package com.zoho.supermarket.database.repository;
 
 import com.zoho.supermarket.constants.Message;
-import com.zoho.supermarket.core.model.user.Admin;
-import com.zoho.supermarket.core.model.user.Customer;
 import com.zoho.supermarket.core.model.user.User;
 import com.zoho.supermarket.core.model.user.UserRole;
 import com.zoho.supermarket.core.respository.user.AdminDataManager;
 import com.zoho.supermarket.core.respository.user.CustomerDataManager;
 import com.zoho.supermarket.database.model.UserDatabase;
-import com.zoho.supermarket.userinterface.util.ManagerFactory;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
-import java.util.Map;
+
 
 public class UserDataManager implements AdminDataManager, CustomerDataManager {
     private final UserDatabase userDatabase;

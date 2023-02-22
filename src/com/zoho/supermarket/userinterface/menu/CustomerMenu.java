@@ -30,10 +30,9 @@ public class CustomerMenu {
             CustomerOptions option = CustomerOptions.values()[choice - 1];
             switch (option) {
                 case VIEW_PRODUCTS -> viewProducts();
-                case ADD_PRODUCT_TO_CART ->{} //addToCart();
-                case VIEW_CART -> {}//viewCart();
+                case ADD_PRODUCT_TO_CART ->addToCart();
+                case VIEW_CART -> viewCart();
                 case CHECK_DISCOUNT ->  viewDiscounts();
-                case GENERATE_BILL, PLACE_ORDER -> {}
                 case QUIT -> {return;}
             }
         }
@@ -49,17 +48,17 @@ public class CustomerMenu {
             System.out.println(Message.NO_DISCOUNT_EXIST);
         }
     }
-//
-//    private void viewCart() {
-//        List<String> cart=customer.getCustomerOrderManager().getCartProducts();
-//        if(ValidationUtil.isListValid(cart)){
-//            cart.forEach(System.out::println);
-//        }
-//        else {
-//            System.out.println(Message.EMPTY_CART);
-//        }
-//    }
-//
+
+    private void viewCart() {
+        List<String> cart=customer.getCart();
+        if(ValidationUtil.isListValid(cart)){
+            cart.forEach(System.out::println);
+        }
+        else {
+            System.out.println(Message.EMPTY_CART);
+        }
+    }
+
     private void printProductCategory() {
         for (ProductCategory productCategory:ProductCategory.values()){
             System.out.println(productCategory.ordinal() + 1 + ". " + productCategory.name());

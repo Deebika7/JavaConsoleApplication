@@ -3,14 +3,12 @@ package com.zoho.supermarket.core.model.user;
 import com.zoho.supermarket.core.respository.order.AdminOrderManager;
 import com.zoho.supermarket.core.respository.product.AdminProductManager;
 import com.zoho.supermarket.core.respository.user.AdminDataManager;
-import com.zoho.supermarket.database.repository.OrderDataManager;
-import com.zoho.supermarket.database.repository.ProductDataManager;
-import com.zoho.supermarket.database.repository.UserDataManager;
+
 
 public class Admin extends User{
-    private AdminDataManager adminDataManager;
-    private AdminOrderManager adminOrderManager;
-    private AdminProductManager adminProductManager;
+    private final AdminDataManager adminDataManager;
+    private final AdminOrderManager adminOrderManager;
+    private final AdminProductManager adminProductManager;
 
 
     public Admin(String userName,  String password, UserRole admin,
