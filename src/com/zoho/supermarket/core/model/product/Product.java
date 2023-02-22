@@ -28,6 +28,10 @@ public class Product {
         return unitPrice;
     }
 
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public ProductCategory getCategory() {
         return category;
     }

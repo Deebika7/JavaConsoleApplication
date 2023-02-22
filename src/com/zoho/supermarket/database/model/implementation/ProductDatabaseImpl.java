@@ -1,6 +1,7 @@
 package com.zoho.supermarket.database.model.implementation;
 
 import com.zoho.supermarket.core.model.product.Discount;
+import com.zoho.supermarket.core.model.product.Order;
 import com.zoho.supermarket.core.model.product.Product;
 
 import com.zoho.supermarket.core.model.product.ProductCategory;
@@ -13,6 +14,7 @@ public class ProductDatabaseImpl implements ProductDatabase {
     private final List<Product> products=new ArrayList<>();
     private final Map<Product, Discount> productDiscounts=new HashMap<>();
     private static  ProductDatabaseImpl Instance=null;
+
     private ProductDatabaseImpl(){
     }
     public static ProductDatabaseImpl getInstance(){
@@ -21,10 +23,6 @@ public class ProductDatabaseImpl implements ProductDatabase {
         }
         return Instance;
     }
-
-
-
-
     public List<Product> getProducts(){
         return new ArrayList<>(products);
     }
@@ -86,6 +84,14 @@ public class ProductDatabaseImpl implements ProductDatabase {
             }
         }
         return null;
+    }
+
+    @Override
+    public void updateProduct(List<Order> order) {
+        for (Order cartProduct: order){
+            Product product=getProduct(cartProduct.getProduct().getProductName());
+            product.setQuantity(product.getQuantity()-cartProduct.getQty());
+        }
     }
 
 

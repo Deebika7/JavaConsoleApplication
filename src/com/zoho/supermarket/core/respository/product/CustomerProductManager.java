@@ -7,7 +7,7 @@ import java.util.List;
 public interface CustomerProductManager {
     List<String> getDiscounts();
     List<Product> getProducts();
-
+    String updateProduct();
 
 
 }

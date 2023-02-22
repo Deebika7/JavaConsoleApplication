@@ -9,6 +9,7 @@ import com.zoho.supermarket.core.respository.product.CustomerProductManager;
 import com.zoho.supermarket.database.model.OrderDatabase;
 import com.zoho.supermarket.database.model.ProductDatabase;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
+
 import java.util.List;
 import java.util.Random;
 
@@ -59,11 +60,16 @@ public class ProductDataManager implements AdminProductManager, CustomerProductM
         }
         return Message.NO_PRODUCT_EXIST;
     }
+    public String updateProduct(){
+        if(ValidationUtil.isListValid(orderDatabase.getCart())){
+            productDatabase.updateProduct(orderDatabase.getCart());
+            return Message.ORDER_PLACED;
+        }
+        return Message.EMPTY_CART;
+
+    }
     public List<String> getDiscounts() {
         return productDatabase.getDiscounts();
     }
-
-
-
 
 }

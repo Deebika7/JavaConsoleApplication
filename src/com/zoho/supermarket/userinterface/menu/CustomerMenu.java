@@ -9,6 +9,7 @@ import com.zoho.supermarket.userinterface.menu.enums.CustomerOptions;
 
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
+
 import java.util.List;
 
 public class CustomerMenu {
@@ -33,9 +34,21 @@ public class CustomerMenu {
                 case ADD_PRODUCT_TO_CART ->addToCart();
                 case VIEW_CART -> viewCart();
                 case CHECK_DISCOUNT ->  viewDiscounts();
+                case GENERATE_BILL -> generateBill();
+                case PLACE_ORDER -> placeOrder();
                 case QUIT -> {return;}
             }
         }
+    }
+
+    private void placeOrder() {
+        System.out.println(customer.getCustomerProductManager().updateProduct());
+    }
+
+    private void generateBill() {
+        List<String> bill=customer.getCustomerOrderManager().getBill();
+        bill.forEach(System.out::println);
+
     }
 
 
@@ -50,7 +63,7 @@ public class CustomerMenu {
     }
 
     private void viewCart() {
-        List<String> cart=customer.getCart();
+        List<String> cart=customer.getCustomerOrderManager().getCartProducts();
         if(ValidationUtil.isListValid(cart)){
             cart.forEach(System.out::println);
         }
@@ -84,7 +97,7 @@ public class CustomerMenu {
         String productName=ValidationUtil.getValidStringInput();
         System.out.println("Enter Quantity: ");
         int quantity=ValidationUtil.getValidProductQtyInput();
-        System.out.println(customer.addToCart(productName,quantity));
+        System.out.println(customer.getCustomerOrderManager().addToCart(productName,quantity));
     }
 
 
