@@ -19,7 +19,7 @@ public class LoginMenu {
         this.userDataManager = userDataManager;
     }
 
-    public void start() {
+    public void printLoginMenu() {
             while (true) {
                 System.out.println("How would you like to login as?");
                 for (LoginOptions option : LoginOptions.values()) {
@@ -48,9 +48,9 @@ public class LoginMenu {
     }
     private void signIn(UserRole userRole) {
         System.out.println("Enter User Name:");
-        String userName = ValidationUtil.getValidUserName();
+        String userName = ValidationUtil.getValidStringInput();
         System.out.println("Enter Password:");
-        String password = ValidationUtil.getValidPassword();
+        String password = ValidationUtil.getValidStringInput();
         String signInStatus=userDataManager.isValidUser(userName,password,userRole);
         System.out.println(signInStatus);
         if(signInStatus.equals(Message.LOGIN_SUCCESS)){
@@ -61,7 +61,7 @@ public class LoginMenu {
            }
            else if(user instanceof Admin){
                 AdminMenu adminMenu=new AdminMenu((Admin) user);
-                adminMenu.start();
+                adminMenu.printAdminMenu();
            }
         }
     }

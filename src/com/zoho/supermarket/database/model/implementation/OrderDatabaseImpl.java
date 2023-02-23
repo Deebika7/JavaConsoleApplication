@@ -58,6 +58,6 @@ public class OrderDatabaseImpl implements OrderDatabase {
     }
 
     public List<Cart> getCart(){
-        return cart;
+        return new ArrayList<>(cart);
     }
 }

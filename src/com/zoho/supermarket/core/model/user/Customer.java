@@ -1,8 +1,11 @@
 package com.zoho.supermarket.core.model.user;
 
+import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.respository.order.CustomerOrderManager;
 import com.zoho.supermarket.core.respository.product.CustomerProductManager;
 import com.zoho.supermarket.core.respository.user.UserDetailsManager;
+
+import java.util.List;
 
 public class Customer extends User {
     private final CustomerProductManager customerProductManager;
@@ -20,14 +23,27 @@ public class Customer extends User {
         this.userDetailsManager=userDetailsManager;
     }
 
-    public CustomerProductManager getCustomerProductManager() {
-        return customerProductManager;
+
+
+
+
+    public List<String> getCartProducts(){
+        return customerOrderManager.getCartProducts();
     }
-
-    public CustomerOrderManager getCustomerOrderManager() {
-        return customerOrderManager;
+    public String addToCart(String productName, int quantity){
+       return customerOrderManager.addToCart(productName,quantity);
     }
-
-
+    public List<String> getBill(){
+        return  customerOrderManager.getBill();
+    }
+    public String updateOrder(Customer customer){
+        return customerProductManager.updateOrder(customer);
+    }
+    public List<String> getDiscounts(){
+        return customerProductManager.getDiscounts();
+    }
+    public List<Product> getProducts(){
+        return customerProductManager.getProducts();
+    }
 
 }

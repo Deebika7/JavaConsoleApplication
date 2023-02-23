@@ -16,7 +16,7 @@ public class AdminMenu {
     public AdminMenu(Admin admin) {
         this.admin = admin;
     }
-    public void start(){
+    public void printAdminMenu(){
         while (true) {
             System.out.println("Enter your choice: ");
             for (AdminOptions option : AdminOptions.values()) {
@@ -45,7 +45,7 @@ public class AdminMenu {
         int quantity=ValidationUtil.getValidProductQtyInput();
         System.out.println("Enter Unit Price: ");
         double unitPrice=ValidationUtil.getValidPriceInput();
-        System.out.println(admin.getAdminProductManager().add(new Random().nextInt(1000,9999),  productName, quantity,  unitPrice,  productCategory));
+        System.out.println(admin.add(new Random().nextInt(1000,9999),  productName, quantity,  unitPrice,  productCategory));
     }
 
     private void printProductCategory() {
@@ -61,7 +61,7 @@ public class AdminMenu {
         printProductCategory();
         System.out.println("Select Category to display items:");
         ProductCategory productCategory = getProductCategory();
-        List<Product> products = admin.getAdminProductManager().getProducts();
+        List<Product> products = admin.getProducts();
         System.out.println("======================="+productCategory.name()+"====================================");
         System.out.println("Product ID\t\tProduct Name\t\tunit price\t\tAvailable quantity");
         products.stream().filter(product -> product.getCategory().equals(productCategory)).
@@ -71,12 +71,12 @@ public class AdminMenu {
     private void removeProduct(){
         System.out.println("Enter Product Name to remove: ");
         String productName=ValidationUtil.getValidStringInput();
-        System.out.println(admin.getAdminProductManager().remove(productName));
+        System.out.println(admin.remove(productName));
     }
 
     private void viewDiscounts() {
-        if(!admin.getAdminProductManager().getDiscounts().isEmpty()){
-            List<String> discounts=admin.getAdminProductManager().getDiscounts();
+        if(!admin.getDiscounts().isEmpty()){
+            List<String> discounts=admin.getDiscounts();
             discounts.forEach(System.out::println);
         }
         else {
@@ -87,7 +87,7 @@ public class AdminMenu {
     private void removeDiscount() {
         System.out.println("Enter Discount ID : ");
         int discountID=ValidationUtil.getValidIntegerInput();
-        System.out.println(admin.getAdminProductManager().removeDiscount(discountID));
+        System.out.println(admin.removeDiscount(discountID));
     }
 
     private void addDiscount(){
@@ -95,6 +95,6 @@ public class AdminMenu {
         String productName=ValidationUtil.getValidStringInput();
         System.out.println("Enter Discount Percentage: ");
         double discountPercentage=ValidationUtil.getValidDiscountInput();
-        System.out.println(admin.getAdminProductManager().addDiscount(productName,discountPercentage));
+        System.out.println(admin.addDiscount(productName,discountPercentage));
     }
 }

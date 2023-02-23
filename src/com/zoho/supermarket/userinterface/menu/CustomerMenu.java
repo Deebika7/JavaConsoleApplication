@@ -41,17 +41,17 @@ public class CustomerMenu {
     }
 
     private void placeOrder(Customer customer) {
-        System.out.println(customer.getCustomerProductManager().updateOrder(customer));
+        System.out.println(customer.updateOrder(customer));
     }
 
     private void generateBill() {
-        List<String> bill=customer.getCustomerOrderManager().getBill();
+        List<String> bill=customer.getBill();
         bill.forEach(System.out::println);
     }
 
     private void viewDiscounts() {
-        if(!customer.getCustomerProductManager().getDiscounts().isEmpty()){
-            List<String> discounts=customer.getCustomerProductManager().getDiscounts();
+        if(!customer.getDiscounts().isEmpty()){
+            List<String> discounts=customer.getDiscounts();
             discounts.forEach(System.out::println);
         }
         else {
@@ -60,7 +60,7 @@ public class CustomerMenu {
     }
 
     private void viewCart() {
-        List<String> cart=customer.getCustomerOrderManager().getCartProducts();
+        List<String> cart=customer.getCartProducts();
         if(ValidationUtil.isListValid(cart)){
             cart.forEach(System.out::println);
         }
@@ -81,7 +81,7 @@ public class CustomerMenu {
         printProductCategory();
         System.out.println("Select Category to display items:");
         ProductCategory productCategory = getProductCategory();
-        List<Product> products = customer.getCustomerProductManager().getProducts();
+        List<Product> products = customer.getProducts();
         System.out.println("======================="+productCategory.name()+"====================================");
         System.out.println("Item ID\t\tProduct Name\t\tunit price\t\tAvailable quantity");
         products.stream().filter(product -> product.getCategory().equals(productCategory)).
@@ -93,6 +93,6 @@ public class CustomerMenu {
         String productName=ValidationUtil.getValidStringInput();
         System.out.println("Enter Quantity: ");
         int quantity=ValidationUtil.getValidProductQtyInput();
-        System.out.println(customer.getCustomerOrderManager().addToCart(productName,quantity));
+        System.out.println(customer.addToCart(productName,quantity));
     }
 }
