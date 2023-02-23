@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b7ac51c-cbb6-4686-8aab-87c605ac31b5" name="Changes" comment="adding files">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/ProductDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/ProductDataManager.java" afterDir="false" />
-    </list>
+    <list default="true" id="3b7ac51c-cbb6-4686-8aab-87c605ac31b5" name="Changes" comment="adding files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -292,7 +287,21 @@
       <option name="project" value="LOCAL" />
       <updated>1677152097060</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="adding files">
+      <created>1677152976080</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1677152976080</updated>
+    </task>
+    <task id="LOCAL-00034" summary="adding files">
+      <created>1677153043248</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1677153043248</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
