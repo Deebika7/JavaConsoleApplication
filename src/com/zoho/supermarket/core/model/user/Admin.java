@@ -3,7 +3,6 @@ package com.zoho.supermarket.core.model.user;
 import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.model.product.ProductCategory;
 import com.zoho.supermarket.core.respository.product.AdminProductManager;
-import com.zoho.supermarket.core.respository.user.UserDetailsManager;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 import java.util.ArrayList;

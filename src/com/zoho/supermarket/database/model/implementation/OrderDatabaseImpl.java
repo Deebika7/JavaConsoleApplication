@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDatabaseImpl implements OrderDatabase {
-
     private final List<Cart> cart = new ArrayList<>();
     private static OrderDatabaseImpl Instance=null;
     private OrderDatabaseImpl(){}
