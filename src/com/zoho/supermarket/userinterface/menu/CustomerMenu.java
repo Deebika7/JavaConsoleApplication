@@ -20,7 +20,6 @@ public class CustomerMenu {
     }
 
     public void printCustomerMenu() {
-
         while (true) {
             System.out.println("Enter your choice: ");
             for (CustomerOptions option : CustomerOptions.values()) {
@@ -34,7 +33,7 @@ public class CustomerMenu {
                 case VIEW_CART -> viewCart();
                 case CHECK_DISCOUNT ->  viewDiscounts();
                 case GENERATE_BILL -> generateBill();
-                case PLACE_ORDER -> placeOrder(customer);
+                case PLACE_ORDER -> placeOrder();
                 case QUIT -> { logout();
                     return;}
             }
@@ -46,8 +45,8 @@ public class CustomerMenu {
         customer.logout();
     }
 
-    private void placeOrder(Customer customer) {
-        System.out.println(customer.updateOrder(customer));
+    private void placeOrder( ) {
+        System.out.println(customer.updateOrder());
     }
 
     private void generateBill() {

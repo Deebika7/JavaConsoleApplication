@@ -32,8 +32,8 @@ public class Customer extends User {
     public List<String> getBill(){
         return  customerOrderManager.getBill();
     }
-    public String updateOrder(Customer customer){
-        String message= customerProductManager.updateOrder(customer);
+    public String updateOrder( ){
+        String message= customerProductManager.updateOrder();
         customerOrderManager.clearCart();
         return message;
     }

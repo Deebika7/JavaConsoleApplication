@@ -5,7 +5,7 @@ import com.zoho.supermarket.core.model.user.Customer;
 import java.util.List;
 
 public interface CustomerProductManager {
-    String updateOrder(Customer customer);
+    String updateOrder( );
     List<String> getDiscounts();
     List<Product> getProducts();
 
