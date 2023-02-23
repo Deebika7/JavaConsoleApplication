@@ -6,21 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3b7ac51c-cbb6-4686-8aab-87c605ac31b5" name="Changes" comment="adding files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/constants/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/constants/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Discount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/Admin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/order/CustomerOrderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/order/CustomerOrderManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/product/CustomerProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/product/CustomerProductManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/OrderDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/OrderDataManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/ProductDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/ProductDataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/AdminMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/CustomerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/LoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/LoginMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/enums/AdminOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/enums/AdminOptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/util/ValidationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/util/ValidationUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -297,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677143813198</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="adding files">
+      <created>1677152097060</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1677152097060</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

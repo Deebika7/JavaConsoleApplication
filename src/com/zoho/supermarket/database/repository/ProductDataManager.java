@@ -43,9 +43,6 @@ public class ProductDataManager implements AdminProductManager, CustomerProductM
     public List<Product> getProducts() {
         return productDatabase.getProducts();
     }
-
-
-
     @Override
     public String addDiscount(String productName, double discountPercentage) {
         Product product=  productDatabase.getProduct(productName);

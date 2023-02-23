@@ -12,19 +12,14 @@ import java.util.List;
 public class Customer extends User {
     private final CustomerProductManager customerProductManager;
     private final CustomerOrderManager customerOrderManager;
-    private final UserDetailsManager userDetailsManager;
-
-
 
     public Customer(String userName, String password, UserRole customer,
-                    CustomerProductManager customerProductManager, CustomerOrderManager customerOrderManager,
-                    UserDetailsManager userDetailsManager) {
+                    CustomerProductManager customerProductManager, CustomerOrderManager customerOrderManager
+                    ) {
         super(userName, password, customer);
         this.customerProductManager = customerProductManager;
         this.customerOrderManager = customerOrderManager;
-        this.userDetailsManager=userDetailsManager;
     }
-
     public void logout(){
         customerOrderManager.clearCart();
     }
@@ -53,7 +48,7 @@ public class Customer extends User {
                 deepCopyOfProducts.add((Product) product.clone());
             }
         }
-        return null;
+        return deepCopyOfProducts;
     }
 
 }

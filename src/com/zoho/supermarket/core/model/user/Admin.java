@@ -10,44 +10,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Admin extends User{
-    private final UserDetailsManager userDetailsManager;
+public class Admin extends User {
+
     private final AdminProductManager adminProductManager;
 
-    public Admin(String userName,  String password, UserRole admin,
-                 UserDetailsManager userDetailsManager,
-                 AdminProductManager adminProductManager) {
+    public Admin(String userName, String password, UserRole admin, AdminProductManager adminProductManager) {
         super(userName, password, admin);
-        this.userDetailsManager = userDetailsManager;
         this.adminProductManager = adminProductManager;
     }
-    public UserDetailsManager getUserDataManager() {
-        return userDetailsManager;
+
+    public String add(int productID, String productName, int quantity, double unitPrice, ProductCategory productCategory) {
+        return adminProductManager.add(productID, productName, quantity, unitPrice, productCategory);
     }
-    public String add(int productID, String productName, int quantity, double unitPrice, ProductCategory productCategory){
-        return adminProductManager.add(productID,productName,quantity,unitPrice,productCategory);
-    }
-    public String remove(String productName){
+
+    public String remove(String productName) {
         return adminProductManager.remove(productName);
     }
-    public String addDiscount(String productName, double discountPercentage){
-        return adminProductManager.addDiscount(productName,discountPercentage);
+
+    public String addDiscount(String productName, double discountPercentage) {
+        return adminProductManager.addDiscount(productName, discountPercentage);
     }
-    public String removeDiscount(int discountID){
+
+    public String removeDiscount(int discountID) {
         return adminProductManager.removeDiscount(discountID);
     }
-    public List<String> getDiscounts(){
+
+    public List<String> getDiscounts() {
         return adminProductManager.getDiscounts();
     }
-    public List<Product> getProducts(){
-        List<Product> products= adminProductManager.getProducts();
-        List<Product> deepCopyOfProducts=new ArrayList<>();
-        if(ValidationUtil.isListValid(products)){
-            for (Product product:products){
+
+    public List<Product> getProducts() {
+        List<Product> products = adminProductManager.getProducts();
+        List<Product> deepCopyOfProducts = new ArrayList<>();
+        if (ValidationUtil.isListValid(products)) {
+            for (Product product : products) {
                 deepCopyOfProducts.add((Product) product.clone());
             }
         }
-        return null;
+        return deepCopyOfProducts;
     }
 
 }
