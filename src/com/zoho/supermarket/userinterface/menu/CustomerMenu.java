@@ -15,7 +15,6 @@ import java.util.List;
 public class CustomerMenu {
     private final Customer customer;
 
-
     public CustomerMenu(Customer customer) {
         this.customer = customer;
     }
