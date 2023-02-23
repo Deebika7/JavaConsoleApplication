@@ -11,7 +11,6 @@ import com.zoho.supermarket.database.model.OrderDatabase;
 import com.zoho.supermarket.database.model.ProductDatabase;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 public class ProductDataManager implements AdminProductManager, CustomerProductManager {
@@ -45,6 +44,8 @@ public class ProductDataManager implements AdminProductManager, CustomerProductM
         return productDatabase.getProducts();
     }
 
+
+
     @Override
     public String addDiscount(String productName, double discountPercentage) {
         Product product=  productDatabase.getProduct(productName);
@@ -54,18 +55,15 @@ public class ProductDataManager implements AdminProductManager, CustomerProductM
         }
         return Message.NO_PRODUCT_EXIST;
     }
-
     public String removeDiscount(int discountID){
         if(productDatabase.removeDiscount(discountID)){
             return Message.DISCOUNT_REMOVED;
         }
         return Message.NO_PRODUCT_EXIST;
     }
-
     public String updateOrder(Customer customer){
         if(ValidationUtil.isListValid(orderDatabase.getCart())){
             productDatabase.updateProduct(orderDatabase.getCart());
-            orderDatabase.clearCart();
             return Message.ORDER_PLACED;
         }
         return Message.EMPTY_CART;

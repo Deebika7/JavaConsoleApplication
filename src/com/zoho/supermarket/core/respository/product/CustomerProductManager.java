@@ -8,5 +8,6 @@ public interface CustomerProductManager {
     String updateOrder(Customer customer);
     List<String> getDiscounts();
     List<Product> getProducts();
+
 }
 

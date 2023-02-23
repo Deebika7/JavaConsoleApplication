@@ -35,9 +35,15 @@ public class CustomerMenu {
                 case CHECK_DISCOUNT ->  viewDiscounts();
                 case GENERATE_BILL -> generateBill();
                 case PLACE_ORDER -> placeOrder(customer);
-                case QUIT -> {return;}
+                case QUIT -> { logout();
+                    return;}
             }
         }
+    }
+
+    private void logout() {
+        System.out.println("Thank You!");
+        customer.logout();
     }
 
     private void placeOrder(Customer customer) {

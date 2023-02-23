@@ -1,4 +1,4 @@
-package com.zoho.supermarket.userinterface.util;
+package com.zoho.supermarket;
 
 
 

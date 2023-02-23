@@ -6,7 +6,7 @@ import com.zoho.supermarket.core.model.user.Customer;
 import com.zoho.supermarket.core.model.user.User;
 import com.zoho.supermarket.core.model.user.UserRole;
 import com.zoho.supermarket.database.model.UserDatabase;
-import com.zoho.supermarket.userinterface.util.ManagerFactory;
+import com.zoho.supermarket.ManagerFactory;
 
 import java.util.ArrayList;
 import java.util.List;

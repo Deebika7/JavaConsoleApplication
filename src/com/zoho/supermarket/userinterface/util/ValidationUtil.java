@@ -18,33 +18,21 @@ public class ValidationUtil {
             if (input.matches("^[a-zA-Z0-9]+( [a-zA-Z0-9.]+)*$")) {
                 return input;
             }
-            System.out.println("Invalid input Try again!");
+            System.err.println("Invalid input Try again!");
         }
     }
 
-    public static String getValidCharacterInput() {
-        String Choice;
-        while (true) {
-            if (isStrValid(Choice = sc.nextLine())) {
-                break;
-            } else {
-                System.out.println("Invalid input try again!");
-            }
-        }
-        return Choice;
-    }
-
-    public static int getValidIntegerInput() {
+    public static int getValidIntegerInput() throws NumberFormatException{
         String input;
         while (true) {
             input = sc.nextLine();
             if (input.matches("^[0-9]+")) {
                 return Integer.parseInt(input);
             }
-            System.out.println("Invalid input Try again!");
+            System.err.println("Invalid input Try again!");
         }
     }
-    public static int getValidProductQtyInput() {
+    public static int getValidProductQtyInput(){
         String input;
         while (true) {
             input = sc.nextLine();
@@ -52,25 +40,34 @@ public class ValidationUtil {
                 System.out.println("Invalid input Try again!");
                 continue;
             }
-            if(Integer.parseInt(input)>0) {
-                return Integer.parseInt(input);
+            try {
+                if(Integer.parseInt(input)>0) {
+                    return Integer.parseInt(input);
+                }
             }
-            System.out.println("Invalid input Try again!");
+            catch (NumberFormatException e){
+                System.err.println("Invalid input Try again!");
+            }
         }
     }
 
-    public static double getValidPriceInput() {
+    public static double getValidPriceInput() throws NumberFormatException{
         String input;
         while (true) {
             input = sc.nextLine();
-            if (!input.matches("^[0-9]+.+[0-9]+") && !input.matches("^[0-9]+")) {
-                System.out.println("Invalid input Try again!");
+            if (!input.matches("^[0-9]+.+[0-9]+") && !input.matches("^[0-9]+")&&!input.matches("^.+[0-9]")) {
+                System.err.println("Invalid input Try again!");
                 continue;
             }
-            if (!(Double.parseDouble(input) == 0)) {
-                return Double.parseDouble(input);
+            try {
+                if (!(Double.parseDouble(input) == 0)) {
+                    return Double.parseDouble(input);
+                }
             }
-            System.out.println("Invalid input Try again!");
+            catch (NumberFormatException e){
+                System.err.println("Invalid input Try again!");
+            }
+            System.err.println("Invalid input Try again!");
         }
     }
 
@@ -78,14 +75,14 @@ public class ValidationUtil {
         String input;
         while (true) {
             input = sc.nextLine();
-            if (!input.matches("^[0-9]+.+[0-9]") && !input.matches("^[0-9]+")) {
-                System.out.println("Invalid input Try again!");
+            if (!input.matches("^[0-9]+.+[0-9]") && !input.matches("^[0-9]+")&&!input.matches("^.+[0-9]")) {
+                System.err.println("Invalid input Try again!");
                 continue;
             }
             if (!(Double.parseDouble(input) == 0) && !(Double.parseDouble(input) >100)) {
                 return Double.parseDouble(input);
             }
-            System.out.println("Invalid input Try again!");
+            System.err.println("Invalid input Try again!");
         }
     }
 
@@ -94,14 +91,14 @@ public class ValidationUtil {
         while (true) {
             input = sc.nextLine();
             if (!input.matches("^[0-9]+")) {
-                System.out.println("Invalid input Try again!");
+                System.err.println("Invalid input Try again!");
                 continue;
             }
             int validValue = Integer.parseInt(input);
             if (validValue > 0 && validValue <= maxValue) {
                 return validValue;
             }
-            System.out.println("Invalid input Try again!");
+            System.err.println("Invalid input Try again!");
         }
     }
 
@@ -112,16 +109,17 @@ public class ValidationUtil {
             if(input.matches("([a-zA-Z',.-]+( [a-zA-Z',.-]+)*){2,30}")){
                 return input;
             }
-            System.out.println("Invalid input Try again!");
+            System.err.println("Invalid input Try again!");
         }
     }
 
     public static String getValidPassword() {
         String input = sc.nextLine();
         while (!input.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$")) {
-            System.out.println("Invalid Password Try again!");
+            System.err.println("Invalid Password Try again!");
             System.out.println("Note: The password should contain a lower case character, upper case character," +
-                    " atleast one digit, a total of 8 - 20 character length, and special characters like ['@#$%^&-+=()']");
+                    "\n it must start with an alphabet" +
+                    "\n Atleast one digit, a total of 8 - 20 character length, and special characters like ['@#$%^&-+=()']");
             System.out.println("Enter your password correctly: ");
             input = new Scanner(System.in).nextLine();
         }
@@ -140,7 +138,7 @@ public class ValidationUtil {
             if (password.equals(input)) {
                 return input;
             } else {
-                System.out.println("password mismatched Try again!!");
+                System.err.println("password mismatched Try again!!");
             }
         }
 

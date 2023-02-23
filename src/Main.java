@@ -1,5 +1,5 @@
 import com.zoho.supermarket.userinterface.menu.LoginMenu;
-import com.zoho.supermarket.userinterface.util.ManagerFactory;
+import com.zoho.supermarket.ManagerFactory;
 
 public class Main {
     public static void main(String[] args) {

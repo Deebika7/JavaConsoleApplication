@@ -10,6 +10,7 @@ import com.zoho.supermarket.database.repository.UserDataManager;
 import com.zoho.supermarket.userinterface.menu.enums.LoginOptions;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
+import java.util.Scanner;
 
 
 public class LoginMenu {
@@ -50,7 +51,7 @@ public class LoginMenu {
         System.out.println("Enter User Name:");
         String userName = ValidationUtil.getValidStringInput();
         System.out.println("Enter Password:");
-        String password = ValidationUtil.getValidStringInput();
+        String password = new Scanner(System.in).nextLine();
         String signInStatus=userDataManager.isValidUser(userName,password,userRole);
         System.out.println(signInStatus);
         if(signInStatus.equals(Message.LOGIN_SUCCESS)){

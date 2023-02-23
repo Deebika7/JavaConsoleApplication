@@ -64,5 +64,9 @@ public class OrderDataManager implements CustomerOrderManager {
                 +"\t\t\t\t"+cartProduct.getQty()+"\t\t\t"+cartProduct.getProduct().getUnitPrice()));
         return cartProducts;
     }
+    @Override
+    public void clearCart() {
+        orderDatabase.clearCart();
+    }
 
 }

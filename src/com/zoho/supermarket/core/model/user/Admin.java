@@ -4,14 +4,15 @@ import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.model.product.ProductCategory;
 import com.zoho.supermarket.core.respository.product.AdminProductManager;
 import com.zoho.supermarket.core.respository.user.UserDetailsManager;
+import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class Admin extends User{
     private final UserDetailsManager userDetailsManager;
     private final AdminProductManager adminProductManager;
-
 
     public Admin(String userName,  String password, UserRole admin,
                  UserDetailsManager userDetailsManager,
@@ -20,12 +21,9 @@ public class Admin extends User{
         this.userDetailsManager = userDetailsManager;
         this.adminProductManager = adminProductManager;
     }
-
     public UserDetailsManager getUserDataManager() {
         return userDetailsManager;
     }
-
-
     public String add(int productID, String productName, int quantity, double unitPrice, ProductCategory productCategory){
         return adminProductManager.add(productID,productName,quantity,unitPrice,productCategory);
     }
@@ -42,7 +40,14 @@ public class Admin extends User{
         return adminProductManager.getDiscounts();
     }
     public List<Product> getProducts(){
-        return adminProductManager.getProducts();
+        List<Product> products= adminProductManager.getProducts();
+        List<Product> deepCopyOfProducts=new ArrayList<>();
+        if(ValidationUtil.isListValid(products)){
+            for (Product product:products){
+                deepCopyOfProducts.add((Product) product.clone());
+            }
+        }
+        return null;
     }
 
 }

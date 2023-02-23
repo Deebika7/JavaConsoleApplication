@@ -31,8 +31,15 @@ public class Product {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
     public ProductCategory getCategory() {
         return category;
+    }
+    @Override
+    public Object clone() {
+        try {
+            return (Product) super.clone();
+        } catch (CloneNotSupportedException e) {
+            return new Product(this.productID,this.productName,this.quantity,this.unitPrice,this.category);
+        }
     }
 }
