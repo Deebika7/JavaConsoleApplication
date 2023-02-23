@@ -2,7 +2,6 @@ package com.zoho.supermarket.userinterface.util;
 
 
 
-import com.zoho.supermarket.core.respository.product.MutualProductManager;
 import com.zoho.supermarket.database.model.implementation.OrderDatabaseImpl;
 import com.zoho.supermarket.database.model.implementation.ProductDatabaseImpl;
 import com.zoho.supermarket.database.model.implementation.UserDatabaseImpl;

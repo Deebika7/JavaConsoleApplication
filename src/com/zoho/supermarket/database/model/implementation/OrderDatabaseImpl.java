@@ -2,31 +2,24 @@ package com.zoho.supermarket.database.model.implementation;
 
 import com.zoho.supermarket.constants.Message;
 import com.zoho.supermarket.core.model.product.Cart;
-import com.zoho.supermarket.core.model.product.Order;
 import com.zoho.supermarket.core.model.product.Product;
-import com.zoho.supermarket.core.model.user.Customer;
 import com.zoho.supermarket.database.model.OrderDatabase;
-
 import java.util.ArrayList;
-import java.util.Collection;
+
 import java.util.List;
 
 public class OrderDatabaseImpl implements OrderDatabase {
-    private final List<Order> orders =new ArrayList<>();
+
     private final List<Cart> cart = new ArrayList<>();
     private static OrderDatabaseImpl Instance=null;
     private OrderDatabaseImpl(){}
 
     public static OrderDatabaseImpl getInstance(){
         if(Instance ==null){
-            return new OrderDatabaseImpl();
+            Instance= new OrderDatabaseImpl();
         }
         return Instance;
     }
-    public List<Order> getAllOrders(){
-        return orders;
-    }
-
     public String addToCart(String productName, int quantity,Product product) {
         Cart productFromCart = getProductFromCart(productName);
         if (product != null) {
@@ -49,8 +42,9 @@ public class OrderDatabaseImpl implements OrderDatabase {
         }
         return Message.NO_PRODUCT_EXIST;
     }
-    public void addToOrder(Customer customer){
-        orders.add(new Order(customer,cart));
+
+    @Override
+    public void clearCart() {
         cart.clear();
     }
 
@@ -62,6 +56,7 @@ public class OrderDatabaseImpl implements OrderDatabase {
         }
         return null;
     }
+
     public List<Cart> getCart(){
         return cart;
     }

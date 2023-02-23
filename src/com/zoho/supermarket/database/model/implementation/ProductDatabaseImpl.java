@@ -7,7 +7,6 @@ import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.model.product.ProductCategory;
 import com.zoho.supermarket.database.model.ProductDatabase;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
-
 import java.util.*;
 
 public class ProductDatabaseImpl implements ProductDatabase {
@@ -15,13 +14,15 @@ public class ProductDatabaseImpl implements ProductDatabase {
     private final Map<Product, Discount> productDiscounts=new HashMap<>();
     private static  ProductDatabaseImpl Instance=null;
     private ProductDatabaseImpl(){
+
     }
     public static ProductDatabaseImpl getInstance(){
         if(Instance ==null){
-            return new ProductDatabaseImpl();
+            Instance= new ProductDatabaseImpl();
         }
         return Instance;
     }
+
     {
         products.add(new Product(1111,"milk",12,12, ProductCategory.DAIRY));
         products.add(new Product(1234,"cheese",12,12, ProductCategory.DAIRY));
@@ -32,8 +33,6 @@ public class ProductDatabaseImpl implements ProductDatabase {
     public List<Product> getProducts(){
         return new ArrayList<>(products);
     }
-
-
 
     @Override
     public void add(Product product){
@@ -64,6 +63,14 @@ public class ProductDatabaseImpl implements ProductDatabase {
             }
         }
         return false;
+    }
+    public double getDiscountPercentage(String productName){
+        for (Map.Entry<Product,Discount> productDiscountEntry:productDiscounts.entrySet()){
+            if(productDiscountEntry.getKey().getProductName().equalsIgnoreCase(productName)){
+                return productDiscountEntry.getValue().getDiscountPercentage();
+            }
+        }
+        return 0;
     }
     @Override
     public List<String> getDiscounts() {

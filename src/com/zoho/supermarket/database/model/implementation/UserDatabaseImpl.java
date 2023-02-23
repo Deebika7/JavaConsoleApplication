@@ -19,7 +19,7 @@ public class UserDatabaseImpl implements UserDatabase {
     }
     public static UserDatabaseImpl getInstance(){
         if(Instance==null){
-            return new UserDatabaseImpl();
+            Instance= new UserDatabaseImpl();
         }
         return Instance;
     }
@@ -28,12 +28,11 @@ public class UserDatabaseImpl implements UserDatabase {
 
     public void addUser(String userName, String password, UserRole userRole){
         if(userRole.equals(UserRole.ADMIN)){
-            users.add(new Admin(userName,password,userRole, ManagerFactory.getUserDataManager(),
-                    ManagerFactory.getOrderDataManager(),ManagerFactory.getProductDataManager(),ManagerFactory.getProductDataManager()));
+            users.add(new Admin(userName,password,userRole, ManagerFactory.getUserDataManager(),ManagerFactory.getProductDataManager()));
         }
         else {
             users.add(new Customer(userName,password,userRole,ManagerFactory.getProductDataManager(),
-                    ManagerFactory.getOrderDataManager(),ManagerFactory.getUserDataManager(),ManagerFactory.getProductDataManager()));
+                    ManagerFactory.getOrderDataManager(),ManagerFactory.getUserDataManager()));
         }
     }
     public User getUser(UserRole userRole,String userName){

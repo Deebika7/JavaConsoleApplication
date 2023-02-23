@@ -31,7 +31,6 @@ public class AdminMenu {
                 case ADD_DISCOUNT -> addDiscount();
                 case REMOVE_DISCOUNT ->removeDiscount();
                 case VIEW_DISCOUNTS ->viewDiscounts();
-                case LIST_ORDERS -> {}
                 case QUIT -> {return;}
             }
         }
@@ -39,14 +38,14 @@ public class AdminMenu {
     private void addProducts(){
         System.out.println("Select Category to add Items");
         printProductCategory();
-        ProductCategory itemCategory = getProductCategory();
+        ProductCategory productCategory = getProductCategory();
         System.out.println("Enter Product Name: ");
         String productName=ValidationUtil.getValidStringInput();
         System.out.println("Enter Quantity: ");
         int quantity=ValidationUtil.getValidProductQtyInput();
         System.out.println("Enter Unit Price: ");
         double unitPrice=ValidationUtil.getValidPriceInput();
-        System.out.println(admin.getAdminProductManager().add(new Random().nextInt(1000,9999),  productName, quantity,  unitPrice,  itemCategory));
+        System.out.println(admin.getAdminProductManager().add(new Random().nextInt(1000,9999),  productName, quantity,  unitPrice,  productCategory));
     }
 
     private void printProductCategory() {
@@ -62,9 +61,9 @@ public class AdminMenu {
         printProductCategory();
         System.out.println("Select Category to display items:");
         ProductCategory productCategory = getProductCategory();
-        List<Product> products = admin.getMutualProductManager().getProducts();
+        List<Product> products = admin.getAdminProductManager().getProducts();
         System.out.println("======================="+productCategory.name()+"====================================");
-        System.out.println("Item ID\t\tProduct Name\t\tunit price\t\tAvailable quantity");
+        System.out.println("Product ID\t\tProduct Name\t\tunit price\t\tAvailable quantity");
         products.stream().filter(product -> product.getCategory().equals(productCategory)).
                 forEach(product -> System.out.println(product.getProductID() + "\t\t" + product.getProductName()
                         +"\t\t\t\t" + product.getUnitPrice() + "\t\t\t" + product.getQuantity()));
@@ -76,8 +75,8 @@ public class AdminMenu {
     }
 
     private void viewDiscounts() {
-        if(!admin.getMutualProductManager().getDiscounts().isEmpty()){
-            List<String> discounts=admin.getMutualProductManager().getDiscounts();
+        if(!admin.getAdminProductManager().getDiscounts().isEmpty()){
+            List<String> discounts=admin.getAdminProductManager().getDiscounts();
             discounts.forEach(System.out::println);
         }
         else {

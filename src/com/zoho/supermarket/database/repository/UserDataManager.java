@@ -3,21 +3,17 @@ package com.zoho.supermarket.database.repository;
 import com.zoho.supermarket.constants.Message;
 import com.zoho.supermarket.core.model.user.User;
 import com.zoho.supermarket.core.model.user.UserRole;
-import com.zoho.supermarket.core.respository.user.AdminDataManager;
-import com.zoho.supermarket.core.respository.user.CustomerDataManager;
+import com.zoho.supermarket.core.respository.user.UserDetailsManager;
 import com.zoho.supermarket.database.model.UserDatabase;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 
 
-public class UserDataManager implements AdminDataManager, CustomerDataManager {
+public class UserDataManager implements UserDetailsManager {
     private final UserDatabase userDatabase;
-
     public UserDataManager(UserDatabase userDatabase) {
         this.userDatabase = userDatabase;
     }
-
-
     @Override
     public User getUser(UserRole userRole, String userName) {
         return userDatabase.getUser(userRole,userName);

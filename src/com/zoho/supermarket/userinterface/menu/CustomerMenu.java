@@ -48,13 +48,11 @@ public class CustomerMenu {
     private void generateBill() {
         List<String> bill=customer.getCustomerOrderManager().getBill();
         bill.forEach(System.out::println);
-
     }
 
-
     private void viewDiscounts() {
-        if(!customer.getMutualProductManager().getDiscounts().isEmpty()){
-            List<String> discounts=customer.getMutualProductManager().getDiscounts();
+        if(!customer.getCustomerProductManager().getDiscounts().isEmpty()){
+            List<String> discounts=customer.getCustomerProductManager().getDiscounts();
             discounts.forEach(System.out::println);
         }
         else {
@@ -71,7 +69,6 @@ public class CustomerMenu {
             System.out.println(Message.EMPTY_CART);
         }
     }
-
     private void printProductCategory() {
         for (ProductCategory productCategory:ProductCategory.values()){
             System.out.println(productCategory.ordinal() + 1 + ". " + productCategory.name());
@@ -85,7 +82,7 @@ public class CustomerMenu {
         printProductCategory();
         System.out.println("Select Category to display items:");
         ProductCategory productCategory = getProductCategory();
-        List<Product> products = customer.getMutualProductManager().getProducts();
+        List<Product> products = customer.getCustomerProductManager().getProducts();
         System.out.println("======================="+productCategory.name()+"====================================");
         System.out.println("Item ID\t\tProduct Name\t\tunit price\t\tAvailable quantity");
         products.stream().filter(product -> product.getCategory().equals(productCategory)).
@@ -99,9 +96,4 @@ public class CustomerMenu {
         int quantity=ValidationUtil.getValidProductQtyInput();
         System.out.println(customer.getCustomerOrderManager().addToCart(productName,quantity));
     }
-
-
-
-
-
 }

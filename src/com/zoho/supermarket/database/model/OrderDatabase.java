@@ -9,9 +9,7 @@ import com.zoho.supermarket.core.model.user.Customer;
 import java.util.List;
 
 public interface OrderDatabase {
-
     List<Cart> getCart();
     String addToCart(String productName, int quantity, Product product) ;
-    void addToOrder(Customer customer);
-    //List<Order> getAllOrders();
+    void clearCart();
 }

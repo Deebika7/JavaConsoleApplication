@@ -7,6 +7,4 @@ public interface CustomerOrderManager {
     List<String> getCartProducts();
     String addToCart(String productName, int quantity);
     List<String> getBill();
-
-
 }

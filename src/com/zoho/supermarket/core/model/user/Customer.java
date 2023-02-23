@@ -2,24 +2,22 @@ package com.zoho.supermarket.core.model.user;
 
 import com.zoho.supermarket.core.respository.order.CustomerOrderManager;
 import com.zoho.supermarket.core.respository.product.CustomerProductManager;
-import com.zoho.supermarket.core.respository.product.MutualProductManager;
-import com.zoho.supermarket.core.respository.user.CustomerDataManager;
+import com.zoho.supermarket.core.respository.user.UserDetailsManager;
 
 public class Customer extends User {
     private final CustomerProductManager customerProductManager;
     private final CustomerOrderManager customerOrderManager;
-    private final CustomerDataManager customerDataManager;
-    private final MutualProductManager mutualProductManager;
+    private final UserDetailsManager userDetailsManager;
+
 
 
     public Customer(String userName, String password, UserRole customer,
                     CustomerProductManager customerProductManager, CustomerOrderManager customerOrderManager,
-                    CustomerDataManager customerDataManager,MutualProductManager mutualProductManager) {
+                    UserDetailsManager userDetailsManager) {
         super(userName, password, customer);
         this.customerProductManager = customerProductManager;
         this.customerOrderManager = customerOrderManager;
-        this.customerDataManager = customerDataManager;
-        this.mutualProductManager=mutualProductManager;
+        this.userDetailsManager=userDetailsManager;
     }
 
     public CustomerProductManager getCustomerProductManager() {
@@ -30,11 +28,6 @@ public class Customer extends User {
         return customerOrderManager;
     }
 
-    public CustomerDataManager getCustomerDataManager() {
-        return customerDataManager;
-    }
 
-    public MutualProductManager getMutualProductManager() {
-        return mutualProductManager;
-    }
+
 }
