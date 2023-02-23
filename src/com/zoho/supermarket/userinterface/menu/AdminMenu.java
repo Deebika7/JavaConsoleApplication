@@ -61,11 +61,11 @@ public class AdminMenu {
     public void viewProducts() {
         printProductCategory();
         System.out.println("Select Category to display items:");
-        ProductCategory itemCategory = getProductCategory();
-        List<Product> products = admin.getAdminProductManager().getProducts();
-        System.out.println("======================="+itemCategory.name()+"====================================");
+        ProductCategory productCategory = getProductCategory();
+        List<Product> products = admin.getMutualProductManager().getProducts();
+        System.out.println("======================="+productCategory.name()+"====================================");
         System.out.println("Item ID\t\tProduct Name\t\tunit price\t\tAvailable quantity");
-        products.stream().filter(product -> product.getCategory().equals(itemCategory)).
+        products.stream().filter(product -> product.getCategory().equals(productCategory)).
                 forEach(product -> System.out.println(product.getProductID() + "\t\t" + product.getProductName()
                         +"\t\t\t\t" + product.getUnitPrice() + "\t\t\t" + product.getQuantity()));
     }
@@ -76,8 +76,8 @@ public class AdminMenu {
     }
 
     private void viewDiscounts() {
-        if(!admin.getAdminProductManager().getDiscounts().isEmpty()){
-            List<String> discounts=admin.getAdminProductManager().getDiscounts();
+        if(!admin.getMutualProductManager().getDiscounts().isEmpty()){
+            List<String> discounts=admin.getMutualProductManager().getDiscounts();
             discounts.forEach(System.out::println);
         }
         else {

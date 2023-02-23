@@ -1,7 +1,6 @@
 package com.zoho.supermarket.database.repository;
 
 import com.zoho.supermarket.core.model.product.Cart;
-import com.zoho.supermarket.core.model.product.Order;
 import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.respository.order.AdminOrderManager;
 import com.zoho.supermarket.core.respository.order.CustomerOrderManager;
@@ -13,12 +12,11 @@ import java.util.List;
 
 
 public class OrderDataManager implements AdminOrderManager, CustomerOrderManager {
-    private final UserDataManager dataManager;
+
     private final OrderDatabase orderDatabase;
     private final ProductDatabase productDatabase;
 
-    public OrderDataManager(UserDataManager dataManager, OrderDatabase orderDatabase, ProductDatabase productDatabase) {
-        this.dataManager = dataManager;
+    public OrderDataManager( OrderDatabase orderDatabase, ProductDatabase productDatabase) {
         this.orderDatabase = orderDatabase;
         this.productDatabase = productDatabase;
     }
@@ -57,9 +55,11 @@ public class OrderDataManager implements AdminOrderManager, CustomerOrderManager
     }
 
 
-    @Override
-    public List<Order> getAllOrders() {
-        List<Order> orders=orderDatabase.getAllOrders();
-        orders.stream().forEach(order -> order.getCustomer().getUserName());
-    }
+//    @Override
+//    public List<Order> getAllOrders() {
+//        List<String> order=new ArrayList<>();
+//        List<Order> orders=orderDatabase.getAllOrders();
+//        orders.stream().forEach(order -> order.getCustomer().getUserName());
+//        return null;
+//    }
 }

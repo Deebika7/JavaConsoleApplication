@@ -12,11 +12,11 @@ public interface AdminProductManager {
 
     String remove(String productName);
 
-    List<Product> getProducts();
+
 
     String addDiscount(String productName, double discountPercentage);
     String removeDiscount(int discountID);
 
-    List<String> getDiscounts();
+
 
 }

@@ -53,8 +53,8 @@ public class CustomerMenu {
 
 
     private void viewDiscounts() {
-        if(!customer.getCustomerProductManager().getDiscounts().isEmpty()){
-            List<String> discounts=customer.getCustomerProductManager().getDiscounts();
+        if(!customer.getMutualProductManager().getDiscounts().isEmpty()){
+            List<String> discounts=customer.getMutualProductManager().getDiscounts();
             discounts.forEach(System.out::println);
         }
         else {
@@ -85,7 +85,7 @@ public class CustomerMenu {
         printProductCategory();
         System.out.println("Select Category to display items:");
         ProductCategory productCategory = getProductCategory();
-        List<Product> products = customer.getCustomerProductManager().getProducts();
+        List<Product> products = customer.getMutualProductManager().getProducts();
         System.out.println("======================="+productCategory.name()+"====================================");
         System.out.println("Item ID\t\tProduct Name\t\tunit price\t\tAvailable quantity");
         products.stream().filter(product -> product.getCategory().equals(productCategory)).

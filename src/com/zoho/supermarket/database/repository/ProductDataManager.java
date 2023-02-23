@@ -7,6 +7,7 @@ import com.zoho.supermarket.core.model.product.ProductCategory;
 import com.zoho.supermarket.core.model.user.Customer;
 import com.zoho.supermarket.core.respository.product.AdminProductManager;
 import com.zoho.supermarket.core.respository.product.CustomerProductManager;
+import com.zoho.supermarket.core.respository.product.MutualProductManager;
 import com.zoho.supermarket.database.model.OrderDatabase;
 import com.zoho.supermarket.database.model.ProductDatabase;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
@@ -14,7 +15,7 @@ import com.zoho.supermarket.userinterface.util.ValidationUtil;
 import java.util.List;
 import java.util.Random;
 
-public class ProductDataManager implements AdminProductManager, CustomerProductManager {
+public class ProductDataManager implements AdminProductManager, CustomerProductManager, MutualProductManager {
     private final OrderDatabase orderDatabase;
     private final ProductDatabase productDatabase;
 
@@ -22,7 +23,6 @@ public class ProductDataManager implements AdminProductManager, CustomerProductM
         this.orderDatabase = orderDatabase;
         this.productDatabase = productDatabase;
     }
-
     @Override
     public String add(int productID, String productName, int quantity, double unitPrice, ProductCategory productCategory) {
         if(!ValidationUtil.isInstanceValid(productDatabase.getProduct(productName))){
@@ -73,5 +73,6 @@ public class ProductDataManager implements AdminProductManager, CustomerProductM
     public List<String> getDiscounts() {
         return productDatabase.getDiscounts();
     }
+
 
 }

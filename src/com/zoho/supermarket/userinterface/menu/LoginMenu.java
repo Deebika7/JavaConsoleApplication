@@ -35,7 +35,6 @@ public class LoginMenu {
                     case QUIT -> {return;}
                 }
             }
-
     }
 
     private void signUp(UserRole userRole) {

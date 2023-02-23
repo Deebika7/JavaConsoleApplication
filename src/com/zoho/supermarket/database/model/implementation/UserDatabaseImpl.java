@@ -29,11 +29,11 @@ public class UserDatabaseImpl implements UserDatabase {
     public void addUser(String userName, String password, UserRole userRole){
         if(userRole.equals(UserRole.ADMIN)){
             users.add(new Admin(userName,password,userRole, ManagerFactory.getUserDataManager(),
-                    ManagerFactory.getOrderDataManager(),ManagerFactory.getProductDataManager()));
+                    ManagerFactory.getOrderDataManager(),ManagerFactory.getProductDataManager(),ManagerFactory.getProductDataManager()));
         }
         else {
             users.add(new Customer(userName,password,userRole,ManagerFactory.getProductDataManager(),
-                    ManagerFactory.getOrderDataManager(),ManagerFactory.getUserDataManager()));
+                    ManagerFactory.getOrderDataManager(),ManagerFactory.getUserDataManager(),ManagerFactory.getProductDataManager()));
         }
     }
     public User getUser(UserRole userRole,String userName){
