@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface MutualProductManager {
     List<String> getDiscounts();
-    List<Product> getProducts();
+     List<Product> getProducts();
 }
