@@ -12,7 +12,6 @@ import java.util.Random;
 
 public class AdminMenu {
     private final Admin admin;
-
     public AdminMenu(Admin admin) {
         this.admin = admin;
     }
@@ -31,10 +30,22 @@ public class AdminMenu {
                 case ADD_DISCOUNT -> addDiscount();
                 case REMOVE_DISCOUNT ->removeDiscount();
                 case VIEW_DISCOUNTS ->viewDiscounts();
+                case LIST_ORDERS -> displayAllOrders();
                 case QUIT -> {return;}
             }
         }
     }
+
+    private void displayAllOrders() {
+        List<Object> orders=admin.getAllOrders();
+        if(ValidationUtil.isListValid(orders)) {
+            orders.forEach(System.out::println);
+        }
+        else {
+            System.out.println("no orders placed yet!");
+        }
+    }
+
     private void addProducts() {
             System.out.println("Select Category to add Items");
             printProductCategory();

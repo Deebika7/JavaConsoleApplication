@@ -12,11 +12,11 @@ public class Order {
         return customer;
     }
 
-    public List<Cart> getCart() {
+    public List getCart() {
         return cart;
     }
 
-    public Order(Customer customer, List<Cart> cart) {
+    public Order(Customer customer, List cart) {
         this.customer = customer;
         this.cart = cart;
     }

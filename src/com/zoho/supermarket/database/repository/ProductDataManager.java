@@ -57,7 +57,7 @@ public class ProductDataManager implements AdminProductManager, CustomerProductM
         }
         return Message.NO_PRODUCT_EXIST;
     }
-    public String updateOrder( ){
+    public String placeOrder( ){
         if(ValidationUtil.isListValid(orderDatabase.getCart())){
             productDatabase.updateProduct(orderDatabase.getCart());
             return Message.ORDER_PLACED;

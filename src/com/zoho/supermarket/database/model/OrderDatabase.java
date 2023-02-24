@@ -12,4 +12,6 @@ public interface OrderDatabase {
     List<Cart> getCart();
     String addToCart(String productName, int quantity, Product product) ;
     void clearCart();
+    void addToOrders(Customer customer, List<String> bill);
+    List<Order> getOrders() ;
 }

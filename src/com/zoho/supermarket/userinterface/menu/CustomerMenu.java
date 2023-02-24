@@ -46,7 +46,7 @@ public class CustomerMenu {
     }
 
     private void placeOrder( ) {
-        System.out.println(customer.updateOrder());
+        System.out.println(customer.placeOrder(customer));
     }
 
     private void generateBill() {
@@ -88,7 +88,7 @@ public class CustomerMenu {
         ProductCategory productCategory = getProductCategory();
         List<Product> products = customer.getProducts();
         System.out.println("======================="+productCategory.name()+"====================================");
-        System.out.println("Item ID\t\tProduct Name\t\tunit price\t\tAvailable quantity");
+        System.out.println("Product ID\t\tProduct Name\t\tUnit price\t\tAvailable quantity");
         products.stream().filter(product -> product.getCategory().equals(productCategory)).
                 forEach(product -> System.out.println(product.getProductID() + "\t\t" + product.getProductName()
                         +"\t\t\t\t" + product.getUnitPrice() + "\t\t\t" + product.getQuantity()));

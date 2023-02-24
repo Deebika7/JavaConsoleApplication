@@ -1,8 +1,11 @@
 package com.zoho.supermarket.database.repository;
 
 import com.zoho.supermarket.core.model.product.Cart;
-import com.zoho.supermarket.core.model.product.Discount;
+
+import com.zoho.supermarket.core.model.product.Order;
 import com.zoho.supermarket.core.model.product.Product;
+import com.zoho.supermarket.core.model.user.Customer;
+import com.zoho.supermarket.core.respository.order.AdminOrderManager;
 import com.zoho.supermarket.core.respository.order.CustomerOrderManager;
 import com.zoho.supermarket.database.model.OrderDatabase;
 import com.zoho.supermarket.database.model.ProductDatabase;
@@ -10,7 +13,7 @@ import com.zoho.supermarket.database.model.ProductDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderDataManager implements CustomerOrderManager {
+public class OrderDataManager implements CustomerOrderManager, AdminOrderManager {
 
     private final OrderDatabase orderDatabase;
     private final ProductDatabase productDatabase;
@@ -38,7 +41,7 @@ public class OrderDataManager implements CustomerOrderManager {
         bill.add("Product Name\t\tQuantity\t\tPrice\t\tTotal Amount\t\t\tDiscount Percentage\t\t\tTotal Amount After Discount");
         for(Cart product:cart){
             double discountPercentage=productDatabase.getDiscountPercentage(product.getProduct().getProductName());
-            double price=0;
+            double price;
             if(discountPercentage!=0){
                 price=calculatePrice(product.getProduct().getUnitPrice(),discountPercentage);
             }
@@ -46,10 +49,10 @@ public class OrderDataManager implements CustomerOrderManager {
                 price=product.getQty()*product.getProduct().getUnitPrice();
             }
             bill.add(product.getProduct().getProductName()+"\t\t\t\t"+product.getQty()+
-                    "\t\t\t"+product.getProduct().getUnitPrice()+"\t\t\t"+product.getQty()*product.getProduct().getUnitPrice()+"\t\t\t"+discountPercentage+"\t\t\t"+product.getQty()*price);
+                    "\t\t\t\t"+product.getProduct().getUnitPrice()+"\t\t\t\t"+product.getQty()*product.getProduct().getUnitPrice()+"\t\t\t\t"+discountPercentage+"\t\t\t\t\t"+product.getQty()*price);
             totalAmount+=product.getQty()*price;
         }
-        bill.add("\t\t\t\t\t\t\t\t\t\tTotal Amount"+totalAmount);
+        bill.add("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tTotal Amount"+totalAmount);
         return bill;
     }
     public double calculatePrice(double productPrice, double discountPercentage) {
@@ -68,5 +71,15 @@ public class OrderDataManager implements CustomerOrderManager {
     public void clearCart() {
         orderDatabase.clearCart();
     }
+
+    @Override
+    public void addToOrders(Customer customer) {
+        orderDatabase.addToOrders(customer,getBill());
+    }
+    public List<Order> getAllOrders(){
+        return orderDatabase.getOrders();
+    }
+
+
 
 }

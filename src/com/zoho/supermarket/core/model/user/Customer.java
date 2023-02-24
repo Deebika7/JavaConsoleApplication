@@ -3,7 +3,6 @@ package com.zoho.supermarket.core.model.user;
 import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.respository.order.CustomerOrderManager;
 import com.zoho.supermarket.core.respository.product.CustomerProductManager;
-import com.zoho.supermarket.core.respository.user.UserDetailsManager;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 import java.util.ArrayList;
@@ -32,8 +31,9 @@ public class Customer extends User {
     public List<String> getBill(){
         return  customerOrderManager.getBill();
     }
-    public String updateOrder( ){
-        String message= customerProductManager.updateOrder();
+    public String placeOrder(Customer customer){
+        String message= customerProductManager.placeOrder();
+        customerOrderManager.addToOrders(customer);
         customerOrderManager.clearCart();
         return message;
     }
@@ -50,5 +50,6 @@ public class Customer extends User {
         }
         return deepCopyOfProducts;
     }
+
 
 }

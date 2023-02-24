@@ -7,10 +7,6 @@ import java.util.Scanner;
 public class ValidationUtil {
     private static final Scanner sc = new Scanner(System.in);
 
-    public static boolean isStrValid(String string) {
-        return string.equalsIgnoreCase("y") || string.equalsIgnoreCase("n");
-    }
-
     public static String getValidStringInput() {
         String input;
         while (true) {
