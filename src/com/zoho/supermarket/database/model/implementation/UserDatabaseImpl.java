@@ -35,13 +35,10 @@ public class UserDatabaseImpl implements UserDatabase {
                     ManagerFactory.getOrderDataManager())));
         }
     }
-
     public User getUser(String phoneNumber) {
-
         if (users.containsKey(phoneNumber)) {
             return users.get(phoneNumber);
         }
-
         return null;
     }
 

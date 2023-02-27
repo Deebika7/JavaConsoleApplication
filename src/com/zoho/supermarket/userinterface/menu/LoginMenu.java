@@ -40,14 +40,14 @@ public class LoginMenu {
 
     private void signUp(UserRole userRole) {
         System.out.println("Enter Phone Number:");
-        String phoneNumber=ValidationUtil.getValidPhoneNumber();
+        String phoneNumber = ValidationUtil.getValidPhoneNumber();
         System.out.println("Enter User Name:");
         String userName = ValidationUtil.getValidUserName();
         System.out.println("Enter Password:");
         String password = ValidationUtil.getValidPassword();
         System.out.println("Enter Confirm Password");
         String confirmPassword = ValidationUtil.getValidConfirmPassword(password);
-        System.out.println(userDataManager.addUser(phoneNumber,userName, password, userRole));
+        System.out.println(userDataManager.addUser(phoneNumber, userName, password, userRole));
     }
 
     private void signIn(UserRole userRole) {
@@ -68,5 +68,4 @@ public class LoginMenu {
             }
         }
     }
-
 }

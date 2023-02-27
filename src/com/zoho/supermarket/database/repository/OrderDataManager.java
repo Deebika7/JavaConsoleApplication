@@ -25,21 +25,20 @@ public class OrderDataManager implements CustomerOrderManager, AdminOrderManager
     }
 
     @Override
-    public String addToCart(String productName, int qty) {
+    public String addToCart(String phoneNumber,String productName, int qty) {
         Product product =  productDatabase.getProduct(productName);
-        return orderDatabase.addToCart(productName, qty, product);
+        return orderDatabase.addToCart(phoneNumber,productName, qty, product);
     }
 
-    public List<Cart> getCart() {
-        return orderDatabase.getCart();
+    public List<Cart> getCart(String phoneNumber) {
+        return orderDatabase.getCart(phoneNumber);
     }
 
-    public List<String> getCartProducts(){
+    public List<String> getCartProducts(String phoneNumber){
         double totalAmount=0;
-        List<Cart> cart=getCart();
+        List<Cart> cart=getCart(phoneNumber);
         List<String> cartProducts=new ArrayList<>();
         if(ValidationUtil.isListValid(cart)) {
-            cartProducts.add("\n");
             cartProducts.add("========================================================================================================================================");
             cartProducts.add("Product Name\t|\tQuantity\t|\tPrice\t|\tTotal Amount\t\t|\t\tDiscount Percentage\t\t|\t\tTotal Amount After Discount");
             cartProducts.add("========================================================================================================================================");
@@ -61,18 +60,19 @@ public class OrderDataManager implements CustomerOrderManager, AdminOrderManager
         }
         return cartProducts;
     }
+
+    @Override
+    public void clearCart(String phoneNumber) {
+        orderDatabase.clearCart(phoneNumber);
+    }
+
     public double calculatePrice(double productPrice, double discountPercentage) {
         return productPrice - (productPrice * (discountPercentage / 100));
     }
 
     @Override
-    public void clearCart() {
-        orderDatabase.clearCart();
-    }
-
-    @Override
     public void addToOrders(Customer customer) {
-        orderDatabase.addToOrders(customer, getCartProducts());
+        orderDatabase.addToOrders(customer, getCartProducts(customer.getPhoneNumber()));
     }
     public List<Order> getAllOrders(){
         return orderDatabase.getOrders();

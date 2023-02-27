@@ -13,26 +13,22 @@ public class Customer extends User {
     private final CustomerOrderManager customerOrderManager;
 
     public Customer(String phoneNumber,String userName, String password, UserRole customer,
-                    CustomerProductManager customerProductManager, CustomerOrderManager customerOrderManager
-                    ) {
+                    CustomerProductManager customerProductManager, CustomerOrderManager customerOrderManager) {
         super(phoneNumber,userName, password, customer);
         this.customerProductManager = customerProductManager;
         this.customerOrderManager = customerOrderManager;
     }
-    public void logout(){
-        customerOrderManager.clearCart();
-    }
 
     public String addToCart(String productName, int quantity){
-       return customerOrderManager.addToCart(productName,quantity);
+       return customerOrderManager.addToCart(this.getPhoneNumber(),productName,quantity);
     }
     public List<String> getCartProducts(){
-        return  customerOrderManager.getCartProducts();
+        return  customerOrderManager.getCartProducts(this.getPhoneNumber());
     }
-    public String placeOrder(Customer customer){
-        String message= customerProductManager.placeOrder();
-        customerOrderManager.addToOrders(customer);
-        customerOrderManager.clearCart();
+    public String placeOrder(){
+        String message= customerProductManager.placeOrder(this.getPhoneNumber());
+        customerOrderManager.addToOrders(this);
+        customerOrderManager.clearCart(this.getPhoneNumber());
         return message;
     }
     public List<String> getDiscounts(){
@@ -48,6 +44,4 @@ public class Customer extends User {
         }
         return deepCopyOfProducts;
     }
-
-
 }

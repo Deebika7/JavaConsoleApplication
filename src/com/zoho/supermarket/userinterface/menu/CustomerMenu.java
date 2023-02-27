@@ -40,11 +40,10 @@ public class CustomerMenu {
 
     private void logout() {
         System.out.println("Thank You!");
-        customer.logout();
     }
 
     private void placeOrder() {
-        System.out.println(customer.placeOrder(customer));
+        System.out.println(customer.placeOrder());
     }
 
     private void getCart() {
