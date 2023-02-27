@@ -103,7 +103,7 @@ public class CustomerMenu {
         System.out.println("Enter Product Name: ");
         String productName=ValidationUtil.getValidStringInput();
         System.out.println("Enter Quantity: ");
-        int quantity=ValidationUtil.getValidProductQtyInput();
+        int quantity=ValidationUtil.getValidProductQuantityInput();
         System.out.println(customer.addToCart(productName,quantity));
     }
 }

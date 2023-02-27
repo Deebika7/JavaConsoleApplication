@@ -23,21 +23,23 @@ public class ValidationUtil {
         String input;
         while (true) {
             input = sc.nextLine();
-            if (input.matches("^[0-9]+")) {
+            if (input.matches("^[0-9 ]+")) {
+                input=input.strip();
                 return Integer.parseInt(input);
             }
             System.err.println("Invalid input Try again!");
         }
     }
 
-    public static int getValidProductQtyInput() {
+    public static int getValidProductQuantityInput() {
         String input;
         while (true) {
             input = sc.nextLine();
-            if (!input.matches("^[0-9]+")) {
+            if (!input.matches("^[0-9 ]+")) {
                 System.err.println("Invalid input Try again!");
                 continue;
             }
+            input=input.strip();
             try {
                 if (Integer.parseInt(input) > 0) {
                     return Integer.parseInt(input);

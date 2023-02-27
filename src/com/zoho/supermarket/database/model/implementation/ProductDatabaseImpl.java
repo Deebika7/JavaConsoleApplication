@@ -75,11 +75,13 @@ public class ProductDatabaseImpl implements ProductDatabase {
     @Override
     public List<String> getDiscounts() {
         List<String> discounts = new ArrayList<>();
+        discounts.add("=====================================================================================");
             discounts.add("Discount ID\t\tProduct Name\t\tDiscount Percentage");
             for (Map.Entry<Product, Discount> discountEntryKey : productDiscounts.entrySet()) {
                 discounts.add(discountEntryKey.getValue().getDiscountID() + "\t\t\t" +
                         discountEntryKey.getKey().getProductName() + "\t\t\t" + discountEntryKey.getValue().getDiscountPercentage());
             }
+        discounts.add("=====================================================================================");
         return discounts;
     }
     public Product getProduct(String productName){

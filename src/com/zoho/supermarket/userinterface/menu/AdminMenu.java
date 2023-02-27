@@ -53,7 +53,7 @@ public class AdminMenu {
             System.out.println("Enter Product Name: ");
             String productName = ValidationUtil.getValidStringInput();
             System.out.println("Enter Quantity: ");
-            int quantity = ValidationUtil.getValidProductQtyInput();
+            int quantity = ValidationUtil.getValidProductQuantityInput();
             System.out.println("Enter Unit Price: ");
             double unitPrice = ValidationUtil.getValidPriceInput();
             System.out.println(admin.add(new Random().nextInt(1000, 9999), productName, quantity, unitPrice, productCategory));
