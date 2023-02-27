@@ -12,10 +12,10 @@ public class Customer extends User {
     private final CustomerProductManager customerProductManager;
     private final CustomerOrderManager customerOrderManager;
 
-    public Customer(String userName, String password, UserRole customer,
+    public Customer(String phoneNumber,String userName, String password, UserRole customer,
                     CustomerProductManager customerProductManager, CustomerOrderManager customerOrderManager
                     ) {
-        super(userName, password, customer);
+        super(phoneNumber,userName, password, customer);
         this.customerProductManager = customerProductManager;
         this.customerOrderManager = customerOrderManager;
     }

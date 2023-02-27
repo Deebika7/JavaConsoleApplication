@@ -17,8 +17,8 @@ public class Admin extends User {
     private final AdminProductManager adminProductManager;
     private final AdminOrderManager adminOrderManager;
 
-    public Admin(String userName, String password, UserRole admin, AdminProductManager adminProductManager,AdminOrderManager adminOrderManager) {
-        super(userName, password, admin);
+    public Admin(String phoneNumber,String userName, String password, UserRole admin, AdminProductManager adminProductManager,AdminOrderManager adminOrderManager) {
+        super(phoneNumber,userName, password, admin);
         this.adminProductManager = adminProductManager;
         this.adminOrderManager=adminOrderManager;
     }
@@ -53,11 +53,13 @@ public class Admin extends User {
         }
         return deepCopyOfProducts;
     }
+
     public List<Object> getAllOrders(){
         List<Object> orders=new ArrayList<>();
         List<Order> allOrders=adminOrderManager.getAllOrders();
         if(ValidationUtil.isListValid(allOrders)) {
             for (Order order : allOrders) {
+                orders.add("Customer Phone Number: "+order.getCustomer().getPhoneNumber()+"\n");
                 orders.add("Customer Name: " + order.getCustomer().getUserName() + "\n");
                 orders.addAll(order.getCart());
             }

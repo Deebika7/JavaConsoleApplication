@@ -28,10 +28,10 @@ public class UserDatabaseImpl implements UserDatabase {
 
     public void addUser(String phoneNumber, String userName, String password, UserRole userRole) {
         if (userRole.equals(UserRole.ADMIN)) {
-            users.put(phoneNumber, (new Admin(userName, password, userRole, ManagerFactory.getProductDataManager(),
+            users.put(phoneNumber, (new Admin(phoneNumber,userName, password, userRole, ManagerFactory.getProductDataManager(),
                     ManagerFactory.getOrderDataManager())));
         } else {
-            users.put(phoneNumber, (new Customer(userName, password, userRole, ManagerFactory.getProductDataManager(),
+            users.put(phoneNumber, (new Customer(phoneNumber,userName, password, userRole, ManagerFactory.getProductDataManager(),
                     ManagerFactory.getOrderDataManager())));
         }
     }

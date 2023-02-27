@@ -6,21 +6,21 @@ import com.zoho.supermarket.core.model.product.Order;
 import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.model.user.Customer;
 import com.zoho.supermarket.database.model.OrderDatabase;
-import java.util.ArrayList;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class OrderDatabaseImpl implements OrderDatabase {
-   private final List<Cart> cart = new ArrayList<>();
-//    private final Map<String,List<Cart>> cart=new HashMap<>();
-    private static OrderDatabaseImpl Instance=null;
-    private OrderDatabaseImpl(){}
-    private final List<Order> orders=new ArrayList<>();
-    public static OrderDatabaseImpl getInstance(){
-        if(Instance ==null){
-            Instance= new OrderDatabaseImpl();
+    private final List<Cart> cart = new ArrayList<>();
+    //    private final Map<String,List<Cart>> cart=new HashMap<>();
+    private static OrderDatabaseImpl Instance = null;
+    private final List<Order> orders = new ArrayList<>();
+    private OrderDatabaseImpl() {
+    }
+
+    public static OrderDatabaseImpl getInstance() {
+        if (Instance == null) {
+            Instance = new OrderDatabaseImpl();
         }
         return Instance;
     }
@@ -36,16 +36,14 @@ public class OrderDatabaseImpl implements OrderDatabase {
                 if (product.getQuantity() >= productFromCart.getQty() + quantity) {
                     productFromCart.setQty(quantity + productFromCart.getQty());
                     return Message.PRODUCT_ADDED;
-                }
-                else {
+                } else {
                     return Message.OUT_OF_STOCK;
                 }
             }
             if (product.getQuantity() >= quantity) {
                 cart.add(new Cart(quantity, product));
                 return Message.PRODUCT_ADDED;
-            }
-            else {
+            } else {
                 return Message.OUT_OF_STOCK;
             }
         }
@@ -59,7 +57,7 @@ public class OrderDatabaseImpl implements OrderDatabase {
 
     @Override
     public void addToOrders(Customer customer, List<String> bill) {
-        orders.add(new Order(customer,bill));
+        orders.add(new Order(customer, bill));
     }
 
     private Cart getProductFromCart(String productName) {
@@ -71,7 +69,7 @@ public class OrderDatabaseImpl implements OrderDatabase {
         return null;
     }
 
-    public List<Cart> getCart(){
+    public List<Cart> getCart() {
         return new ArrayList<>(cart);
     }
 }

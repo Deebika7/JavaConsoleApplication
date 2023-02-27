@@ -95,13 +95,13 @@ public class CustomerMenu {
         ProductCategory productCategory = getProductCategory();
         List<Product> products = customer.getProducts();
         if(ValidationUtil.isListValid(products)) {
-            System.out.println("======================="+productCategory.name()+"====================================");
+            System.out.println("==========================\t"+productCategory.name()+"\t=================================================");
             System.out.println("=====================================================================================");
-            System.out.println("Product ID\t\tProduct Name\t\tunit price\t\tAvailable quantity");
+            System.out.println("Product ID\t|\tProduct Name\t|\tunit price\t|\tAvailable quantity");
             System.out.println("=====================================================================================");
             products.stream().filter(product -> product.getCategory().equals(productCategory)).
-                    forEach(product -> System.out.println(product.getProductID() + "\t\t" + product.getProductName()
-                            + "\t\t\t\t" + product.getUnitPrice() + "\t\t\t" + product.getQuantity()));
+                    forEach(product -> System.out.println(product.getProductID() + "\t\t\t" + product.getProductName()
+                            + "\t\t\t\t\t" + product.getUnitPrice() + "\t\t\t\t" + product.getQuantity()));
             System.out.println("=====================================================================================");
         }
         else {
