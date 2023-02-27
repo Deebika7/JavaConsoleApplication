@@ -8,10 +8,13 @@ import com.zoho.supermarket.core.model.user.Customer;
 import com.zoho.supermarket.database.model.OrderDatabase;
 import java.util.ArrayList;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class OrderDatabaseImpl implements OrderDatabase {
-    private final List<Cart> cart = new ArrayList<>();
+   private final List<Cart> cart = new ArrayList<>();
+//    private final Map<String,List<Cart>> cart=new HashMap<>();
     private static OrderDatabaseImpl Instance=null;
     private OrderDatabaseImpl(){}
     private final List<Order> orders=new ArrayList<>();

@@ -13,7 +13,6 @@ import java.util.Map;
 
 
 public class UserDatabaseImpl implements UserDatabase {
-    //private final List<User> users=new ArrayList<>();
     private final Map<String, User> users = new HashMap<>();
     private static UserDatabaseImpl Instance = null;
 
