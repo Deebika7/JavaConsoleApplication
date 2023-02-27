@@ -11,7 +11,6 @@ import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 import java.util.Scanner;
 
-
 public class LoginMenu {
     private final UserDataManager userDataManager;
 

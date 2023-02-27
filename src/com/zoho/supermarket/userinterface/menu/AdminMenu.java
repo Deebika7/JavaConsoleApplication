@@ -73,12 +73,14 @@ public class AdminMenu {
         System.out.println("Select Category to display items:");
         ProductCategory productCategory = getProductCategory();
         List<Product> products = admin.getProducts();
+        System.out.println("=====================================================================================");
         System.out.println("======================="+productCategory.name()+"====================================");
         System.out.println("Product ID\t\tProduct Name\t\tunit price\t\tAvailable quantity");
         if(ValidationUtil.isListValid(products)) {
             products.stream().filter(product -> product.getCategory().equals(productCategory)).
                     forEach(product -> System.out.println(product.getProductID() + "\t\t" + product.getProductName()
                             + "\t\t\t\t" + product.getUnitPrice() + "\t\t\t" + product.getQuantity()));
+        System.out.println("=====================================================================================");
         }
         else {
             System.out.println(Message.NO_PRODUCT_EXIST);
@@ -92,8 +94,10 @@ public class AdminMenu {
 
     private void viewDiscounts() {
         if(!admin.getDiscounts().isEmpty()){
+            System.out.println("=====================================================================================");
             List<String> discounts=admin.getDiscounts();
             discounts.forEach(System.out::println);
+            System.out.println("=====================================================================================");
         }
         else {
             System.out.println(Message.NO_DISCOUNT_EXIST);
@@ -101,6 +105,7 @@ public class AdminMenu {
     }
 
     private void removeDiscount() {
+        viewDiscounts();
         System.out.println("Enter Discount ID : ");
         int discountID=ValidationUtil.getValidIntegerInput();
         System.out.println(admin.removeDiscount(discountID));

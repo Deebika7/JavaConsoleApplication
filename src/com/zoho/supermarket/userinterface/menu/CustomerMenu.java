@@ -51,13 +51,17 @@ public class CustomerMenu {
 
     private void generateBill() {
         List<String> bill=customer.getBill();
+        System.out.println("=====================================================================================");
         bill.forEach(System.out::println);
+        System.out.println("=====================================================================================");
     }
 
     private void viewDiscounts() {
         if(!customer.getDiscounts().isEmpty()){
             List<String> discounts=customer.getDiscounts();
+            System.out.println("=====================================================================================");
             discounts.forEach(System.out::println);
+            System.out.println("=====================================================================================");
         }
         else {
             System.out.println(Message.NO_DISCOUNT_EXIST);
@@ -87,11 +91,13 @@ public class CustomerMenu {
         System.out.println("Select Category to display items:");
         ProductCategory productCategory = getProductCategory();
         List<Product> products = customer.getProducts();
+        System.out.println("=====================================================================================");
         System.out.println("======================="+productCategory.name()+"====================================");
         System.out.println("Product ID\t\tProduct Name\t\tUnit price\t\tAvailable quantity");
         products.stream().filter(product -> product.getCategory().equals(productCategory)).
                 forEach(product -> System.out.println(product.getProductID() + "\t\t" + product.getProductName()
                         +"\t\t\t\t" + product.getUnitPrice() + "\t\t\t" + product.getQuantity()));
+        System.out.println("=====================================================================================");
     }
     private void addToCart() {
         System.out.println("Enter Product Name: ");

@@ -6,6 +6,7 @@ public class Product {
     private int quantity;
     private final double unitPrice;
     private final ProductCategory category;
+
     public Product(int productID, String productName, int quantity, double unitPrice, ProductCategory category) {
         this.productID = productID;
         this.productName = productName;
@@ -13,9 +14,15 @@ public class Product {
         this.unitPrice = unitPrice;
         this.category = category;
     }
+
+    public Product getCopyOfProduct(Product product) {
+        return new Product(product.getProductID(), product.getProductName(), product.getQuantity(), product.getUnitPrice(), product.getCategory());
+    }
+
     public int getProductID() {
         return productID;
     }
+
     public String getProductName() {
         return productName;
     }
@@ -31,15 +38,9 @@ public class Product {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
     public ProductCategory getCategory() {
         return category;
     }
-    @Override
-    public Object clone() {
-        try {
-            return (Product) super.clone();
-        } catch (CloneNotSupportedException e) {
-            return new Product(this.productID,this.productName,this.quantity,this.unitPrice,this.category);
-        }
-    }
+
 }

@@ -48,7 +48,7 @@ public class Admin extends User {
         List<Product> deepCopyOfProducts = new ArrayList<>();
         if (ValidationUtil.isListValid(products)) {
             for (Product product : products) {
-                deepCopyOfProducts.add((Product) product.clone());
+                deepCopyOfProducts.add(product.getCopyOfProduct(product));
             }
         }
         return deepCopyOfProducts;

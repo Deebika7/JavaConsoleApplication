@@ -11,14 +11,15 @@ public class ValidationUtil {
         String input;
         while (true) {
             input = sc.nextLine();
-            if (input.matches("^[a-zA-Z0-9]+( [a-zA-Z0-9.]+)*$")) {
+            if (input.matches("[a-zA-Z0-9 ]+( [a-zA-Z0-9.]+)*$")) {
+                input=input.strip();
                 return input;
             }
             System.err.println("Invalid input Try again!");
         }
     }
 
-    public static int getValidIntegerInput() throws NumberFormatException{
+    public static int getValidIntegerInput() throws NumberFormatException {
         String input;
         while (true) {
             input = sc.nextLine();
@@ -28,39 +29,39 @@ public class ValidationUtil {
             System.err.println("Invalid input Try again!");
         }
     }
-    public static int getValidProductQtyInput(){
+
+    public static int getValidProductQtyInput() {
         String input;
         while (true) {
             input = sc.nextLine();
             if (!input.matches("^[0-9]+")) {
-                System.out.println("Invalid input Try again!");
+                System.err.println("Invalid input Try again!");
                 continue;
             }
             try {
-                if(Integer.parseInt(input)>0) {
+                if (Integer.parseInt(input) > 0) {
                     return Integer.parseInt(input);
                 }
-            }
-            catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.err.println("Invalid input Try again!");
             }
+            System.err.println("Invalid input Try again!");
         }
     }
 
-    public static double getValidPriceInput() throws NumberFormatException{
+    public static double getValidPriceInput() throws NumberFormatException {
         String input;
         while (true) {
             input = sc.nextLine();
-            if (!input.matches("^[0-9]+.+[0-9]+") && !input.matches("^[0-9]+")&&!input.matches("^.+[0-9]")) {
+            if (!input.matches("^[0-9]+.+[0-9]+") && !input.matches("^[0-9]+") && !input.matches("^.+[0-9]")) {
                 System.err.println("Invalid input Try again!");
                 continue;
             }
             try {
-                if (!(Double.parseDouble(input) == 0)) {
+                if (!(Double.parseDouble(input) <= 0)) {
                     return Double.parseDouble(input);
                 }
-            }
-            catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.err.println("Invalid input Try again!");
             }
             System.err.println("Invalid input Try again!");
@@ -71,11 +72,11 @@ public class ValidationUtil {
         String input;
         while (true) {
             input = sc.nextLine();
-            if (!input.matches("^[0-9]+.+[0-9]") && !input.matches("^[0-9]+")&&!input.matches("^.+[0-9]")) {
+            if (!input.matches("^[0-9]+.+[0-9]") && !input.matches("^[0-9]+") && !input.matches("^.+[0-9]")) {
                 System.err.println("Invalid input Try again!");
                 continue;
             }
-            if (!(Double.parseDouble(input) == 0) && !(Double.parseDouble(input) >100)) {
+            if (!(Double.parseDouble(input) <0) && !(Double.parseDouble(input) >100)) {
                 return Double.parseDouble(input);
             }
             System.err.println("Invalid input Try again!");
@@ -98,11 +99,11 @@ public class ValidationUtil {
         }
     }
 
-    public static String getValidUserName(){
+    public static String getValidUserName() {
         String input;
-        while (true){
-            input=sc.nextLine();
-            if(input.matches("([a-zA-Z',.-]+( [a-zA-Z',.-]+)*){2,30}")){
+        while (true) {
+            input = sc.nextLine();
+            if (input.matches("([0-9a-zA-Z',.]+( [0-9a-zA-Z',.-]+)*){2,30}")) {
                 return input;
             }
             System.err.println("Invalid input Try again!");
@@ -121,7 +122,10 @@ public class ValidationUtil {
         }
         return input;
     }
-    public static boolean isInstanceValid(Object instance) {return instance != null;}
+
+    public static boolean isInstanceValid(Object instance) {
+        return instance != null;
+    }
 
     public static boolean isListValid(List list) {
         return !(list == null || list.isEmpty());
@@ -130,7 +134,7 @@ public class ValidationUtil {
     public static String getValidConfirmPassword(String password) {
         String input;
         while (true) {
-            input=sc.nextLine();
+            input = sc.nextLine();
             if (password.equals(input)) {
                 return input;
             } else {
