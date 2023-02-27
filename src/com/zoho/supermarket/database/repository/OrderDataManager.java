@@ -9,6 +9,7 @@ import com.zoho.supermarket.core.respository.order.AdminOrderManager;
 import com.zoho.supermarket.core.respository.order.CustomerOrderManager;
 import com.zoho.supermarket.database.model.OrderDatabase;
 import com.zoho.supermarket.database.model.ProductDatabase;
+import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,40 +34,37 @@ public class OrderDataManager implements CustomerOrderManager, AdminOrderManager
         return orderDatabase.getCart();
     }
 
-    public List<String> getBill(){
+    public List<String> getCartProducts(){
         double totalAmount=0;
         List<Cart> cart=getCart();
-        List<String> bill=new ArrayList<>();
-
-        bill.add("Product Name\t\tQuantity\t\tPrice\t\tTotal Amount\t\t\tDiscount Percentage\t\t\tTotal Amount After Discount");
-        for(Cart product:cart){
-            double discountPercentage=productDatabase.getDiscountPercentage(product.getProduct().getProductName());
-            double price;
-            if(discountPercentage!=0){
-                price=calculatePrice(product.getProduct().getUnitPrice(),discountPercentage);
+        List<String> cartProducts=new ArrayList<>();
+        if(ValidationUtil.isListValid(cart)) {
+            cartProducts.add("\n");
+            cartProducts.add("========================================================================================================================================");
+            cartProducts.add("Product Name\t|\tQuantity\t|\tPrice\t|\tTotal Amount\t\t|\t\tDiscount Percentage\t\t|\t\tTotal Amount After Discount");
+            cartProducts.add("========================================================================================================================================");
+            for (Cart product : cart) {
+                double discountPercentage = productDatabase.getDiscountPercentage(product.getProduct().getProductName());
+                double price;
+                if (discountPercentage != 0) {
+                    price = calculatePrice(product.getProduct().getUnitPrice(), discountPercentage);
+                } else {
+                    price = product.getQty() * product.getProduct().getUnitPrice();
+                }
+                cartProducts.add(product.getProduct().getProductName() + "\t\t\t\t" + product.getQty() +
+                        "\t\t\t\t" + product.getProduct().getUnitPrice() + "\t\t\t\t" + product.getQty() * product.getProduct().getUnitPrice() + "\t\t\t\t\t" + discountPercentage + "\t\t\t\t\t\t\t" + product.getQty() * price);
+                totalAmount += product.getQty() * price;
             }
-            else {
-                price=product.getQty()*product.getProduct().getUnitPrice();
-            }
-            bill.add(product.getProduct().getProductName()+"\t\t\t\t"+product.getQty()+
-                    "\t\t\t\t"+product.getProduct().getUnitPrice()+"\t\t\t\t"+product.getQty()*product.getProduct().getUnitPrice()+"\t\t\t\t"+discountPercentage+"\t\t\t\t\t"+product.getQty()*price);
-            totalAmount+=product.getQty()*price;
+            cartProducts.add("\n");
+            cartProducts.add("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tTotal Amount: " + totalAmount);
+            cartProducts.add("========================================================================================================================================");
         }
-        bill.add("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tTotal Amount"+totalAmount);
-        return bill;
+        return cartProducts;
     }
     public double calculatePrice(double productPrice, double discountPercentage) {
         return productPrice - (productPrice * (discountPercentage / 100));
     }
 
-    public List<String> getCartProducts() {
-        List<Cart> cart=getCart();
-        List<String> cartProducts=new ArrayList<>();
-        cartProducts.add("Product Name\t\tQuantity\t\tPrice");
-        cart.forEach(cartProduct->cartProducts.add(cartProduct.getProduct().getProductName()
-                +"\t\t\t\t"+cartProduct.getQty()+"\t\t\t"+cartProduct.getProduct().getUnitPrice()));
-        return cartProducts;
-    }
     @Override
     public void clearCart() {
         orderDatabase.clearCart();
@@ -74,7 +72,7 @@ public class OrderDataManager implements CustomerOrderManager, AdminOrderManager
 
     @Override
     public void addToOrders(Customer customer) {
-        orderDatabase.addToOrders(customer,getBill());
+        orderDatabase.addToOrders(customer, getCartProducts());
     }
     public List<Order> getAllOrders(){
         return orderDatabase.getOrders();

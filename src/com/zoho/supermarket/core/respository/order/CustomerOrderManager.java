@@ -6,11 +6,10 @@ import com.zoho.supermarket.core.model.user.Customer;
 import java.util.List;
 
 public interface CustomerOrderManager {
-    List<String> getCartProducts();
 
     String addToCart(String productName, int quantity);
 
-    List<String> getBill();
+    List<String> getCartProducts();
 
     void clearCart();
 

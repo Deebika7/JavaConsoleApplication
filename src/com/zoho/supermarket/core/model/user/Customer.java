@@ -22,14 +22,12 @@ public class Customer extends User {
     public void logout(){
         customerOrderManager.clearCart();
     }
-    public List<String> getCartProducts(){
-        return customerOrderManager.getCartProducts();
-    }
+
     public String addToCart(String productName, int quantity){
        return customerOrderManager.addToCart(productName,quantity);
     }
-    public List<String> getBill(){
-        return  customerOrderManager.getBill();
+    public List<String> getCartProducts(){
+        return  customerOrderManager.getCartProducts();
     }
     public String placeOrder(Customer customer){
         String message= customerProductManager.placeOrder();
