@@ -20,7 +20,7 @@ public class LoginMenu {
 
     public void printLoginMenu() {
         while (true) {
-            System.out.println("How would you like to login as?");
+            System.out.println("How would you like to login ?");
             for (LoginOptions option : LoginOptions.values()) {
                 System.out.println(option.ordinal() + 1 + ". " + option.name());
             }
@@ -39,24 +39,26 @@ public class LoginMenu {
     }
 
     private void signUp(UserRole userRole) {
+        System.out.println("Enter Phone Number:");
+        String phoneNumber=ValidationUtil.getValidPhoneNumber();
         System.out.println("Enter User Name:");
         String userName = ValidationUtil.getValidUserName();
         System.out.println("Enter Password:");
         String password = ValidationUtil.getValidPassword();
         System.out.println("Enter Confirm Password");
         String confirmPassword = ValidationUtil.getValidConfirmPassword(password);
-        System.out.println(userDataManager.addUser(userName, password, userRole));
+        System.out.println(userDataManager.addUser(phoneNumber,userName, password, userRole));
     }
 
     private void signIn(UserRole userRole) {
-        System.out.println("Enter User Name:");
-        String userName = ValidationUtil.getValidStringInput();
+        System.out.println("Enter Phone Number:");
+        String phoneNumber = ValidationUtil.getValidPhoneNumber();
         System.out.println("Enter Password:");
         String password = new Scanner(System.in).nextLine();
-        String signInStatus = userDataManager.isValidUser(userName, password, userRole);
+        String signInStatus = userDataManager.isValidUser(phoneNumber, password);
         System.out.println(signInStatus);
         if (signInStatus.equals(Message.LOGIN_SUCCESS)) {
-            User user = userDataManager.getUser(userRole, userName);
+            User user = userDataManager.getUser(phoneNumber);
             if (user instanceof Customer) {
                 CustomerMenu customerMenu = new CustomerMenu((Customer) user);
                 customerMenu.printCustomerMenu();

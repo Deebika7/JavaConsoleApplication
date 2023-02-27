@@ -14,22 +14,21 @@ public class UserDataManager implements UserDetailsManager {
     public UserDataManager(UserDatabase userDatabase) {
         this.userDatabase = userDatabase;
     }
-    @Override
-    public User getUser(UserRole userRole, String userName) {
-        return userDatabase.getUser(userRole,userName);
+    public User getUser(String phoneNumber) {
+        return userDatabase.getUser(phoneNumber);
     }
-    public String addUser(String userName, String password, UserRole userRole){
-        if(ValidationUtil.isInstanceValid(getUser(userRole,userName))){
+    public String addUser(String phoneNumber,String userName, String password, UserRole userRole){
+        if(ValidationUtil.isInstanceValid(getUser(phoneNumber))){
             return Message.USER_EXIST;
         }
         else {
-            userDatabase.addUser(userName,password,userRole);
+            userDatabase.addUser(phoneNumber,userName,password,userRole);
             return  Message.REGISTER_SUCCESS;
         }
     }
 
-    public String isValidUser(String userName,String password,UserRole userRole){
-        User user=getUser(userRole,userName);
+    public String isValidUser(String phoneNumber,String password){
+        User user=getUser(phoneNumber);
         if(user!=null){
             if(user.getPassword().equals(password)){
                 return Message.LOGIN_SUCCESS;

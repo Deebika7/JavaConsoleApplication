@@ -65,7 +65,6 @@ public class CustomerMenu {
             }
         }
         else {
-
             System.out.println(Message.EMPTY_CART);
         }
     }
@@ -85,7 +84,7 @@ public class CustomerMenu {
         }
     }
 
-    ProductCategory getProductCategory() {
+    private ProductCategory getProductCategory() {
         int category = ValidationUtil.getValidEnumInput(ProductCategory.values().length);
         return ProductCategory.values()[category - 1];
     }

@@ -105,7 +105,7 @@ public class ValidationUtil {
         String input;
         while (true) {
             input = sc.nextLine();
-            if (input.matches("([0-9a-zA-Z',.]+( [0-9a-zA-Z',.-]+)*){2,30}")) {
+            if (input.matches("([a-zA-Z]+( [a-zA-Z]+)*){2,30}")) {
                 return input;
             }
             System.err.println("Invalid input Try again!");
@@ -118,7 +118,7 @@ public class ValidationUtil {
             System.err.println("Invalid Password Try again!");
             System.out.println("Note: The password should contain a lower case character, upper case character," +
                     "\n it must start with an alphabet" +
-                    "\n Atleast one digit, a total of 8 - 20 character length, and special characters like ['@#$%^&-+=()']");
+                    "\n At least one digit, a total of 8 - 20 character length, and special characters like ['@#$%^&-+=()']");
             System.out.println("Enter your password correctly: ");
             input = new Scanner(System.in).nextLine();
         }
@@ -143,7 +143,17 @@ public class ValidationUtil {
                 System.err.println("password mismatched Try again!!");
             }
         }
-
+    }
+    public static String getValidPhoneNumber(){
+        String input;
+        while (true){
+            input= sc.nextLine();
+            if (input.matches("^[0-9]{10}")){
+                input=input.strip();
+                return input;
+            }
+            System.out.println("Invalid Input try again!");
+        }
     }
 }
 

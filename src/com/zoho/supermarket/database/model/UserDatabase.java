@@ -6,7 +6,7 @@ import com.zoho.supermarket.core.model.user.UserRole;
 
 
 public interface UserDatabase {
-    void addUser(String userName, String password, UserRole userRole);
-    User getUser(UserRole userRole,String userName) ;
+    void addUser(String phoneNumber,String userName, String password, UserRole userRole);
+    User getUser(String phoneNumber) ;
 
 }
