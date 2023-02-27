@@ -148,7 +148,7 @@ public class ValidationUtil {
         String input;
         while (true){
             input= sc.nextLine();
-            if (input.matches("^[0-9]{10}")){
+            if (input.matches("(0/91)?[7-9][0-9]{9}")){
                 input=input.strip();
                 return input;
             }
