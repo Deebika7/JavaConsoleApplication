@@ -102,7 +102,7 @@ public class ProductDatabaseImpl implements ProductDatabase {
     public void updateProduct(List<Cart> cart) {
         for (Cart cartProduct: cart){
             Product product=getProduct(cartProduct.getProduct().getProductName());
-            product.setQuantity(product.getQuantity()-cartProduct.getQty());
+            product.setQuantity(product.getQuantity()-cartProduct.getQuantity());
         }
     }
 

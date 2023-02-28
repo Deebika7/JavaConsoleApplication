@@ -14,7 +14,7 @@ public class Cart {
         return product;
     }
 
-    public int getQty() {
+    public int getQuantity() {
         return qty;
     }
 

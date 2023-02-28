@@ -65,6 +65,7 @@ public class ValidationUtil {
                 }
             } catch (NumberFormatException e) {
                 System.err.println("Invalid input Try again!");
+                continue;
             }
             System.err.println("Invalid input Try again!");
         }
@@ -93,9 +94,15 @@ public class ValidationUtil {
                 System.err.println("Invalid input Try again!");
                 continue;
             }
+            try{
             int validValue = Integer.parseInt(input);
             if (validValue > 0 && validValue <= maxValue) {
                 return validValue;
+            }
+            }
+            catch (NumberFormatException e) {
+                System.err.println("Invalid input Try again!");
+                continue;
             }
             System.err.println("Invalid input Try again!");
         }

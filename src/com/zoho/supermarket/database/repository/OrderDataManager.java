@@ -48,11 +48,11 @@ public class OrderDataManager implements CustomerOrderManager, AdminOrderManager
                 if (discountPercentage != 0) {
                     price = calculatePrice(product.getProduct().getUnitPrice(), discountPercentage);
                 } else {
-                    price = product.getQty() * product.getProduct().getUnitPrice();
+                    price = product.getQuantity() * product.getProduct().getUnitPrice();
                 }
-                cartProducts.add(product.getProduct().getProductName() + "\t\t\t\t" + product.getQty() +
-                        "\t\t\t\t" + product.getProduct().getUnitPrice() + "\t\t\t\t" + product.getQty() * product.getProduct().getUnitPrice() + "\t\t\t\t\t" + discountPercentage + "\t\t\t\t\t\t\t" + product.getQty() * price);
-                totalAmount += product.getQty() * price;
+                cartProducts.add(product.getProduct().getProductName() + "\t\t\t\t" + product.getQuantity() +
+                        "\t\t\t\t" + product.getProduct().getUnitPrice() + "\t\t\t\t" + product.getQuantity() * product.getProduct().getUnitPrice() + "\t\t\t\t\t" + discountPercentage + "\t\t\t\t\t\t\t" + product.getQuantity() * price);
+                totalAmount += product.getQuantity() * price;
             }
             cartProducts.add("\n");
             cartProducts.add("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tTotal Amount: " + totalAmount);
