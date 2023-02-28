@@ -27,7 +27,7 @@ public class ProductDatabaseImpl implements ProductDatabase {
         products.add(new Product(1111,"milk",12,12, ProductCategory.DAIRY));
         products.add(new Product(1234,"cheese",12,12, ProductCategory.DAIRY));
         products.add(new Product(1113,"butter",12,12, ProductCategory.DAIRY));
-        products.add(new Product(1231,"tomato",12,12, ProductCategory.SAUCE));
+        products.add(new Product(1231,"heinz",12,12, ProductCategory.SAUCE));
     }
 
     public List<Product> getProducts(){

@@ -12,7 +12,7 @@ public class ValidationUtil {
         while (true) {
             input = sc.nextLine();
             if (input.matches("[a-zA-Z0-9 ]+( [a-zA-Z0-9.]+)*$")) {
-                input=input.strip();
+                input = input.strip();
                 return input;
             }
             System.err.println("Invalid input Try again!");
@@ -24,7 +24,7 @@ public class ValidationUtil {
         while (true) {
             input = sc.nextLine();
             if (input.matches("^[0-9 ]+")) {
-                input=input.strip();
+                input = input.strip();
                 return Integer.parseInt(input);
             }
             System.err.println("Invalid input Try again!");
@@ -39,7 +39,7 @@ public class ValidationUtil {
                 System.err.println("Invalid input Try again!");
                 continue;
             }
-            input=input.strip();
+            input = input.strip();
             try {
                 if (Integer.parseInt(input) > 0) {
                     return Integer.parseInt(input);
@@ -79,7 +79,7 @@ public class ValidationUtil {
                 System.err.println("Invalid input Try again!");
                 continue;
             }
-            if (!(Double.parseDouble(input) <0) && !(Double.parseDouble(input) >100)) {
+            if (!(Double.parseDouble(input) < 0) && !(Double.parseDouble(input) > 100)) {
                 return Double.parseDouble(input);
             }
             System.err.println("Invalid input Try again!");
@@ -94,13 +94,12 @@ public class ValidationUtil {
                 System.err.println("Invalid input Try again!");
                 continue;
             }
-            try{
-            int validValue = Integer.parseInt(input);
-            if (validValue > 0 && validValue <= maxValue) {
-                return validValue;
-            }
-            }
-            catch (NumberFormatException e) {
+            try {
+                int validValue = Integer.parseInt(input);
+                if (validValue > 0 && validValue <= maxValue) {
+                    return validValue;
+                }
+            } catch (NumberFormatException e) {
                 System.err.println("Invalid input Try again!");
                 continue;
             }
@@ -151,12 +150,13 @@ public class ValidationUtil {
             }
         }
     }
-    public static String getValidPhoneNumber(){
+
+    public static String getValidPhoneNumber() {
         String input;
-        while (true){
-            input= sc.nextLine();
-            if (input.matches("(0/91)?[7-9][0-9]{9}")){
-                input=input.strip();
+        while (true) {
+            input = sc.nextLine();
+            if(input.matches("(0/91)?[7-9][0-9]{9}")) {
+                input = input.strip();
                 return input;
             }
             System.out.println("Invalid Input try again!");

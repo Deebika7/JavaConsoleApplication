@@ -7,7 +7,10 @@ import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.model.user.Customer;
 import com.zoho.supermarket.database.model.OrderDatabase;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class OrderDatabaseImpl implements OrderDatabase {
     private final Map<String, List<Cart>> carts = new HashMap<>();
@@ -80,18 +83,18 @@ public class OrderDatabaseImpl implements OrderDatabase {
     public List<Cart> getCart(String phoneNumber) {
         if (carts.containsKey(phoneNumber)) {
             List<Cart> cart = carts.get(phoneNumber);
-            List<Cart> outOfStock=new ArrayList<>();
-            for(Cart cartProduct:cart){
+            List<Cart> outOfStock = new ArrayList<>();
+            for (Cart cartProduct : cart) {
                 Product product = ProductDatabaseImpl.getInstance().getProduct(cartProduct.getProduct().getProductName());
                 if ((cartProduct.getQuantity() > product.getQuantity())) {
                     outOfStock.add(cartProduct);
                 }
             }
-            for (Cart product:outOfStock){
+            for (Cart product : outOfStock) {
                 cart.remove(product);
             }
             return cart;
         }
-            return null;
-        }
+        return null;
+    }
 }

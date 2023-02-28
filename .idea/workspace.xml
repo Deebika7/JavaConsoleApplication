@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3b7ac51c-cbb6-4686-8aab-87c605ac31b5" name="Changes" comment="testing done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/OrderDatabaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/OrderDatabaseImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/ProductDatabaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/ProductDatabaseImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/OrderDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/OrderDataManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/util/ValidationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/util/ValidationUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -392,7 +391,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677514172040</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="testing done">
+      <created>1677563295353</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1677563295353</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
