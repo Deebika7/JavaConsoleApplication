@@ -28,6 +28,7 @@ public class CustomerMenu {
             switch (option) {
                 case VIEW_PRODUCTS -> viewProducts();
                 case ADD_PRODUCT_TO_CART -> addToCart();
+                case REMOVE_PRODUCT_FROM_CART -> removeProductFromCart();
                 case VIEW_CART -> getCart();
                 case CHECK_DISCOUNT -> viewDiscounts();
                 case QUIT -> {
@@ -115,4 +116,10 @@ public class CustomerMenu {
         int quantity = ValidationUtil.getValidProductQuantityInput();
         System.out.println(customer.addToCart(productName, quantity));
     }
+    private void removeProductFromCart(){
+        System.out.println("Enter Product Name to remove:");
+        String productName=ValidationUtil.getValidStringInput();
+        System.out.println(customer.removeProductFromCart(productName));
+    }
+
 }

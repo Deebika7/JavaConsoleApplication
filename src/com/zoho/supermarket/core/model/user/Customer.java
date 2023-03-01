@@ -44,4 +44,7 @@ public class Customer extends User {
         }
         return deepCopyOfProducts;
     }
+    public String removeProductFromCart(String productName){
+        return customerOrderManager.removeProductFromCart(this.getPhoneNumber(),productName);
+    }
 }

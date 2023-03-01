@@ -11,7 +11,7 @@ public class ValidationUtil {
         String input;
         while (true) {
             input = sc.nextLine();
-            if (input.matches("[a-zA-Z0-9 ]+( [a-zA-Z0-9.]+)*$")) {
+            if (input.matches("[a-zA-Z0-9]+( [a-zA-Z0-9.]+)*$")) {
                 input = input.strip();
                 return input;
             }
@@ -19,11 +19,11 @@ public class ValidationUtil {
         }
     }
 
-    public static int getValidIntegerInput() throws NumberFormatException {
+    public static int getValidIntegerInput()  {
         String input;
         while (true) {
             input = sc.nextLine();
-            if (input.matches("^[0-9 ]+")) {
+            if (input.matches("^[0-9]+")) {
                 input = input.strip();
                 return Integer.parseInt(input);
             }

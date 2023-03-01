@@ -14,4 +14,5 @@ public interface OrderDatabase {
     void addToOrders(Customer customer, List<String> bill);
     List<Order> getOrders() ;
     void clearCart(String phoneNumber);
+    boolean removeProductFromCart(String phoneNumber,String productName);
 }

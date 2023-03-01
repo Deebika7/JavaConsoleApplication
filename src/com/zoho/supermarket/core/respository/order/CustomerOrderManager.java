@@ -10,6 +10,7 @@ public interface CustomerOrderManager {
     String addToCart(String phoneNumber,String productName, int quantity);
 
     List<String> getCartProducts(String phoneNumber);
+    String removeProductFromCart(String phoneNumber,String productName);
     void clearCart(String phoneNumber);
     void addToOrders(Customer customer);
 }

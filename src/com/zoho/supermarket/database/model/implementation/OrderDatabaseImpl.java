@@ -17,8 +17,7 @@ public class OrderDatabaseImpl implements OrderDatabase {
     private static OrderDatabaseImpl Instance = null;
     private final List<Order> orders = new ArrayList<>();
 
-    private OrderDatabaseImpl() {
-    }
+    private OrderDatabaseImpl() {}
 
     public static OrderDatabaseImpl getInstance() {
         if (Instance == null) {
@@ -38,6 +37,19 @@ public class OrderDatabaseImpl implements OrderDatabase {
     @Override
     public void clearCart(String phoneNumber) {
         carts.remove(phoneNumber, carts.get(phoneNumber));
+    }
+
+    @Override
+    public boolean removeProductFromCart(String phoneNumber,String productName) {
+        List<Cart> cart=getCart(phoneNumber);
+        if(!cart.isEmpty()) {
+            Cart cartProduct = getProductFromCart(productName, cart);
+            if(cartProduct!=null) {
+                cart.remove(cartProduct);
+                return true;
+            }
+        }
+        return false;
     }
 
     public String addToCart(String phoneNumber, String productName, int quantity, Product product) {
@@ -64,7 +76,6 @@ public class OrderDatabaseImpl implements OrderDatabase {
         }
         return Message.NO_PRODUCT_EXIST;
     }
-
 
     @Override
     public void addToOrders(Customer customer, List<String> bill) {

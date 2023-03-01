@@ -16,7 +16,8 @@ public class Product {
     }
 
     public Product getCopyOfProduct(Product product) {
-        return new Product(product.getProductID(), product.getProductName(), product.getQuantity(), product.getUnitPrice(), product.getCategory());
+        return new Product(product.getProductID(), product.getProductName(), product.getQuantity(),
+                product.getUnitPrice(), product.getCategory());
     }
 
     public int getProductID() {

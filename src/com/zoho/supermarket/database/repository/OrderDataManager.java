@@ -1,5 +1,6 @@
 package com.zoho.supermarket.database.repository;
 
+import com.zoho.supermarket.constants.Message;
 import com.zoho.supermarket.core.model.product.Cart;
 
 import com.zoho.supermarket.core.model.product.Order;
@@ -60,7 +61,12 @@ public class OrderDataManager implements CustomerOrderManager, AdminOrderManager
         }
         return cartProducts;
     }
-
+    public String removeProductFromCart(String phoneNumber,String productName){
+        if(orderDatabase.removeProductFromCart(phoneNumber,productName)){
+            return Message.PRODUCT_REMOVED;
+        }
+        return Message.NO_PRODUCT_EXIST;
+    }
     @Override
     public void clearCart(String phoneNumber) {
         orderDatabase.clearCart(phoneNumber);

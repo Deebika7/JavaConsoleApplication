@@ -13,9 +13,7 @@ public class ProductDatabaseImpl implements ProductDatabase {
     private final List<Product> products=new ArrayList<>();
     private final Map<Product, Discount> productDiscounts=new HashMap<>();
     private static  ProductDatabaseImpl Instance=null;
-    private ProductDatabaseImpl(){
-
-    }
+    private ProductDatabaseImpl(){}
     public static ProductDatabaseImpl getInstance(){
         if(Instance ==null){
             Instance= new ProductDatabaseImpl();
@@ -53,6 +51,7 @@ public class ProductDatabaseImpl implements ProductDatabase {
     }
     @Override
     public void addDiscount(Product product, Discount discount) {
+
         productDiscounts.put(getInstance(product),discount);
     }
     public boolean removeDiscount(int discountID) {
@@ -105,6 +104,5 @@ public class ProductDatabaseImpl implements ProductDatabase {
             product.setQuantity(product.getQuantity()-cartProduct.getQuantity());
         }
     }
-
 
 }
