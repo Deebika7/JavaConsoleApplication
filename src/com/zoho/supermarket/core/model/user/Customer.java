@@ -26,8 +26,8 @@ public class Customer extends User {
         return  customerOrderManager.getCartProducts(this.getPhoneNumber());
     }
     public String placeOrder(){
-        String message= customerProductManager.placeOrder(this.getPhoneNumber());
         customerOrderManager.addToOrders(this);
+        String message= customerProductManager.placeOrder(this.getPhoneNumber());
         customerOrderManager.clearCart(this.getPhoneNumber());
         return message;
     }
