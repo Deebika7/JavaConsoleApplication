@@ -27,7 +27,8 @@ public class LoginMenu {
             int choice = ValidationUtil.getValidEnumInput(LoginOptions.values().length);
             LoginOptions option = LoginOptions.values()[choice - 1];
             switch (option) {
-                case SIGN_IN_AS_ADMIN, SIGN_IN_AS_CUSTOMER -> signIn();
+                case SIGN_IN_AS_ADMIN -> signIn(UserRole.ADMIN);
+                case SIGN_IN_AS_CUSTOMER -> signIn(UserRole.CUSTOMER);
                 case SIGN_UP_AS_ADMIN -> signUp(UserRole.ADMIN);
                 case SIGN_UP_AS_CUSTOMER -> signUp(UserRole.CUSTOMER);
                 case QUIT -> {
@@ -49,21 +50,25 @@ public class LoginMenu {
         System.out.println(UserDetailsManager.addUser(phoneNumber, userName, password, userRole));
     }
 
-    private void signIn() {
+    private void signIn(UserRole userRole) {
         System.out.println("Enter Phone Number:");
         String phoneNumber = ValidationUtil.getValidPhoneNumber();
         System.out.println("Enter Password:");
         String password = new Scanner(System.in).nextLine();
         String signInStatus = UserDetailsManager.ValidateUser(phoneNumber, password);
-        System.out.println(signInStatus);
         if (signInStatus.equals(Message.LOGIN_SUCCESS)) {
             User user = UserDetailsManager.getUser(phoneNumber);
-            if (user instanceof Customer customer) {
+            if (user instanceof Customer customer && user.getUserRole().equals(userRole)) {
+                System.out.println(signInStatus);
                 CustomerMenu customerMenu = new CustomerMenu(customer);
                 customerMenu.printCustomerMenu();
-            } else if (user instanceof Admin admin) {
+            } else if (user instanceof Admin admin && user.getUserRole().equals(userRole)) {
+                System.out.println(signInStatus);
                 AdminMenu adminMenu = new AdminMenu(admin);
                 adminMenu.printAdminMenu();
+            }
+            else {
+                System.out.println(Message.NO_USER_EXIST);
             }
         }
     }

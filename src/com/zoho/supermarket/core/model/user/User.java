@@ -19,6 +19,10 @@ public  class User {
         return password;
     }
 
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
