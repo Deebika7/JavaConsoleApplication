@@ -7,8 +7,6 @@ import com.zoho.supermarket.core.respository.user.UserDetailsManager;
 import com.zoho.supermarket.database.model.UserDatabase;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
-
-
 public class UserDataManager implements UserDetailsManager {
     private final UserDatabase userDatabase;
     public UserDataManager(UserDatabase userDatabase) {

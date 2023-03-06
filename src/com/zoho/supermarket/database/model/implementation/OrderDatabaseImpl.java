@@ -6,18 +6,17 @@ import com.zoho.supermarket.core.model.product.Order;
 import com.zoho.supermarket.core.model.product.Product;
 import com.zoho.supermarket.core.model.user.Customer;
 import com.zoho.supermarket.database.model.OrderDatabase;
+import com.zoho.supermarket.userinterface.util.ValidationUtil;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class OrderDatabaseImpl implements OrderDatabase {
     private final Map<String, List<Cart>> carts = new HashMap<>();
     private static OrderDatabaseImpl Instance = null;
     private final List<Order> orders = new ArrayList<>();
 
-    private OrderDatabaseImpl() {}
+    private OrderDatabaseImpl() {
+    }
 
     public static OrderDatabaseImpl getInstance() {
         if (Instance == null) {
@@ -40,11 +39,11 @@ public class OrderDatabaseImpl implements OrderDatabase {
     }
 
     @Override
-    public boolean removeProductFromCart(String phoneNumber,String productName) {
-        List<Cart> cart=getCart(phoneNumber);
-        if(!cart.isEmpty()) {
+    public boolean removeProductFromCart(String phoneNumber, String productName) {
+        List<Cart> cart = getCart(phoneNumber);
+        if (ValidationUtil.isListValid(cart)) {
             Cart cartProduct = getProductFromCart(productName, cart);
-            if(cartProduct!=null) {
+            if (cartProduct != null) {
                 cart.remove(cartProduct);
                 return true;
             }
@@ -61,7 +60,7 @@ public class OrderDatabaseImpl implements OrderDatabase {
         if (product != null) {
             if (productFromCart != null) {
                 if (product.getQuantity() >= productFromCart.getQuantity() + quantity) {
-                    productFromCart.setQty(quantity + productFromCart.getQuantity());
+                    productFromCart.setQuantity(quantity + productFromCart.getQuantity());
                     return Message.PRODUCT_ADDED;
                 } else {
                     return Message.OUT_OF_STOCK;
@@ -94,15 +93,16 @@ public class OrderDatabaseImpl implements OrderDatabase {
     public List<Cart> getCart(String phoneNumber) {
         if (carts.containsKey(phoneNumber)) {
             List<Cart> cart = carts.get(phoneNumber);
-            List<Cart> outOfStock = new ArrayList<>();
-            for (Cart cartProduct : cart) {
-                Product product = ProductDatabaseImpl.getInstance().getProduct(cartProduct.getProduct().getProductName());
-                if ((cartProduct.getQuantity() > product.getQuantity())) {
-                    outOfStock.add(cartProduct);
+            ListIterator<Cart> cartItr = cart.listIterator();
+            while (cartItr.hasNext()) {
+                Cart cartProduct = cartItr.next();
+                if ((cartProduct.getQuantity() > cartProduct.getProduct().getQuantity())) {
+                    if (cartProduct.getProduct().getQuantity() == 0) {
+                        cartItr.remove();
+                    } else {
+                        cartProduct.setQuantity(cartProduct.getProduct().getQuantity());
+                    }
                 }
-            }
-            for (Cart product : outOfStock) {
-                cart.remove(product);
             }
             return cart;
         }

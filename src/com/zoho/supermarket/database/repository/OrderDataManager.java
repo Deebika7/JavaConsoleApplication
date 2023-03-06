@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDataManager implements CustomerOrderManager, AdminOrderManager {
-
     private final OrderDatabase orderDatabase;
     private final ProductDatabase productDatabase;
 
@@ -83,7 +82,5 @@ public class OrderDataManager implements CustomerOrderManager, AdminOrderManager
     public List<Order> getAllOrders(){
         return orderDatabase.getOrders();
     }
-
-
 
 }

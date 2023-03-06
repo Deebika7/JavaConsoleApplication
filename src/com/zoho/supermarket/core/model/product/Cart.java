@@ -2,11 +2,11 @@ package com.zoho.supermarket.core.model.product;
 
 
 public class Cart {
-    private int qty;
+    private int quantity;
     private final Product product;
 
-    public Cart(int qty, Product product) {
-        this.qty = qty;
+    public Cart(int quantity, Product product) {
+        this.quantity = quantity;
         this.product = product;
     }
 
@@ -15,10 +15,10 @@ public class Cart {
     }
 
     public int getQuantity() {
-        return qty;
+        return quantity;
     }
 
-    public void setQty(int qty) {
-        this.qty = qty;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

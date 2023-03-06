@@ -89,7 +89,7 @@ public class CustomerMenu {
         return ProductCategory.values()[category - 1];
     }
 
-    public void viewProducts() {
+    private void viewProducts() {
         printProductCategory();
         System.out.println("Select Category to display items:");
         ProductCategory productCategory = getProductCategory();

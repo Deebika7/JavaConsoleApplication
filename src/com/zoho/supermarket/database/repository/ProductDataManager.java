@@ -9,6 +9,7 @@ import com.zoho.supermarket.core.respository.product.CustomerProductManager;
 import com.zoho.supermarket.database.model.OrderDatabase;
 import com.zoho.supermarket.database.model.ProductDatabase;
 import com.zoho.supermarket.userinterface.util.ValidationUtil;
+
 import java.util.List;
 import java.util.Random;
 
@@ -20,18 +21,20 @@ public class ProductDataManager implements AdminProductManager, CustomerProductM
         this.orderDatabase = orderDatabase;
         this.productDatabase = productDatabase;
     }
+
     @Override
     public String add(int productID, String productName, int quantity, double unitPrice, ProductCategory productCategory) {
-        if(!ValidationUtil.isInstanceValid(productDatabase.getProduct(productName))){
-            productDatabase.add(new Product(productID,productName,quantity,unitPrice,productCategory));
+        if (!ValidationUtil.isInstanceValid(productDatabase.getProduct(productName))) {
+            productDatabase.add(new Product(productID, productName, quantity, unitPrice, productCategory));
             return Message.PRODUCT_ADDED;
         }
         return Message.PRODUCT_EXIST;
     }
+
     @Override
-    public String remove(String productName){
-        Product instance=  productDatabase.getProduct(productName);
-        if(ValidationUtil.isInstanceValid(instance)){
+    public String remove(String productName) {
+        Product instance = productDatabase.getProduct(productName);
+        if (ValidationUtil.isInstanceValid(instance)) {
             productDatabase.remove(instance);
             return Message.PRODUCT_REMOVED;
         }
@@ -42,29 +45,32 @@ public class ProductDataManager implements AdminProductManager, CustomerProductM
     public List<Product> getProducts() {
         return productDatabase.getProducts();
     }
+
     @Override
     public String addDiscount(String productName, double discountPercentage) {
-        Product product=  productDatabase.getProduct(productName);
-        if (ValidationUtil.isInstanceValid(product)){
-            productDatabase.addDiscount(product,new Discount(new Random().nextInt(1000,9999),discountPercentage));
+        Product product = productDatabase.getProduct(productName);
+        if (ValidationUtil.isInstanceValid(product)) {
+            productDatabase.addDiscount(product, new Discount(new Random().nextInt(1000, 9999), discountPercentage));
             return Message.DISCOUNT_ADDED;
         }
         return Message.NO_PRODUCT_EXIST;
     }
-    public String removeDiscount(int discountID){
-        if(productDatabase.removeDiscount(discountID)){
+
+    public String removeDiscount(int discountID) {
+        if (productDatabase.removeDiscount(discountID)) {
             return Message.DISCOUNT_REMOVED;
         }
         return Message.NO_PRODUCT_EXIST;
     }
 
-    public String placeOrder(String phoneNumber){
-        if(ValidationUtil.isListValid(orderDatabase.getCart(phoneNumber))){
-            productDatabase.updateProduct(orderDatabase.getCart(phoneNumber));
+    public String placeOrder(String phoneNumber) {
+        if (ValidationUtil.isListValid(orderDatabase.getCart(phoneNumber))) {
+            productDatabase.updateProductQuantity(orderDatabase.getCart(phoneNumber));
             return Message.ORDER_PLACED;
         }
         return Message.EMPTY_CART;
     }
+
     public List<String> getDiscounts() {
         return productDatabase.getDiscounts();
     }

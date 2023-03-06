@@ -1,16 +1,11 @@
 package com.zoho.supermarket.database.model.implementation;
 
-import com.zoho.supermarket.core.model.product.Discount;
-import com.zoho.supermarket.core.model.product.Cart;
-import com.zoho.supermarket.core.model.product.Product;
-
-import com.zoho.supermarket.core.model.product.ProductCategory;
+import com.zoho.supermarket.core.model.product.*;
 import com.zoho.supermarket.database.model.ProductDatabase;
-import com.zoho.supermarket.userinterface.util.ValidationUtil;
 import java.util.*;
 
 public class ProductDatabaseImpl implements ProductDatabase {
-    private final List<Product> products=new ArrayList<>();
+    private final Map<String,Product> products=new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
     private final Map<Product, Discount> productDiscounts=new HashMap<>();
     private static  ProductDatabaseImpl Instance=null;
     private ProductDatabaseImpl(){}
@@ -22,36 +17,37 @@ public class ProductDatabaseImpl implements ProductDatabase {
     }
 
     {
-        products.add(new Product(1111,"milk",12,12, ProductCategory.DAIRY));
-        products.add(new Product(1234,"cheese",12,12, ProductCategory.DAIRY));
-        products.add(new Product(1113,"butter",12,12, ProductCategory.DAIRY));
-        products.add(new Product(1231,"heinz",12,12, ProductCategory.SAUCE));
+        products.put("milk",(new Product(1111,"milk",12,12, ProductCategory.DAIRY)));
+        products.put("cheese",(new Product(1234,"cheese",12,12, ProductCategory.DAIRY)));
+        products.put("butter",(new Product(1113,"butter",12,12, ProductCategory.DAIRY)));
+        products.put("heinz",(new Product(1231,"heinz",12,12, ProductCategory.SAUCE)));
     }
 
     public List<Product> getProducts(){
-        return new ArrayList<>(products);
+        return new ArrayList<>(products.values());
     }
 
     @Override
     public void add(Product product){
-        products.add(product);
+        products.put(product.getProductName(),product);
     }
 
     @Override
     public void remove(Product productToRemove) {
-        products.removeIf(product -> product.getProductName().equalsIgnoreCase(productToRemove.getProductName()));
+        if(! products.isEmpty()){
+            products.remove(productToRemove.getProductName());
+        }
     }
     Product getInstance(Product product){
-        for(Product instance:products){
-            if (instance.getProductName().equalsIgnoreCase(product.getProductName())){
-                return instance;
+        if(!products.isEmpty()){
+            if(products.containsKey(product.getProductName())){
+                return products.get(product.getProductName());
             }
         }
         return null;
     }
     @Override
     public void addDiscount(Product product, Discount discount) {
-
         productDiscounts.put(getInstance(product),discount);
     }
     public boolean removeDiscount(int discountID) {
@@ -87,20 +83,18 @@ public class ProductDatabaseImpl implements ProductDatabase {
         return discounts;
     }
     public Product getProduct(String productName){
-        if(ValidationUtil.isListValid(products)){
-            for (Product product:products){
-                if(product.getProductName().equalsIgnoreCase(productName)){
-                    return product;
-                }
+        if(!products.isEmpty()){
+            if(products.containsKey(productName)){
+                 return products.get(productName);
             }
         }
         return null;
     }
 
     @Override
-    public void updateProduct(List<Cart> cart) {
+    public void updateProductQuantity(List<Cart> cart) {
         for (Cart cartProduct: cart){
-            Product product=getProduct(cartProduct.getProduct().getProductName());
+            Product product=getInstance(cartProduct.getProduct());
             product.setQuantity(product.getQuantity()-cartProduct.getQuantity());
         }
     }

@@ -68,7 +68,7 @@ public class AdminMenu {
         int category = ValidationUtil.getValidEnumInput(ProductCategory.values().length);
         return ProductCategory.values()[category-1];
     }
-    public void viewProducts() {
+    private void viewProducts() {
         printProductCategory();
         System.out.println("Select Category to display items:");
         ProductCategory productCategory = getProductCategory();
@@ -93,21 +93,24 @@ public class AdminMenu {
         System.out.println(admin.remove(productName));
     }
 
-    private void viewDiscounts() {
+    private boolean viewDiscounts() {
         if(!admin.getDiscounts().isEmpty()){
             List<String> discounts=admin.getDiscounts();
             discounts.forEach(System.out::println);
+            return true;
         }
         else {
             System.out.println(Message.NO_DISCOUNT_EXIST);
         }
+        return false;
     }
 
     private void removeDiscount() {
-        viewDiscounts();
-        System.out.println("Enter Discount ID : ");
-        int discountID=ValidationUtil.getValidIntegerInput();
-        System.out.println(admin.removeDiscount(discountID));
+        if(viewDiscounts()) {
+            System.out.println("Enter Discount ID : ");
+            int discountID = ValidationUtil.getValidIntegerInput();
+            System.out.println(admin.removeDiscount(discountID));
+        }
     }
 
     private void addDiscount(){

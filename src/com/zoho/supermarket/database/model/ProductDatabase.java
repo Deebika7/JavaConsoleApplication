@@ -16,6 +16,6 @@ public interface ProductDatabase {
      boolean removeDiscount(int discountID);
      List<String> getDiscounts();
      Product getProduct(String productName);
-     void updateProduct(List<Cart> cart);
+     void updateProductQuantity(List<Cart> cart);
      double getDiscountPercentage(String productName);
 }

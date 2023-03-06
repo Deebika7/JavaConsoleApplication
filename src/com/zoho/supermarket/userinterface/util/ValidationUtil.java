@@ -1,8 +1,9 @@
 package com.zoho.supermarket.userinterface.util;
 
-
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class ValidationUtil {
     private static final Scanner sc = new Scanner(System.in);
@@ -11,11 +12,8 @@ public class ValidationUtil {
         String input;
         while (true) {
             input = sc.nextLine();
-            if (input.matches("[a-zA-Z0-9]+( [a-zA-Z0-9.]+)*$")) {
-                input = input.strip();
+                input = input.replaceAll("\s+", " ");
                 return input;
-            }
-            System.err.println("Invalid input Try again!");
         }
     }
 
@@ -35,7 +33,7 @@ public class ValidationUtil {
         String input;
         while (true) {
             input = sc.nextLine();
-            if (!input.matches("^[0-9 ]+")) {
+            if (!input.matches("^[0-9]+")) {
                 System.err.println("Invalid input Try again!");
                 continue;
             }
@@ -79,7 +77,7 @@ public class ValidationUtil {
                 System.err.println("Invalid input Try again!");
                 continue;
             }
-            if (!(Double.parseDouble(input) < 0) && !(Double.parseDouble(input) > 100)) {
+            if (!(Double.parseDouble(input) <=0) && !(Double.parseDouble(input) > 100)) {
                 return Double.parseDouble(input);
             }
             System.err.println("Invalid input Try again!");
@@ -123,7 +121,6 @@ public class ValidationUtil {
         while (!input.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$")) {
             System.err.println("Invalid Password Try again!");
             System.out.println("Note: The password should contain a lower case character, upper case character," +
-                    "\n it must start with an alphabet" +
                     "\n At least one digit, a total of 8 - 20 character length, and special characters like ['@#$%^&-+=()']");
             System.out.println("Enter your password correctly: ");
             input = new Scanner(System.in).nextLine();
@@ -139,12 +136,12 @@ public class ValidationUtil {
         return !(list == null || list.isEmpty());
     }
 
-    public static String getValidConfirmPassword(String password) {
+    public static void getValidConfirmPassword(String password) {
         String input;
         while (true) {
             input = sc.nextLine();
             if (password.equals(input)) {
-                return input;
+                break;
             } else {
                 System.err.println("password mismatched Try again!!");
             }
@@ -155,7 +152,7 @@ public class ValidationUtil {
         String input;
         while (true) {
             input = sc.nextLine();
-            if(input.matches("(0/91)?[7-9][0-9]{9}")) {
+            if(input.matches("(0|91)?[7-9][0-9]{9}")) {
                 input = input.strip();
                 return input;
             }
