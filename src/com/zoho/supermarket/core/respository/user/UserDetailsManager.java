@@ -6,5 +6,5 @@ import com.zoho.supermarket.core.model.user.UserRole;
 public interface UserDetailsManager {
     User getUser(String phoneNumber);
     String addUser(String phoneNumber,String userName, String password, UserRole userRole);
-    String isValidUser(String phoneNumber,String password);
+    String ValidateUser(String phoneNumber, String password);
 }

@@ -91,6 +91,7 @@ public class AdminMenu {
         System.out.println("Enter Product Name to remove: ");
         String productName=ValidationUtil.getValidStringInput();
         System.out.println(admin.remove(productName));
+
     }
 
     private boolean viewDiscounts() {

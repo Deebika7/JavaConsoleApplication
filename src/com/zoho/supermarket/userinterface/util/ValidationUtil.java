@@ -1,9 +1,9 @@
 package com.zoho.supermarket.userinterface.util;
 
-import java.util.Arrays;
+
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
+
 
 public class ValidationUtil {
     private static final Scanner sc = new Scanner(System.in);
@@ -12,8 +12,11 @@ public class ValidationUtil {
         String input;
         while (true) {
             input = sc.nextLine();
-                input = input.replaceAll("\s+", " ");
-                return input;
+                input = input.replaceAll("\\s+", " ");
+                if(!input.equals("")) {
+                    return input;
+                }
+                System.err.println("Invalid input Try again!");
         }
     }
 
@@ -156,7 +159,7 @@ public class ValidationUtil {
                 input = input.strip();
                 return input;
             }
-            System.out.println("Invalid Input try again!");
+            System.err.println("Invalid Input try again!");
         }
     }
 }

@@ -6,18 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="3b7ac51c-cbb6-4686-8aab-87c605ac31b5" name="Changes" comment="testing done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/ManagerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/ManagerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/product/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/product/CustomerProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/product/CustomerProductManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/model/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/order/CustomerOrderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/order/CustomerOrderManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/user/UserDetailsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/core/respository/user/UserDetailsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/ProductDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/ProductDatabase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/OrderDatabaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/OrderDatabaseImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/ProductDatabaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/model/implementation/ProductDatabaseImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/OrderDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/OrderDataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/ProductDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/ProductDataManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/UserDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/database/repository/UserDataManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/AdminMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/CustomerMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/LoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/menu/LoginMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/util/ValidationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zoho/supermarket/userinterface/util/ValidationUtil.java" afterDir="false" />
     </list>
@@ -87,13 +83,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1676870275986</updated>
-    </task>
-    <task id="LOCAL-00001" summary="adding files">
-      <created>1676874132903</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1676874132903</updated>
     </task>
     <task id="LOCAL-00002" summary="adding files">
       <created>1676874156710</created>
@@ -431,7 +420,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677665546404</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="testing done">
+      <created>1678062895445</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1678062895451</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

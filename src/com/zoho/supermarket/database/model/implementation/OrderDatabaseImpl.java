@@ -103,6 +103,9 @@ public class OrderDatabaseImpl implements OrderDatabase {
                         cartProduct.setQuantity(cartProduct.getProduct().getQuantity());
                     }
                 }
+                if(ProductDatabaseImpl.getInstance().getProduct(cartProduct.getProduct().getProductName())==null){
+                    cartItr.remove();
+                }
             }
             return cart;
         }

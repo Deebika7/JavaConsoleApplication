@@ -37,6 +37,10 @@ public class ProductDatabaseImpl implements ProductDatabase {
         if(! products.isEmpty()){
             products.remove(productToRemove.getProductName());
         }
+        int discountID=getDiscountID(productToRemove.getProductName());
+        if(discountID!=0){
+            removeDiscount(discountID);
+        }
     }
     Product getInstance(Product product){
         if(!products.isEmpty()){
@@ -81,6 +85,14 @@ public class ProductDatabaseImpl implements ProductDatabase {
             discounts.add("=========================================================");
         }
         return discounts;
+    }
+    private int getDiscountID(String productName){
+        for(Map.Entry<Product, Discount> productDiscount:productDiscounts.entrySet()){
+            if(productDiscount.getKey().getProductName().equalsIgnoreCase(productName)){
+               return productDiscount.getValue().getDiscountID();
+            }
+        }
+        return 0;
     }
     public Product getProduct(String productName){
         if(!products.isEmpty()){

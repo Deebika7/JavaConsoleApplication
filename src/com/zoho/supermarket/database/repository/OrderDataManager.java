@@ -30,7 +30,7 @@ public class OrderDataManager implements CustomerOrderManager, AdminOrderManager
         return orderDatabase.addToCart(phoneNumber,productName, qty, product);
     }
 
-    public List<Cart> getCart(String phoneNumber) {
+    private List<Cart> getCart(String phoneNumber) {
         return orderDatabase.getCart(phoneNumber);
     }
 
@@ -51,7 +51,8 @@ public class OrderDataManager implements CustomerOrderManager, AdminOrderManager
                     price = product.getQuantity() * product.getProduct().getUnitPrice();
                 }
                 cartProducts.add(product.getProduct().getProductName() + "\t\t\t\t" + product.getQuantity() +
-                        "\t\t\t\t" + product.getProduct().getUnitPrice() + "\t\t\t\t" + product.getQuantity() * product.getProduct().getUnitPrice() + "\t\t\t\t\t" + discountPercentage + "\t\t\t\t\t\t\t" + product.getQuantity() * price);
+                        "\t\t\t\t" + product.getProduct().getUnitPrice() + "\t\t\t\t" + product.getQuantity() * product.getProduct().getUnitPrice()
+                        + "\t\t\t\t\t" + discountPercentage + "\t\t\t\t\t\t\t" + product.getQuantity() * price);
                 totalAmount += product.getQuantity() * price;
             }
             cartProducts.add("\n");
@@ -71,7 +72,7 @@ public class OrderDataManager implements CustomerOrderManager, AdminOrderManager
         orderDatabase.clearCart(phoneNumber);
     }
 
-    public double calculatePrice(double productPrice, double discountPercentage) {
+    private double calculatePrice(double productPrice, double discountPercentage) {
         return productPrice - (productPrice * (discountPercentage / 100));
     }
 
